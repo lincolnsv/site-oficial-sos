@@ -372,7 +372,7 @@
         function renderProducts() {
             const newPhonesContainer = document.getElementById('new-phones-container');
             const usedPhonesContainer = document.getElementById('used-phones-container');
-            const usedPhonesContainer = document.getElementById('accessories-container')
+            const accessoriescontainer = document.getElementById('accessories-container')
             
             newPhonesContainer.innerHTML = '';
             usedPhonesContainer.innerHTML = '';
@@ -385,9 +385,9 @@
                     newPhonesContainer.appendChild(productCard);
                 } else {
                     usedPhonesContainer.appendChild(productCard);
-                }#else {
-                    #accessoriescontainer.appendChild(productCard);
-                #}
+                }else {
+                    accessoriescontainer.appendChild(productCard);
+                }
             });
         }
 
@@ -547,6 +547,7 @@
     </script>
 </body>
 </html>
+
 
 
 
