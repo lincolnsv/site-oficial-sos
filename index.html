@@ -343,7 +343,7 @@
             {
                 id: 7,
                 name: "Carregador completo Gold V8",
-                category: "Acessorios",
+                category: "acessorios",
                 price: "R$ 45,00",
                 description: "Super potencia",
                 specs: [
@@ -372,9 +372,11 @@
         function renderProducts() {
             const newPhonesContainer = document.getElementById('new-phones-container');
             const usedPhonesContainer = document.getElementById('used-phones-container');
+            const usedPhonesContainer = document.getElementById('accessories-container')
             
             newPhonesContainer.innerHTML = '';
             usedPhonesContainer.innerHTML = '';
+            accessoriescontainer.innerHTML = '';
             
             products.forEach(product => {
                 const productCard = createProductCard(product);
@@ -383,6 +385,8 @@
                     newPhonesContainer.appendChild(productCard);
                 } else {
                     usedPhonesContainer.appendChild(productCard);
+                }else {
+                    accessoriescontainer.appendChild(productCard);
                 }
             });
         }
@@ -543,6 +547,7 @@
     </script>
 </body>
 </html>
+
 
 
 
