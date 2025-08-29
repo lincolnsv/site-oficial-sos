@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop - Loja de Celulares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more styling */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 0.5rem;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-blue-600 flex items-center">
+                        <img src="imagens/logo.png" alt="S.O.S.Celulares" class="h-8 mr-2"> 
+                    </a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 mx-8">
+                    <div class="relative w-full max-w-xl">
+                        <input type="text" placeholder="Pesquisar produtos..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="absolute right-0 top-0 h-full px-4 text-gray-600 hover:text-blue-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 relative">
+                        <i class="fas fa-heart text-xl"></i>
+                    </a>
+                    <div class="dropdown relative">
+                        <button class="text-gray-700 hover:text-blue-600 relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span class="cart-badge">0</span>
+                        </button>
+                        <div class="dropdown-menu mt-2 p-4 w-80">
+                            <div id="cartItems">
+                                <p class="text-gray-500 text-center">Seu carrinho está vazio</p>
+                            </div>
+                            <div id="cartFooter" class="hidden">
+                                <div class="border-t pt-2 mt-2">
+                                    <div class="flex justify-between font-semibold">
+                                        <span>Total:</span>
+                                        <span id="cartTotal">R$ 0,00</span>
+                                    </div>
+                                    <a href="#" id="goToCheckout" class="block w-full bg-blue-600 text-white text-center py-2 rounded mt-2 hover:bg-blue-700">
+                                        Finalizar Pedido
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-user text-xl"></i>
+                    </a>
+                    <button class="md:hidden text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Search -->
+            <div class="mt-3 md:hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Pesquisar produtos..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="absolute right-0 top-0 h-full px-4 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">As Melhores Ofertas em Smartphones</h1>
+                    <p class="text-xl mb-6">Encontre os celulares mais modernos com os melhores preços do mercado.</p>
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                        Compre Agora
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="imagens/hero-banner.png" alt="Smartphones" class="rounded-lg shadow-xl max-w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Categorias</h2>
+        <div class="flex overflow-x-auto pb-4 space-x-2">
+            <button class="category-btn px-4 py-2 bg-gray-200 rounded-full whitespace-nowrap hover:bg-blue-100 active">
+                Todos
+            </button>
+            <button class="category-btn px-4 py-2 bg-gray-200 rounded-full whitespace-nowrap hover:bg-blue-100">
+                iPhone
+            </button>
+            <button class="category-btn px-4 py-2 bg-gray-200 rounded-full whitespace-nowrap hover:bg-blue-100">
+                Samsung
+            </button>
+            <button class="category-btn px-4 py-2 bg-gray-200 rounded-full whitespace-nowrap hover:bg-blue-100">
+                Xiaomi
+            </button>
+            <button class="category-btn px-4 py-2 bg-gray-200 rounded-full whitespace-nowrap hover:bg-blue-100">
+                Motorola
+            </button>
+            <button class="category-btn px-4 py-2 bg-gray-200 rounded-full whitespace-nowrap hover:bg-blue-100">
+                Acessórios
+            </button>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Produtos em Destaque</h2>
+            <a href="#" class="text-blue-600 hover:underline">Ver todos</a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="imagens/iphone-13.png" alt="iPhone 13" class="w-full h-48 object-cover">
+                    <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                        -15%
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">iPhone 13 128GB</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(42)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 4.599</span>
+                        <span class="text-sm text-gray-500 line-through ml-2">R$ 5.399</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="imagens/samsung-s21.png" alt="Samsung Galaxy S21" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Samsung Galaxy S21 5G</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(36)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 3.299</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="imagens/xiaomi-redmi-note10.png" alt="Xiaomi Redmi Note 10" class="w-full h-48 object-cover">
+                    <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                        -20%
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Xiaomi Redmi Note 10 Pro</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(58)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 1.799</span>
+                        <span class="text-sm text-gray-500 line-through ml-2">R$ 2.199</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="imagens/motorola-edge20.png" alt="Motorola Edge 20" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Motorola Edge 20 Lite</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(27)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 2.199</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Banner -->
+    <div class="bg-blue-600 text-white py-8 my-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl md:text-2xl font-bold">Frete Grátis em Compras Acima de R$ 1.000</h3>
+                    <p class="text-blue-100">Válido para todo o Brasil</p>
+                </div>
+                <button class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+                    Aproveitar Oferta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Arrivals -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Novidades</h2>
+            <a href="#" class="text-blue-600 hover:underline">Ver todos</a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product 5 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="imagens/iphone-14-pro-max.png" alt="iPhone 14" class="w-full h-48 object-cover">
+                    <div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+                        Novo
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">iPhone 14 Pro Max</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(15)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 7.999</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="imagens/samsung-zflip4.png" alt="Samsung Galaxy Z Flip" class="w-full h-48 object-cover">
+                    <div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+                        Novo
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Samsung Galaxy Z Flip 4</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(23)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 5.499</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="imagens/airpods-pro2.png" alt="AirPods Pro" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">AirPods Pro 2ª Geração</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(47)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 1.899</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="iPhone 13" class="w-full h-48 object-cover">
+                    <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                        -10%
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">iPhone 13 Mini 256GB</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(31)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-800">R$ 4.299</span>
+                        <span class="text-sm text-gray-500 line-through ml-2">R$ 4.799</span>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+                            <i class="fas fa-shopping-cart mr-1"></i> Comprar
+                        </button>
+                        <button class="text-gray-500 hover:text-red-500">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-truck text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Frete Rápido</h3>
+                    <p class="text-gray-600">Entregamos em todo o Brasil com prazo de 2 a 5 dias úteis.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Compra Segura</h3>
+                    <p class="text-gray-600">Site 100% seguro com certificado SSL e proteção de dados.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Suporte 24/7</h3>
+                    <p class="text-gray-600">Atendimento especializado para tirar todas suas dúvidas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Page (hidden by default) -->
+    <div id="checkoutPage" class="hidden container mx-auto px-4 py-8 max-w-4xl">
+        <h2 class="text-2xl font-bold mb-6">Finalizar Pedido</h2>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 class="text-lg font-semibold mb-4">Seu Pedido</h3>
+            <div id="checkoutItems" class="mb-4"></div>
+            <div class="border-t pt-4">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal:</span>
+                    <span id="checkoutSubtotal">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span>Desconto:</span>
+                    <span id="checkoutDiscount">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total:</span>
+                    <span id="checkoutTotal">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Dados para Entrega</h3>
+            <form id="checkoutForm" class="space-y-4">
+                <div>
+                    <label class="block mb-1">Nome Completo:</label>
+                    <input type="text" class="w-full px-3 py-2 border rounded-md" required>
+                </div>
+                <div>
+                    <label class="block mb-1">E-mail:</label>
+                    <input type="email" class="w-full px-3 py-2 border rounded-md" required>
+                </div>
+                <div>
+                    <label class="block mb-1">Telefone:</label>
+                    <input type="tel" class="w-full px-3 py-2 border rounded-md" required>
+                </div>
+                <div>
+                    <label class="block mb-1">Endereço:</label>
+                    <input type="text" class="w-full px-3 py-2 border rounded-md" required>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <label class="block mb-1">Número:</label>
+                        <input type="text" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block mb-1">CEP:</label>
+                        <input type="text" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block mb-1">Cidade:</label>
+                        <input type="text" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block mb-1">Forma de Pagamento:</label>
+                    <select class="w-full px-3 py-2 border rounded-md">
+                        <option>Cartão de Crédito</option>
+                        <option>PIX</option>
+                        <option>Boleto Bancário</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700">
+                    Confirmar Pedido
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="bg-blue-50 py-12">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="text-2xl font-bold mb-4">Receba Ofertas Exclusivas</h2>
+            <p class="text-gray-600 mb-6">Assine nossa newsletter e seja o primeiro a saber sobre promoções e lançamentos.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-2">
+                <input type="email" placeholder="Seu melhor e-mail" class="px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow max-w-md">
+                <button class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+                    Assinar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-mobile-alt mr-2"></i> TechShop
+                    </h3>
+                    <p class="text-gray-400">A melhor loja de smartphones e acessórios do Brasil, com os melhores preços e condições.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Institucional</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Quem Somos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Nossas Lojas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Trabalhe Conosco</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Ajuda</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Central de Atendimento</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Perguntas Frequentes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Trocas e Devoluções</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Status do Pedido</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Formas de Pagamento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contato</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400"><i class="fas fa-phone-alt mr-2"></i> (11) 4002-8922</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-envelope mr-2"></i> contato@techshop.com.br</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> Av. Paulista, 1000 - São Paulo/SP</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-clock mr-2"></i> Seg-Sex: 9h às 18h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 TechShop. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/551140028922" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold" id="modalProductTitle"></h3>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <img id="modalProductImage" src="" alt="" class="w-full rounded-lg">
+                        <div class="mt-4 text-gray-600">
+                            <p>Estoque disponível: <span id="productStock" class="font-bold"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="mb-4">
+                            <h4 class="font-bold mb-2">Descrição:</h4>
+                            <p id="productDescription" class="text-gray-600"></p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-bold mb-2">Cores disponíveis:</h4>
+                            <div class="flex flex-wrap gap-2" id="colorOptions"></div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-bold mb-2">Quantidade:</h4>
+                            <div class="flex items-center border rounded-md w-fit">
+                                <button class="quantity-btn px-3 py-1 text-lg" data-action="decrease">-</button>
+                                <input type="number" min="1" value="1" class="w-12 text-center border-x" id="productQuantity">
+                                <button class="quantity-btn px-3 py-1 text-lg" data-action="increase">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2">Cupom de desconto:</h4>
+                            <div class="flex">
+                                <input type="text" placeholder="Digite seu cupom" class="px-3 py-2 border rounded-l-md flex-grow" id="couponInput">
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700" id="applyCoupon">Aplicar</button>
+                            </div>
+                            <p id="couponMessage" class="text-sm mt-1 hidden"></p>
+                        </div>
+                        
+                        <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span>Subtotal:</span>
+                                <span id="productSubtotal" class="font-bold"></span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span>Desconto:</span>
+                                <span id="productDiscount" class="font-bold text-green-600">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between text-lg font-bold">
+                                <span>Total:</span>
+                                <span id="productTotal"></span>
+                            </div>
+                        </div>
+                        
+                        <button id="addToCartBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 mb-2">
+                            Adicionar ao Carrinho
+                        </button>
+                        
+                        <button id="checkoutBtn" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 hidden">
+                            Finalizar Pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Faça login para continuar</h3>
+                <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label for="loginEmail" class="block mb-1">E-mail:</label>
+                    <input type="email" id="loginEmail" class="w-full px-3 py-2 border rounded-md" required>
+                </div>
+                
+                <div>
+                    <label for="loginPassword" class="block mb-1">Senha:</label>
+                    <input type="password" id="loginPassword" class="w-full px-3 py-2 border rounded-md" required>
+                </div>
+                
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">
+                    Entrar
+                </button>
+                
+                <p class="text-center text-sm">
+                    Não tem conta? <a href="#" class="text-blue-600 hover:underline" id="showRegister">Cadastre-se</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced JavaScript for e-commerce functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category buttons
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Product data (would normally come from backend)
+            const products = {
+                'iphone-13': {
+                    title: 'iPhone 13 128GB',
+                    image: 'imagens/iphone-13.png',
+                    price: 4599,
+                    description: 'O iPhone 13 possui tela Super Retina XDR de 6,1 polegadas, chip A15 Bionic, sistema de câmera dupla com Ultra Wide e Wide, modo Noturna, HDR Inteligente 4, gravação de vídeo em Dolby Vision, resistência à água IP68 e muito mais.',
+                    colors: ['Preto', 'Branco', 'Azul', '(PRODUCT)RED'],
+                    stock: 15,
+                    discountPrice: 3999
+                },
+                // Add other products similarly
+            };
+            
+            // Modal elements
+            const productModal = document.getElementById('productModal');
+            const closeModal = document.getElementById('closeModal');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+            const showRegister = document.getElementById('showRegister');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            
+            // Cart data
+            let cart = [];
+            let couponDiscount = 0;
+            let couponCode = '';
+            let isCheckoutPageVisible = false;
+            
+            // Open product modal when clicking "Comprar"
+            const addToCartBtns = document.querySelectorAll('.product-card button:first-child');
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productId = 'iphone-13'; // Get from data attribute in real implementation
+                    
+                    openProductModal(products[productId]);
+                });
+            });
+            
+            function openProductModal(product) {
+                // Fill modal with product data
+                document.getElementById('modalProductTitle').textContent = product.title;
+                document.getElementById('modalProductImage').src = product.image;
+                document.getElementById('productDescription').textContent = product.description;
+                document.getElementById('productStock').textContent = product.stock;
+                document.getElementById('productSubtotal').textContent = formatPrice(product.price);
+                document.getElementById('productTotal').textContent = formatPrice(product.price);
+                
+                // Add color options
+                const colorOptions = document.getElementById('colorOptions');
+                colorOptions.innerHTML = '';
+                product.colors.forEach(color => {
+                    const colorBtn = document.createElement('button');
+                    colorBtn.className = 'px-3 py-1 border rounded-full text-sm';
+                    colorBtn.textContent = color;
+                    colorOptions.appendChild(colorBtn);
+                });
+                
+                // Show modal
+                productModal.classList.remove('hidden');
+            }
+            
+            // Close modals
+            closeModal.addEventListener('click', () => productModal.classList.add('hidden'));
+            closeLoginModal.addEventListener('click', () => loginModal.classList.add('hidden'));
+            
+            // Quantity buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('quantity-btn')) {
+                    const input = document.getElementById('productQuantity');
+                    let value = parseInt(input.value);
+                    
+                    if (e.target.dataset.action === 'increase') {
+                        input.value = value + 1;
+                    } else if (e.target.dataset.action === 'decrease' && value > 1) {
+                        input.value = value - 1;
+                    }
+                    updateTotals();
+                }
+            });
+            
+            // Apply coupon
+            document.getElementById('applyCoupon').addEventListener('click', function() {
+                const couponInput = document.getElementById('couponInput').value;
+                const couponMessage = document.getElementById('couponMessage');
+                
+                // In a real app, this would check with backend
+                if (couponInput === 'TECHSHOP10') {
+                    couponDiscount = 0.1; // 10% discount
+                    couponCode = couponInput;
+                    couponMessage.textContent = 'Cupom aplicado com sucesso!';
+                    couponMessage.className = 'text-sm mt-1 text-green-600';
+                    couponMessage.classList.remove('hidden');
+                    updateTotals();
+                } else {
+                    couponDiscount = 0;
+                    couponCode = '';
+                    couponMessage.textContent = 'Cupom inválido ou expirado';
+                    couponMessage.className = 'text-sm mt-1 text-red-600';
+                    couponMessage.classList.remove('hidden');
+                    updateTotals();
+                }
+            });
+            
+            function updateTotals() {
+                const quantity = parseInt(document.getElementById('productQuantity').value);
+                const price = products['iphone-13'].price;
+                const subtotal = price * quantity;
+                const discount = subtotal * couponDiscount;
+                const total = subtotal - discount;
+                
+                document.getElementById('productSubtotal').textContent = formatPrice(subtotal);
+                document.getElementById('productDiscount').textContent = formatPrice(discount);
+                document.getElementById('productTotal').textContent = formatPrice(total);
+            }
+            
+            function formatPrice(price) {
+                return 'R$ ' + (price / 100).toFixed(2).replace('.', ',');
+            }
+            
+            // Add to cart
+            document.getElementById('addToCartBtn').addEventListener('click', function() {
+                const product = products['iphone-13'];
+                const quantity = parseInt(document.getElementById('productQuantity').value);
+                
+                cart.push({
+                    product,
+                    quantity,
+                    couponCode,
+                    couponDiscount
+                });
+                
+                // Update cart badge
+                document.querySelector('.cart-badge').textContent = cart.length;
+                
+                // Show checkout button
+                checkoutBtn.classList.remove('hidden');
+                
+                // Close modal
+                productModal.classList.add('hidden');
+                
+                // Show success message
+                alert('Produto adicionado ao carrinho!');
+            });
+            
+            // Cart interactions
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('remove-item')) {
+                    const index = parseInt(e.target.dataset.index);
+                    cart.splice(index, 1);
+                    updateCartUI();
+                    document.querySelector('.cart-badge').textContent = cart.length;
+                    if (cart.length === 0) {
+                        document.getElementById('checkoutBtn').classList.add('hidden');
+                    }
+                }
+            });
+
+            // Go to checkout button
+            document.getElementById('goToCheckout').addEventListener('click', function(e) {
+                e.preventDefault();
+                showCheckoutPage();
+            });
+
+            // Checkout form submission
+            document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Pedido confirmado! Em breve você receberá os detalhes por e-mail.');
+                cart = [];
+                updateCartUI();
+                document.querySelector('.cart-badge').textContent = '0';
+                hideCheckoutPage();
+            });
+            
+            // Login form submission
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real app, this would validate with backend
+                alert('Login realizado com sucesso! Redirecionando para finalização...');
+                
+                // After login, show order summary and WhatsApp button
+                loginModal.classList.add('hidden');
+                showOrderSummary();
+            });
+            
+            function updateCartUI() {
+                const cartItemsContainer = document.getElementById('cartItems');
+                const cartFooter = document.getElementById('cartFooter');
+                const cartTotal = document.getElementById('cartTotal');
+                
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center">Seu carrinho está vazio</p>';
+                    cartFooter.classList.add('hidden');
+                    return;
+                }
+                
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+                
+                cart.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex items-start py-2 border-b';
+                    itemElement.innerHTML = `
+                        <img src="${item.product.image}" alt="${item.product.title}" class="w-16 h-16 object-cover rounded mr-3">
+                        <div class="flex-1">
+                            <h4 class="font-medium">${item.product.title}</h4>
+                            <p class="text-sm text-gray-600">${item.quantity}x ${formatPrice(item.product.price)}</p>
+                            <button class="text-red-500 text-sm mt-1 remove-item" data-index="${index}">Remover</button>
+                        </div>
+                        <div class="font-medium">${formatPrice(item.product.price * item.quantity)}</div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    
+                    total += item.product.price * item.quantity;
+                });
+                
+                cartTotal.textContent = formatPrice(total);
+                cartFooter.classList.remove('hidden');
+            }
+
+            function showCheckoutPage() {
+                isCheckoutPageVisible = true;
+                document.getElementById('checkoutPage').classList.remove('hidden');
+                document.querySelector('header').classList.add('hidden');
+                document.querySelectorAll('section, div').forEach(el => {
+                    if (!el.id && !el.classList.contains('hidden')) {
+                        el.classList.add('hidden');
+                    }
+                });
+                
+                const checkoutItems = document.getElementById('checkoutItems');
+                checkoutItems.innerHTML = '';
+                
+                let subtotal = 0;
+                let discount = 0;
+                
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex justify-between py-2 border-b';
+                    itemElement.innerHTML = `
+                        <span>${item.quantity}x ${item.product.title}</span>
+                        <span>${formatPrice(item.product.price * item.quantity)}</span>
+                    `;
+                    checkoutItems.appendChild(itemElement);
+                    
+                    subtotal += item.product.price * item.quantity;
+                    discount += item.product.price * item.quantity * item.couponDiscount;
+                });
+                
+                const total = subtotal - discount;
+                
+                document.getElementById('checkoutSubtotal').textContent = formatPrice(subtotal);
+                document.getElementById('checkoutDiscount').textContent = formatPrice(discount);
+                document.getElementById('checkoutTotal').textContent = formatPrice(total);
+            }
+
+            function hideCheckoutPage() {
+                isCheckoutPageVisible = false;
+                document.getElementById('checkoutPage').classList.add('hidden');
+                document.querySelector('header').classList.remove('hidden');
+                document.querySelectorAll('section, div').forEach(el => {
+                    if (el.classList.contains('hidden') && !el.id) {
+                        el.classList.remove('hidden');
+                    }
+                });
+            }
+            
+            // Mobile menu toggle (placeholder)
+            const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+            mobileMenuBtn.addEventListener('click', function() {
+                alert('Menu mobile seria aberto aqui');
+            });
+        });
+    </script>
+</body>
+</html>
