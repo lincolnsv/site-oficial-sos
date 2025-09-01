@@ -52,7 +52,7 @@
       "_note": "📌 Para adicionar outro smartphone SEMINOVO, copie este bloco e altere id, name, specs, images e condition."
     }
 {
-      "id": 4,
+      "id": 5,
       "name": "Samsung A04e",
       "price": {
         "avista": "R$ 400,00",
@@ -70,7 +70,7 @@
 
   "🔌 ACESSÓRIOS - Carregadores, Capas e Outros": [
     {
-      "id": 5,
+      "id": 4,
       "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
       "price": "R$ 45,00",
       "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
@@ -86,3 +86,4 @@
     }
   ]
 }
+
