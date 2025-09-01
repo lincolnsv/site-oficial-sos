@@ -49,9 +49,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Celulares Novos</h2>
       <span class="ml-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Garantia de fábrica</span>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="new-phones-container">
-      <!-- Produtos novos serão injetados aqui via JS -->
-    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="new-phones-container"></div>
   </section>
 
   <!-- Seminovos -->
@@ -60,9 +58,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Celulares Seminovos</h2>
       <span class="ml-4 bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">Testados e aprovados</span>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="used-phones-container">
-      <!-- Produtos seminovos serão injetados aqui via JS -->
-    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="used-phones-container"></div>
   </section>
 
   <!-- Acessórios -->
@@ -71,9 +67,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Acessórios</h2>
       <span class="ml-4 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Capinhas, fones, carregadores</span>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accessories-container">
-      <!-- Acessórios serão injetados aqui via JS -->
-    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accessories-container"></div>
   </section>
 
 </main>
@@ -137,23 +131,65 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 </div>
 
 <script>
-// Aqui você pode injetar produtos via JSON externo sem colocar a lista dentro do HTML
-function renderProductsExternally(products) {
+let products = [];
+let currentProduct = null;
+let currentImageIndex = 0;
+
+// Carregar produtos do JSON externo
+async function loadProducts() {
+  try {
+    const response = await fetch("produtos.json");
+    const data = await response.json();
+
+    // Transformar objeto em array de produtos
+    products = data.map(p => {
+      if (!p.category) {
+        p.category = "Acessório";
+      }
+      return p;
+    });
+
+    renderProducts(products);
+  } catch (err) {
+    console.error("Erro ao carregar produtos.json", err);
+  }
+}
+
+function renderProducts(products) {
   const newC = document.getElementById('new-phones-container');
   const usedC = document.getElementById('used-phones-container');
   const accC = document.getElementById('accessories-container');
-  newC.innerHTML = ''; usedC.innerHTML = ''; accC.innerHTML = '';
-  
+
+  newC.innerHTML = '';
+  usedC.innerHTML = '';
+  accC.innerHTML = '';
+
   products.forEach(p => {
     const card = document.createElement('div');
-    card.className = 'bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition';
-    card.innerHTML = `<h3 class="text-lg font-bold text-gray-800 mb-2">${p.name}</h3>`;
-    
-    if(p.category === 'Novo') newC.appendChild(card);
-    else if(p.category === 'Seminovo') usedC.appendChild(card);
+    card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer';
+    card.innerHTML = `
+      <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+        <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain">
+      </div>
+      <div class="p-4">
+        <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
+        <p class="text-gray-600 text-sm mb-2">${p.description}</p>
+        ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
+        ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
+        <p class="text-xl font-bold text-blue-600">
+          ${typeof p.price === 'object'
+            ? `<strong>À vista:</strong> ${p.price.avista}<br><strong>Parcelado:</strong> ${p.price.parcelado}`
+            : p.price}
+        </p>
+      </div>`;
+
+    if (p.category === "Novo") newC.appendChild(card);
+    else if (p.category === "Seminovo") usedC.appendChild(card);
     else accC.appendChild(card);
   });
 }
+
+document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 
 </body>
