@@ -7,25 +7,28 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
+body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; }
 .product-modal.active { opacity: 1; visibility: visible; }
-.modal-overlay { background-color: rgba(0, 0, 0, 0.7); }
+.modal-overlay { background-color: rgba(0,0,0,0.7); }
 .gallery-thumbnail { transition: all 0.2s ease; cursor: pointer; }
-.gallery-thumbnail:hover { transform: scale(1.05); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+.gallery-thumbnail:hover { transform: scale(1.05); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 .gallery-thumbnail.active { border: 2px solid #3b82f6; }
-html { scroll-behavior: smooth; }
+#modal-main-image-container { overflow: hidden; position: relative; }
+#modal-main-image { transition: transform 0.3s ease; cursor: zoom-in; }
+#modal-main-image.zoomed { cursor: zoom-out; }
 </style>
 </head>
-<body class="bg-gradient-to-b from-blue-200 to-blue-100 font-sans">
+<body class="font-sans">
 
-<!-- Header com logo centralizada -->
+<!-- Header -->
 <header class="bg-blue-600 text-white shadow-md">
-  <div class="container mx-auto px-4 py-6 flex flex-col items-center justify-center text-center">
+  <div class="container mx-auto px-4 py-6 flex flex-col items-center text-center">
     <a href="#"><img src="imagens/logo.png" alt="Logo S.O.S Celulares" class="h-24 w-auto mb-3" /></a>
   </div>
 </header>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-16">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl md:text-4xl font-bold mb-4">Celulares Novos e Seminovos com Garantia</h2>
@@ -40,7 +43,7 @@ html { scroll-behavior: smooth; }
 
 <main class="container mx-auto px-4 py-12">
 
-  <!-- Celulares Novos -->
+  <!-- Novos -->
   <section id="novos" class="mb-16">
     <div class="flex items-center mb-8">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Celulares Novos</h2>
@@ -49,8 +52,8 @@ html { scroll-behavior: smooth; }
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="new-phones-container"></div>
   </section>
 
-  <!-- Celulares Seminovos -->
-  <section id="seminovos">
+  <!-- Seminovos -->
+  <section id="seminovos" class="mb-16">
     <div class="flex items-center mb-8">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Celulares Seminovos</h2>
       <span class="ml-4 bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">Testados e aprovados</span>
@@ -59,7 +62,7 @@ html { scroll-behavior: smooth; }
   </section>
 
   <!-- Acessórios -->
-  <section id="acessorios" class="mt-16">
+  <section id="acessorios" class="mb-16">
     <div class="flex items-center mb-8">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Acessórios</h2>
       <span class="ml-4 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Capinhas, fones, carregadores</span>
@@ -119,7 +122,7 @@ html { scroll-behavior: smooth; }
   </div>
 </footer>
 
-<!-- Modal -->
+<!-- Modal com carrossel e zoom -->
 <div class="product-modal fixed inset-0 z-50 flex items-center justify-center p-4">
   <div class="modal-overlay absolute inset-0" onclick="closeModal()"></div>
   <div class="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto z-10">
@@ -127,16 +130,18 @@ html { scroll-behavior: smooth; }
       <i class="fas fa-times text-2xl"></i>
     </button>
     <div class="p-6 flex flex-col lg:flex-row gap-6">
-
-      <!-- Product Images -->
       <div class="lg:w-1/2">
-        <div class="mb-4">
+        <div class="mb-4 relative" id="modal-main-image-container">
           <img id="modal-main-image" src="" alt="Celular" class="w-full max-h-[60vh] object-contain rounded-lg border border-gray-200">
+          <button onclick="prevImage()" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 rounded-full p-2 hover:bg-white">
+            <i class="fas fa-chevron-left text-gray-800"></i>
+          </button>
+          <button onclick="nextImage()" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 rounded-full p-2 hover:bg-white">
+            <i class="fas fa-chevron-right text-gray-800"></i>
+          </button>
         </div>
         <div class="grid grid-cols-4 gap-2" id="modal-thumbnails"></div>
       </div>
-
-      <!-- Product Info -->
       <div class="lg:w-1/2">
         <h3 id="modal-product-name" class="text-2xl font-bold text-gray-800 mb-2"></h3>
         <div class="flex items-center mb-4">
@@ -149,8 +154,6 @@ html { scroll-behavior: smooth; }
           <p id="modal-product-description" class="text-gray-600"></p>
           <ul id="modal-product-specs" class="mt-3 space-y-1 text-gray-600"></ul>
         </div>
-
-        <!-- Quick Form -->
         <div class="bg-gray-50 p-4 rounded-lg mb-6">
           <h4 class="text-lg font-semibold text-gray-800 mb-3">Quer este aparelho?</h4>
           <div class="flex flex-col sm:flex-row gap-3">
@@ -160,23 +163,22 @@ html { scroll-behavior: smooth; }
             </button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// Products array
+// Produtos com várias imagens
 const products = [
-  {id:1,name:"iPhone 14 Pro Max",category:"Novo",price:"R$ 6.999,00",description:"O mais avançado iPhone com câmera profissional.",specs:["Tela Super Retina XDR 6,7\"", "Chip A16 Bionic","Câmera 48MP","128GB"],images:["imagens/iphone-14-pro-1.png","imagens/iphone-14-pro-2.png"],color:"Roxo"},
-  {id:2,name:"Samsung Galaxy S23 Ultra",category:"Novo",price:"R$ 7.499,00",description:"Smartphone definitivo com S Pen.",specs:["Tela Dynamic AMOLED 2X 6,8\"","Snapdragon 8 Gen 2","Câmera 200MP"],images:["imagens/galaxy-s23-1.png","imagens/galaxy-s23-2.png"],color:"Preto"},
-  {id:3,name:"iPhone 12 Pro",category:"Seminovo",price:"R$ 3.799,00",description:"Excelente estado, pequenos sinais de uso.",specs:["Tela 6,1\"","Chip A14","Câmera tripla 12MP"],images:["imagens/iphone-12-pro-1.png"],color:"Azul",condition:"Excelente estado"},
-  {id:4,name:"Fone Bluetooth JBL",category:"Acessório",price:"R$ 199,00",description:"Som potente, bateria longa.",specs:["Bluetooth 5.0","12h bateria"],images:["imagens/jbl1.png"],color:"Preto"}
+  {id:1,name:"iPhone 14 Pro Max",category:"Novo",price:"R$ 6.999,00",description:"O mais avançado iPhone com câmera profissional.",specs:["Tela Super Retina XDR 6,7\"","Chip A16 Bionic","Câmera 48MP","128GB"],images:["imagens/iphone-14-pro-1.png","imagens/iphone-14-pro-2.png","imagens/iphone-14-pro-3.png","imagens/iphone-14-pro-4.png"],color:"Roxo"},
+  {id:2,name:"Samsung Galaxy S23 Ultra",category:"Novo",price:"R$ 7.499,00",description:"Smartphone definitivo com S Pen.",specs:["Tela Dynamic AMOLED 2X 6,8\"","Snapdragon 8 Gen 2","Câmera 200MP"],images:["imagens/galaxy-s23-1.png","imagens/galaxy-s23-2.png","imagens/galaxy-s23-3.png"],color:"Preto"},
+  {id:3,name:"iPhone 12 Pro",category:"Seminovo",price:"R$ 3.799,00",description:"Excelente estado, pequenos sinais de uso.",specs:["Tela 6,1\"","Chip A14","Câmera tripla 12MP"],images:["imagens/iphone-12-pro-1.png","imagens/iphone-12-pro-2.png"],color:"Azul",condition:"Excelente estado"},
+  {id:4,name:"Fone Bluetooth JBL",category:"Acessório",price:"R$ 199,00",description:"Som potente, bateria longa.",specs:["Bluetooth 5.0","12h bateria"],images:["imagens/jbl1.png","imagens/jbl2.png"],color:"Preto"}
 ];
 
-// Render products
-function renderProducts() {
+// Renderizar cards
+function renderProducts(){
   const newC=document.getElementById('new-phones-container');
   const usedC=document.getElementById('used-phones-container');
   const accC=document.getElementById('accessories-container');
@@ -204,38 +206,66 @@ function renderProducts() {
     else accC.appendChild(card);
   });
 }
-
 document.addEventListener('DOMContentLoaded',renderProducts);
 
-// Modal and WhatsApp
+// Modal e WhatsApp
 let currentProduct=null;
+let currentImageIndex=0;
 
 function openModal(id){
   currentProduct=products.find(p=>p.id===id);
   if(!currentProduct) return;
-  document.getElementById('modal-main-image').src=currentProduct.images[0];
+  currentImageIndex=0;
+  updateModalContent();
+  document.querySelector('.product-modal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.querySelector('.product-modal').classList.remove('active');
+  document.body.style.overflow='auto';
+}
+function updateModalContent(){
+  if(!currentProduct) return;
+  document.getElementById('modal-main-image').src=currentProduct.images[currentImageIndex];
   document.getElementById('modal-product-name').textContent=currentProduct.name;
   document.getElementById('modal-product-category').textContent=currentProduct.category;
   document.getElementById('modal-product-price').textContent=currentProduct.price;
   document.getElementById('modal-product-description').textContent=currentProduct.description;
-  const specs=document.getElementById('modal-product-specs');
-  specs.innerHTML=''; currentProduct.specs.forEach(s=>{const li=document.createElement('li');li.className='flex items-start';li.innerHTML=`<i class="fas fa-check text-green-500 mt-1 mr-2"></i> ${s}`;specs.appendChild(li)});
+  const specs=document.getElementById('modal-product-specs'); specs.innerHTML=''; currentProduct.specs.forEach(s=>{const li=document.createElement('li');li.className='flex items-start';li.innerHTML=`<i class="fas fa-check text-green-500 mt-1 mr-2"></i> ${s}`;specs.appendChild(li)});
   const cond=document.getElementById('modal-product-condition');
   if(currentProduct.condition){cond.textContent=currentProduct.condition;cond.classList.remove('hidden');}else{cond.classList.add('hidden');}
+  
   const thumbs=document.getElementById('modal-thumbnails'); thumbs.innerHTML='';
-  currentProduct.images.forEach((img,idx)=>{const t=document.createElement('div');t.className='gallery-thumbnail border border-gray-200 rounded overflow-hidden';if(idx==0)t.classList.add('active');t.innerHTML=`<img src="${img}" class="w-full h-16 object-cover" onclick="changeMainImage('${img}',this)">`;thumbs.appendChild(t)});
-  document.querySelector('.product-modal').classList.add('active');document.body.style.overflow='hidden';
+  currentProduct.images.forEach((img,idx)=>{
+    const t=document.createElement('div');
+    t.className='gallery-thumbnail border border-gray-200 rounded overflow-hidden';
+    if(idx==currentImageIndex) t.classList.add('active');
+    t.innerHTML=`<img src="${img}" class="w-full h-16 object-cover" onclick="setImageIndex(${idx})">`;
+    thumbs.appendChild(t);
+  });
 }
 
-function closeModal(){document.querySelector('.product-modal').classList.remove('active');document.body.style.overflow='auto';}
+function setImageIndex(idx){currentImageIndex=idx; updateModalContent();}
+function prevImage(){if(!currentProduct) return; currentImageIndex=(currentImageIndex-1+currentProduct.images.length)%currentProduct.images.length; updateModalContent();}
+function nextImage(){if(!currentProduct) return; currentImageIndex=(currentImageIndex+1)%currentProduct.images.length; updateModalContent();}
+function prepareWhatsAppMessage(id){currentProduct=products.find(p=>p.id===id); sendWhatsAppMessage();}
+function sendWhatsAppMessage(){
+  if(!currentProduct) return;
+  let nameInput=document.getElementById('customer-name'); let name=nameInput.value.trim();
+  if(!name){alert('Por favor, informe seu nome.'); return;}
+  const msg=`Olá! 👋 Tenho interesse neste aparelho:\n\n📱 Modelo: ${currentProduct.name}\n💰 Preço: ${currentProduct.price}\n📂 Categoria: ${currentProduct.category}\n🙋 Meu nome é: ${name}`;
+  window.open(`https://wa.me/5564999518536?text=${encodeURIComponent(msg)}`,'_blank');
+}
 
-function changeMainImage(src,el){document.getElementById('modal-main-image').src=src;document.querySelectorAll('.gallery-thumbnail').forEach(t=>t.classList.remove('active'));el.parentElement.classList.add('active');}
-
-function prepareWhatsAppMessage(id){currentProduct=products.find(p=>p.id===id);sendWhatsAppMessage();}
-
-function sendWhatsAppMessage(){if(!currentProduct)return;let nameInput=document.getElementById('customer-name');let name=nameInput.value.trim();if(!name){alert('Por favor, informe seu nome.');return;}const msg=`Olá! 👋 Tenho interesse neste aparelho:\n\n📱 Modelo: ${currentProduct.name}\n💰 Preço: ${currentProduct.price}\n📂 Categoria: ${currentProduct.category}\n🙋 Meu nome é: ${name}`;window.open(`https://wa.me/5564999518536?text=${encodeURIComponent(msg)}`,'_blank');}
+// Zoom na imagem principal
+const modalImage = document.getElementById('modal-main-image');
+modalImage.addEventListener('click', () => {
+  modalImage.classList.toggle('zoomed');
+  modalImage.style.transform = modalImage.classList.contains('zoomed') ? 'scale(2)' : 'scale(1)';
+});
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();}});
 </script>
+
 </body>
 </html>
