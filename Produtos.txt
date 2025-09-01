@@ -43,10 +43,11 @@
       "Design compacto e resistente"
     ],
     "images": [
-      "imagens/carregador(H-Maston)1.png",
+      "imagens/carregadorH-Maston1.png",
       "imagens/carregador(H-Maston)2.png"],
     "color": "Preto"
   }
 ]
+
 
 
