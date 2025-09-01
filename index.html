@@ -242,7 +242,11 @@ function updateModalContent() {
   };
   document.getElementById('modal-product-name').textContent = currentProduct.name;
   document.getElementById('modal-product-category').textContent = currentProduct.category;
-  document.getElementById('modal-product-price').textContent = currentProduct.price;
+  const price = typeof currentProduct.price === 'object'
+  ? `${currentProduct.price.avista} / ${currentProduct.price.parcelado}`
+  : currentProduct.price;
+
+  document.getElementById('modal-product-price').textContent = price;
   document.getElementById('modal-product-description').textContent = currentProduct.description;
   
   const specs = document.getElementById('modal-product-specs'); 
@@ -294,4 +298,5 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
 
