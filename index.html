@@ -204,7 +204,12 @@ function renderProducts() {
         ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
         ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
         <div class="flex items-center justify-between mt-4">
-          <span class="text-xl font-bold text-blue-600">${p.price}</span>
+          <span class="text-xl font-bold text-blue-600">
+          ${typeof product.price === 'object'
+          ? `${product.price.avista} | ${product.price.parcelado}`
+          : product.price}
+          </span>
+
           <button onclick="event.stopPropagation();openModal(${p.id});focusNameInput()" 
             class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
             Quero este!
@@ -297,6 +302,7 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
 
 
 
