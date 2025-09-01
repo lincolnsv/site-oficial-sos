@@ -26,7 +26,6 @@
       "color": "Preto"
     }
   ],
-
   "📱 SEMINOVO - Smartphones Usados em Excelente Estado": [
     {
       "id": 3,
@@ -57,7 +56,6 @@
       "_note": "📌 Para adicionar outro smartphone SEMINOVO, copie este bloco e altere id, name, specs, images e condition."
     }
   ],
-
   "🔌 ACESSÓRIOS - Carregadores, Capas e Outros": [
     {
       "id": 4,
