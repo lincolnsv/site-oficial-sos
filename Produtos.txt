@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "iPhone 14 Pro Max",
+      "category": "Novo",
       "price": {
         "avista": "R$ 6.999,00",
         "parcelado": "12x R$ 583,25"
@@ -10,12 +11,12 @@
       "description": "O mais avançado iPhone com câmera profissional.",
       "specs": ["Tela Super Retina XDR 6,7\"", "Chip A16 Bionic", "Câmera 48MP", "128GB"],
       "images": ["imagens/iphone-14-pro-1.png", "imagens/iphone-14-pro-2.png", "imagens/iphone-14-pro-3.png", "imagens/iphone-14-pro-4.png"],
-      "color": "Roxo",
-      "_note": "📌 Para adicionar outro smartphone NOVO, copie este bloco e altere id, name, specs, images e color."
+      "color": "Roxo"
     },
     {
       "id": 2,
       "name": "Samsung Galaxy S23 Ultra",
+      "category": "Novo",
       "price": {
         "avista": "R$ 7.499,00",
         "parcelado": "12x R$ 624,92"
@@ -30,6 +31,7 @@
     {
       "id": 3,
       "name": "Redmi 9A",
+      "category": "Seminovo",
       "price": {
         "avista": "R$ 400,00",
         "parcelado": "10x R$ 44,00"
@@ -38,12 +40,12 @@
       "specs": ["Tela LCD 6,1\" HD+", "Processador MediaTek Helio G25", "Armazenamento 64GB", "RAM 2GB", "Câmera tripla 12MP", "Bateria 5000mAh", "Sistema Android 11", "Dual SIM"],
       "images": ["imagens/Redmi-9A-1.png"],
       "color": "Azul",
-      "condition": "Excelente estado",
-      "_note": "📌 Para adicionar outro smartphone SEMINOVO, copie este bloco e altere id, name, specs, images e condition."
+      "condition": "Excelente estado"
     },
     {
       "id": 5,
       "name": "Samsung A04e",
+      "category": "Seminovo",
       "price": {
         "avista": "R$ 400,00",
         "parcelado": "10x R$ 44,00"
@@ -52,20 +54,19 @@
       "specs": ["Tela 6,5\" HD+ PLS LCD", "Processador MediaTek Helio P35", "RAM 3GB", "Armazenamento 64GB", "Câmera traseira 13+2MP", "Câmera frontal 5MP", "Bateria 5000mAh", "Android 12", "Dual SIM"],
       "images": ["imagens/Samsung-A04e-1.png"],
       "color": "Azul",
-      "condition": "Excelente estado",
-      "_note": "📌 Para adicionar outro smartphone SEMINOVO, copie este bloco e altere id, name, specs, images e condition."
+      "condition": "Excelente estado"
     }
   ],
   "🔌 ACESSÓRIOS - Carregadores, Capas e Outros": [
     {
       "id": 4,
       "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
+      "category": "Acessório",
       "price": "R$ 45,00",
       "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
       "specs": ["Carregamento Turbo com potência de até 35W", "Bivolt automático (110V–220V)", "Proteção contra sobrecarga, sobrecorrente e superaquecimento", "Design compacto e resistente"],
       "images": ["imagens/carregadorH-Maston1.png", "imagens/carregador(H-Maston)2.png"],
-      "color": "Preto",
-      "_note": "📌 Para adicionar outro ACESSÓRIO, copie este bloco e altere id, name, specs, images e color."
+      "color": "Preto"
     }
   ]
 }
