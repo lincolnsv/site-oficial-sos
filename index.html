@@ -72,7 +72,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 
 </main>
 
-  <!-- Contato -->
+<!-- Contato -->
 <section id="contato" class="bg-gray-100 py-12">
   <div class="container mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Fale Conosco</h2>
@@ -102,7 +102,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
   </div>
 </section>
 
-  <!-- Footer -->
+<!-- Footer -->
 <footer class="bg-gray-800 text-white py-8">
   <div class="container mx-auto px-4">
     <div class="flex flex-col md:flex-row justify-between items-center">
@@ -205,12 +205,10 @@ function renderProducts() {
         ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
         <div class="flex items-center justify-between mt-4">
           <span class="text-xl font-bold text-blue-600">
-  ${typeof product.price === 'object'
-    ? `${product.price.avista} | ${product.price.parcelado}`
-    : product.price}
-</span>
-
-
+            ${typeof p.price === 'object'
+              ? `<strong>À vista:</strong> ${p.price.avista}<br><strong>Parcelado:</strong> ${p.price.parcelado}`
+              : p.price}
+          </span>
           <button onclick="event.stopPropagation();openModal(${p.id});focusNameInput()" 
             class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
             Quero este!
@@ -246,12 +244,15 @@ function updateModalContent() {
     modalImage.classList.toggle('zoomed');
     modalImage.style.transform = modalImage.classList.contains('zoomed') ? 'scale(2)' : 'scale(1)';
   };
+
   document.getElementById('modal-product-name').textContent = currentProduct.name;
   document.getElementById('modal-product-category').textContent = currentProduct.category;
-  document.getElementById('modal-product-price').innerHTML = typeof currentProduct.price === 'object'
-  document.getElementById('modal-product-price').innerHTML = typeof currentProduct.price === 'object'
-  ? `<strong>À vista:</strong> ${currentProduct.price.avista}<br><strong>Parcelado:</strong> ${currentProduct.price.parcelado}`
-  : currentProduct.price;
+
+  document.getElementById('modal-product-price').innerHTML = 
+    typeof currentProduct.price === 'object'
+    ? `<strong>À vista:</strong> ${currentProduct.price.avista}<br><strong>Parcelado:</strong> ${currentProduct.price.parcelado}`
+    : currentProduct.price;
+
   document.getElementById('modal-product-description').textContent = currentProduct.description;
   
   const specs = document.getElementById('modal-product-specs'); 
@@ -262,11 +263,15 @@ function updateModalContent() {
     li.innerHTML = `<i class="fas fa-check text-green-500 mt-1 mr-2"></i> ${s}`;
     specs.appendChild(li);
   });
-  
+
   const cond = document.getElementById('modal-product-condition');
-  if (currentProduct.condition) { cond.textContent = currentProduct.condition; cond.classList.remove('hidden'); }
-  else { cond.classList.add('hidden'); }
-  
+  if (currentProduct.condition) { 
+    cond.textContent = currentProduct.condition; 
+    cond.classList.remove('hidden'); 
+  } else { 
+    cond.classList.add('hidden'); 
+  }
+
   const thumbs = document.getElementById('modal-thumbnails'); 
   thumbs.innerHTML = '';
   currentProduct.images.forEach((img, idx) => {
@@ -293,7 +298,7 @@ function sendWhatsAppMessage() {
   let nameInput = document.getElementById('customer-name'); 
   let name = nameInput.value.trim();
   if (!name) { alert('Por favor, informe seu nome.'); return; }
-  const msg = `Olá! 👋 Tenho interesse neste aparelho:\n\n📱 Modelo: ${currentProduct.name}\n💰 Preço: ${currentProduct.price}\n📂 Categoria: ${currentProduct.category}\n🙋 Meu nome é: ${name}`;
+  const msg = `Olá! 👋 Tenho interesse neste aparelho:\n\n📱 Modelo: ${currentProduct.name}\n💰 Preço: ${typeof currentProduct.price === 'object' ? currentProduct.price.avista : currentProduct.price}\n📂 Categoria: ${currentProduct.category}\n🙋 Meu nome é: ${name}`;
   window.open(`https://wa.me/5564999518536?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
@@ -303,8 +308,3 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
-
-
-
-
-
