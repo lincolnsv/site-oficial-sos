@@ -3,7 +3,10 @@
     "id": 1,
     "name": "iPhone 14 Pro Max",
     "category": "Novo",
-    "price": "R$ 6.999,00",
+    "price": {
+      "avista": "R$ 6.999,00",
+      "parcelado": "12x R$ 583,25"
+    },
     "description": "O mais avançado iPhone com câmera profissional.",
     "specs": ["Tela Super Retina XDR 6,7\"", "Chip A16 Bionic", "Câmera 48MP", "128GB"],
     "images": ["imagens/iphone-14-pro-1.png", "imagens/iphone-14-pro-2.png", "imagens/iphone-14-pro-3.png", "imagens/iphone-14-pro-4.png"],
@@ -13,7 +16,10 @@
     "id": 2,
     "name": "Samsung Galaxy S23 Ultra",
     "category": "Novo",
-    "price": "R$ 7.499,00",
+    "price": {
+      "avista": "R$ 7.499,00",
+      "parcelado": "12x R$ 624,92"
+    },
     "description": "Smartphone definitivo com S Pen.",
     "specs": ["Tela Dynamic AMOLED 2X 6,8\"", "Snapdragon 8 Gen 2", "Câmera 200MP"],
     "images": ["imagens/galaxy-s23-1.png", "imagens/galaxy-s23-2.png", "imagens/galaxy-s23-3.png"],
@@ -21,12 +27,22 @@
   },
   {
     "id": 3,
-    "name": "iPhone 12 Pro",
+    "name": "Redmi 9A",
     "category": "Seminovo",
-    "price": "R$ 3.799,00",
+    "price": {
+      "avista": "R$ 400,00",
+      "parcelado": "10x R$ 44,00"
+    },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela 6,1\"", "Chip A14", "Câmera tripla 12MP"],
-    "images": ["imagens/iphone-12-pro-1.png", "imagens/iphone-12-pro-2.png"],
+    "specs": ["Tela LCD 6,1\" HD+",
+    "Processador MediaTek Helio G25",
+    "Armazenamento 64GB",
+    "RAM 2GB",
+    "Câmera tripla 12MP",
+    "Bateria 5000mAh",
+    "Sistema Android 11",
+    "Dual SIM"],
+    "images": ["Redmi-9A-1.png"],
     "color": "Azul",
     "condition": "Excelente estado"
   },
@@ -44,10 +60,8 @@
     ],
     "images": [
       "imagens/carregadorH-Maston1.png",
-      "imagens/carregador(H-Maston)2.png"],
+      "imagens/carregador(H-Maston)2.png"
+    ],
     "color": "Preto"
   }
 ]
-
-
-
