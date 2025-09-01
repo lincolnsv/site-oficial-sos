@@ -72,96 +72,33 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 
 </main>
 
-<!-- Contato -->
-<section id="contato" class="bg-gray-100 py-12">
-  <div class="container mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Fale Conosco</h2>
-    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 space-y-6">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6">
-          <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
-        </div>
-        <div class="text-center md:text-left">
-          <h3 class="text-xl font-bold text-gray-800">Atendimento por WhatsApp</h3>
-          <p class="text-gray-600">Segunda a Sexta, das 7:30 às 17:30</p>
-          <p class="text-gray-600">Sábado, 08:00 às 12:00</p>
-          <a href="https://wa.me/5564999518536" class="text-blue-600 font-medium hover:underline">(64) 99951-8536</a>
-        </div>
-      </div>
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6">
-          <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
-        </div>
-        <div class="text-center md:text-left">
-          <h3 class="text-xl font-bold text-gray-800">Nosso Endereço</h3>
-          <p class="text-gray-600">Av. Quarta, 94 - Centro</p>
-          <p class="text-gray-600">Mineiros - GO</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-gray-800 text-white py-8">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <div class="mb-4 md:mb-0">
-        <h3 class="text-xl font-bold mb-2">S.O.S Celulares</h3>
-        <p class="text-gray-400">Celulares novos e seminovos com garantia</p>
-      </div>
-      <div class="flex space-x-4">
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
-        <a href="https://wa.me/5564999518536" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp text-xl"></i></a>
-      </div>
-    </div>
-    <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
-      <p>&copy; 2025 S.O.S Celulares. Todos os direitos reservados.</p>
-    </div>
-  </div>
-</footer>
-
 <!-- Modal -->
 <div class="product-modal fixed inset-0 z-50 flex items-center justify-center p-4">
   <div class="modal-overlay absolute inset-0"></div>
-  <div class="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto z-10">
-    <!-- Conteúdo do modal será injetado via JS -->
-  </div>
+  <div class="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto z-10"></div>
 </div>
 
-<!-- Script -->
 <script>
 let products = [];
 let currentProduct = null;
-let currentImageIndex = 0;
 
-// Carregar produtos do JSON externo
+// Carregar produtos
 async function loadProducts() {
   try {
     const response = await fetch("produtos.json");
     const data = await response.json();
-
-    products = data.map(p => {
-      if (!p.category) p.category = "Acessório";
-      return p;
-    });
-
+    products = data.map(p => { if(!p.category) p.category = "Acessório"; return p; });
     renderProducts(products);
   } catch (err) {
     console.error("Erro ao carregar produtos.json", err);
   }
 }
 
-// Renderizar produtos nos cards
 function renderProducts(products) {
   const newC = document.getElementById('new-phones-container');
   const usedC = document.getElementById('used-phones-container');
   const accC = document.getElementById('accessories-container');
-
-  newC.innerHTML = '';
-  usedC.innerHTML = '';
-  accC.innerHTML = '';
+  newC.innerHTML = ''; usedC.innerHTML = ''; accC.innerHTML = '';
 
   products.forEach(p => {
     const card = document.createElement('div');
@@ -175,28 +112,25 @@ function renderProducts(products) {
         <p class="text-gray-600 text-sm mb-2">${p.description}</p>
         ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
         ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
-        <p class="text-xl font-bold text-blue-600 mb-3">
+        <p class="text-xl font-bold text-blue-600">
           ${typeof p.price === 'object'
             ? `<strong>À vista:</strong> ${p.price.avista}<br><strong>Parcelado:</strong> ${p.price.parcelado}`
             : p.price}
         </p>
-        <button class="view-product bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Ver Produto</button>
       </div>
     `;
+    card.addEventListener('click', () => openProductModal(p));
 
-    card.querySelector('.view-product').addEventListener('click', () => openProductModal(p));
-
-    if (p.category === "Novo") newC.appendChild(card);
-    else if (p.category === "Seminovo") usedC.appendChild(card);
+    if(p.category === "Novo") newC.appendChild(card);
+    else if(p.category === "Seminovo") usedC.appendChild(card);
     else accC.appendChild(card);
   });
 }
 
-// Abrir modal do produto
+// Modal
 function openProductModal(product) {
   const modal = document.querySelector('.product-modal');
   const modalContent = modal.querySelector('div.relative');
-  let currentImageIndex = 0;
   let zoomed = false;
 
   function showImage(index) {
@@ -205,9 +139,7 @@ function openProductModal(product) {
     zoomed = false;
     mainImage.style.transform = "scale(1)";
     mainImage.style.cursor = "zoom-in";
-
-    const thumbnails = modalContent.querySelectorAll('.gallery-thumbnail');
-    thumbnails.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
+    modalContent.querySelectorAll('.gallery-thumbnail').forEach((thumb,i)=>thumb.classList.toggle('active',i===index));
   }
 
   modalContent.innerHTML = `
@@ -217,11 +149,12 @@ function openProductModal(product) {
         <img id="modal-main-image" src="${product.images[0]}" class="w-full h-64 object-contain rounded-lg mb-4">
       </div>
       <div class="flex space-x-2 overflow-x-auto mb-4">
-        ${product.images.map((img, i) => `<img src="${img}" class="w-20 h-20 object-contain rounded gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
+        ${product.images.map((img,i)=>`<img src="${img}" class="w-20 h-20 object-contain rounded gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
       </div>
       <p class="text-gray-600 mb-2">${product.description}</p>
       ${product.color ? `<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>` : ''}
       ${product.condition ? `<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>` : ''}
+      ${product.specs && product.specs.length ? `<ul class="text-gray-600 list-disc list-inside mb-4">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>` : ''}
       <p class="text-xl font-bold text-blue-600 mb-4">
         ${typeof product.price === 'object'
           ? `<strong>À vista:</strong> ${product.price.avista}<br><strong>Parcelado:</strong> ${product.price.parcelado}`
@@ -231,7 +164,6 @@ function openProductModal(product) {
     </div>
   `;
 
-  // Eventos de zoom da imagem principal
   const mainImage = modalContent.querySelector('#modal-main-image');
   mainImage.addEventListener('click', () => {
     zoomed = !zoomed;
@@ -239,24 +171,18 @@ function openProductModal(product) {
     mainImage.style.cursor = zoomed ? "zoom-out" : "zoom-in";
   });
 
-  // Eventos das miniaturas
-  modalContent.querySelectorAll('.gallery-thumbnail').forEach((thumb, i) => {
-    thumb.addEventListener('click', () => showImage(i));
-  });
+  modalContent.querySelectorAll('.gallery-thumbnail').forEach((thumb,i)=>thumb.addEventListener('click',()=>showImage(i)));
 
-  // Botão WhatsApp
   modalContent.querySelector('#whatsapp-btn').addEventListener('click', () => {
     const name = prompt("Olá! Qual o seu nome?");
-    if (!name) return;
+    if(!name) return;
     const priceText = typeof product.price === 'object' ? product.price.avista : product.price;
     const msg = encodeURIComponent(`Olá, meu nome é ${name}. Tenho interesse no produto: ${product.name}, preço: ${priceText}`);
-    window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
+    window.open(`https://wa.me/5564999518536?text=${msg}`,'_blank');
   });
 
   modal.classList.add('active');
-
-  // Fechar ao clicar fora
-  modal.querySelector('.modal-overlay').addEventListener('click', () => modal.classList.remove('active'));
+  modal.querySelector('.modal-overlay').addEventListener('click',()=>modal.classList.remove('active'));
 }
 
 document.addEventListener('DOMContentLoaded', loadProducts);
