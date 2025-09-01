@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 14 Pro Max",
+    "category": "Novo",
+    "price": "R$ 6.999,00",
+    "description": "O mais avançado iPhone com câmera profissional.",
+    "specs": ["Tela Super Retina XDR 6,7\"", "Chip A16 Bionic", "Câmera 48MP", "128GB"],
+    "images": ["imagens/iphone-14-pro-1.png", "imagens/iphone-14-pro-2.png", "imagens/iphone-14-pro-3.png", "imagens/iphone-14-pro-4.png"],
+    "color": "Roxo"
+  },
+  {
+    "id": 2,
+    "name": "Samsung Galaxy S23 Ultra",
+    "category": "Novo",
+    "price": "R$ 7.499,00",
+    "description": "Smartphone definitivo com S Pen.",
+    "specs": ["Tela Dynamic AMOLED 2X 6,8\"", "Snapdragon 8 Gen 2", "Câmera 200MP"],
+    "images": ["imagens/galaxy-s23-1.png", "imagens/galaxy-s23-2.png", "imagens/galaxy-s23-3.png"],
+    "color": "Preto"
+  },
+  {
+    "id": 3,
+    "name": "iPhone 12 Pro",
+    "category": "Seminovo",
+    "price": "R$ 3.799,00",
+    "description": "Excelente estado, pequenos sinais de uso.",
+    "specs": ["Tela 6,1\"", "Chip A14", "Câmera tripla 12MP"],
+    "images": ["imagens/iphone-12-pro-1.png", "imagens/iphone-12-pro-2.png"],
+    "color": "Azul",
+    "condition": "Excelente estado"
+  },
+  {
+    "id": 4,
+    "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
+    "category": "Acessório",
+    "price": "R$ 45,00",
+    "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
+    "specs": [
+      "Carregamento Turbo com potência de até 35W",
+      "Bivolt automático (110V–220V)",
+      "Proteção contra sobrecarga, sobrecorrente e superaquecimento",
+      "Design compacto e resistente"
+    ],
+    "images": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKz9273mXCIovBNcpvdmtowjtzx8pngm1kWw&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUwPW0AGXCN56q7PkgnmW_O7dW64mO_urnCg&s"
+    ],
+    "color": "Preto"
+  }
+]
