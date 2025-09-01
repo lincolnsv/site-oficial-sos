@@ -13,9 +13,10 @@
 .gallery-thumbnail { transition: all 0.2s ease; cursor: pointer; }
 .gallery-thumbnail:hover { transform: scale(1.05); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
 .gallery-thumbnail.active { border: 2px solid #3b82f6; }
+html { scroll-behavior: smooth; }
 </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gradient-to-b from-blue-200 to-blue-100 font-sans">
 
 <!-- Header com logo centralizada -->
 <header class="bg-blue-600 text-white shadow-md">
@@ -130,7 +131,7 @@
       <!-- Product Images -->
       <div class="lg:w-1/2">
         <div class="mb-4">
-          <img id="modal-main-image" src="" alt="Celular" class="w-full h-64 md:h-80 object-contain rounded-lg border border-gray-200">
+          <img id="modal-main-image" src="" alt="Celular" class="w-full max-h-[60vh] object-contain rounded-lg border border-gray-200">
         </div>
         <div class="grid grid-cols-4 gap-2" id="modal-thumbnails"></div>
       </div>
@@ -208,7 +209,6 @@ document.addEventListener('DOMContentLoaded',renderProducts);
 
 // Modal and WhatsApp
 let currentProduct=null;
-let customerName="";
 
 function openModal(id){
   currentProduct=products.find(p=>p.id===id);
@@ -236,7 +236,6 @@ function prepareWhatsAppMessage(id){currentProduct=products.find(p=>p.id===id);s
 function sendWhatsAppMessage(){if(!currentProduct)return;let nameInput=document.getElementById('customer-name');let name=nameInput.value.trim();if(!name){alert('Por favor, informe seu nome.');return;}const msg=`Olá! 👋 Tenho interesse neste aparelho:\n\n📱 Modelo: ${currentProduct.name}\n💰 Preço: ${currentProduct.price}\n📂 Categoria: ${currentProduct.category}\n🙋 Meu nome é: ${name}`;window.open(`https://wa.me/5564999518536?text=${encodeURIComponent(msg)}`,'_blank');}
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();}});
-
 </script>
 </body>
 </html>
