@@ -42,7 +42,7 @@
     "Bateria 5000mAh",
     "Sistema Android 11",
     "Dual SIM"],
-    "images": ["Redmi-9A-1.png"],
+    "images": ["imagens/Redmi-9A-1.png"],
     "color": "Azul",
     "condition": "Excelente estado"
   },
@@ -65,4 +65,5 @@
     "color": "Preto"
   }
 ]
+
 
