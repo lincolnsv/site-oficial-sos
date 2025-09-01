@@ -44,9 +44,9 @@
     ],
     "images": [
       "imagens/carregador(H-Maston)1.png",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUwPW0AGXCN56q7PkgnmW_O7dW64mO_urnCg&s"
-    ],
+      "imagens/carregador(H-Maston)2.png"],
     "color": "Preto"
   }
 ]
+
 
