@@ -30,24 +30,32 @@
   },
   {
     "id": 2,
-    "name": "Samsung Galaxy S23 Ultra",
+    "name": "Realme Note 14S",
     "category": "Novo",
     "price": {
-      "avista": "R$ 7.499,00",
-      "parcelado": "12x R$ 624,92"
+      "avista": "R$ 1.420,00"
     },
-    "description": "Smartphone definitivo com S Pen.",
+    "description": "O Realme Note 14S oferece alto desempenho, tela ampla e câmeras de alta qualidade, garantindo uma experiência completa para uso diário e entretenimento.",
     "specs": [
-      "Tela Dynamic AMOLED 2X 6,8\"",
-      "Snapdragon 8 Gen 2",
-      "Câmera 200MP"
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "8GB RAM",
+      "256GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
     ],
     "images": [
-      "imagens/galaxy-s23-1.png",
-      "imagens/galaxy-s23-2.png",
-      "imagens/galaxy-s23-3.png"
+      "imagens/realme-note-14s-1.png",
+      "imagens/realme-note-14s-2.png",
+      "imagens/realme-note-14s-3.png",
+      "imagens/realme-note-14s-4.png"
     ],
-    "color": "Preto"
+    "color": "Azul, Preto",
+    "condition": "Novo"
   },
   {
     "id": 3,
