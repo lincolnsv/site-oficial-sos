@@ -181,7 +181,7 @@ function renderProducts(products) {
     btn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition';
     btn.textContent = 'Ver Produto';
     btn.addEventListener('click', () => openProductModal(p));
-    card.querySelector('div.p-4').appendChild(btn);
+    card.appendChild(btn); 
 
     if(p.category === "Novo") newC.appendChild(card);
     else if(p.category === "Seminovo") usedC.appendChild(card);
@@ -255,3 +255,4 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
