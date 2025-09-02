@@ -117,9 +117,12 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
         <p class="text-gray-400">Celulares novos e seminovos com garantia</p>
       </div>
       <div class="flex space-x-4">
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
-        <a href="https://wa.me/5564999518536" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp text-xl"></i></a>
+        <a href="https://www.instagram.com/s.o.scelulares_?igsh=czlla3JnaGc2OXg3" class="text-gray-400 hover:text-white">
+          <i class="fab fa-instagram text-xl"></i>
+        </a>
+        <a href="https://wa.me/5564999518536" class="text-gray-400 hover:text-white">
+          <i class="fab fa-whatsapp text-xl"></i>
+        </a>
       </div>
     </div>
     <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
@@ -130,7 +133,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 
 <script>
 let products = [];
-let currentProduct = null;
 
 // Carregar produtos
 async function loadProducts() {
@@ -154,26 +156,26 @@ function renderProducts(products) {
     const card = document.createElement('div');
     card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer';
     card.innerHTML = `
-  <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
-    <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain">
-  </div>
-  <div class="p-4">
-    <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
-    <p class="text-gray-600 text-sm mb-2">${p.description}</p>
-    ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
-    ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
-    <p class="text-xl font-bold text-blue-600 mb-4">
-      ${typeof p.price === 'object'
-        ? `<strong>À vista:</strong> ${p.price.avista}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
-        : p.price}
-    </p>
-    <button 
-      class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition" 
-      onclick='openProductModal(${JSON.stringify(p)})'>
-      Ver Produto
-    </button>
-  </div>
-`;
+      <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+        <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain">
+      </div>
+      <div class="p-4">
+        <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
+        <p class="text-gray-600 text-sm mb-2">${p.description}</p>
+        ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
+        ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
+        <p class="text-xl font-bold text-blue-600 mb-4">
+          ${typeof p.price === 'object'
+            ? `<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
+            : p.price}
+        </p>
+        <button 
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition" 
+          onclick='openProductModal(${JSON.stringify(p)})'>
+          Ver Produto
+        </button>
+      </div>
+    `;
 
     if(p.category === "Novo") newC.appendChild(card);
     else if(p.category === "Seminovo") usedC.appendChild(card);
@@ -211,7 +213,7 @@ function openProductModal(product) {
       ${product.specs && product.specs.length ? `<ul class="text-gray-600 list-disc list-inside mb-4">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>` : ''}
       <p class="text-xl font-bold text-blue-600 mb-4">
         ${typeof product.price === 'object'
-          ? `<strong>À vista:</strong> ${product.price.avista}${product.price.parcelado ? `<br><strong>Parcelado:</strong> ${product.price.parcelado}` : ''}`
+          ? `<strong>À vista:</strong> ${product.price.avista || ''}${product.price.parcelado ? `<br><strong>Parcelado:</strong> ${product.price.parcelado}` : ''}`
           : product.price}
       </p>
       <button id="whatsapp-btn" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Enviar via WhatsApp</button>
