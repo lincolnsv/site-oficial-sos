@@ -33,6 +33,7 @@
     "category": "Novo",
     "price": {
       "avista": "R$ 1.420,00"
+      "parcelado": "12x R$ 132,50"
     },
     "description": "O Realme Note 14S oferece alto desempenho, tela ampla e câmeras de alta qualidade, garantindo uma experiência completa para uso diário e entretenimento.",
     "specs": [
@@ -181,5 +182,6 @@
     "condition": "Novo"
   }
 ]
+
 
 
