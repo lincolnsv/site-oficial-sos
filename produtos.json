@@ -180,6 +180,26 @@
     ],
     "color": "Preto",
     "condition": "Novo"
+  },
+  {
+    "id": 8,
+    "name": "Fone Lehmox Caveira",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 69,90"
+    },
+    "description": "Estilo radical com som potente! Design único em formato de caveira. Som de alta qualidade. Ideal para músicas, games e presença.",
+    "specs": [
+      "Som potente e de alta qualidade",
+      "Design único em formato de caveira",
+      "Compatível com PCs, celulares e consoles",
+      "Cabo removível e confortável",
+      "Ideal para jogos e música"
+    ],
+    "images": [
+      "imagens/fone_lehmox_caveira.png"
+    ],
+    "color": "Preto",
+    "model": "LEF-1023A"
   }
 ]
-
