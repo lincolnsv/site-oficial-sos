@@ -84,7 +84,7 @@
   },
   {
     "id": 4,
-    "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
+    "name": "Carregador H'Maston",
     "category": "Acessório",
     "price": {
       "avista": "R$ 45,00"
@@ -203,30 +203,126 @@
     "model": "LEF-1023A"
   },
   {
-    "id": 9,
-    "name": "Moto G9 Play",
-    "category": "Seminovo",
+    "id": 10,
+    "name": "Caixa de Som α GOLD SM-30A",
+    "category": "Novo",
     "price": {
-      "avista": "R$ 550,00",
-      "parcelado": "10x R$ 60,00"
+      "avista": "R$ 589,00",
+      "parcelado": "12x R$ 54,90"
     },
-    "description": "Excelente estado, com pequenas marcas de uso, perfeito para quem busca desempenho confiável a um bom preço.",
+    "description": "Transforme qualquer ambiente em uma festa com a α GOLD PRO SM-30A, a caixa de som portátil que une design moderno, iluminação LED vibrante e resistência à água IPX6.",
     "specs": [
-      "Tela 6,5\" IPS LCD",
-      "Processador Qualcomm Snapdragon 662",
-      "RAM 4GB",
-      "Armazenamento 64GB",
-      "Câmera traseira tripla 48MP + 2MP + 2MP",
-      "Câmera frontal 8MP",
-      "Bateria 5000mAh",
-      "Android 10",
-      "Dual SIM"
+      "Modelo: SM-30A",
+      "Cor: Preto com LED multicolorido",
+      "Resistência: Certificação IPX6 – proteção contra jatos fortes de água",
+      "Design: Compacto, com alça para transporte e visual imponente",
+      "Iluminação: LED dinâmico ao redor da grade frontal"
     ],
     "images": [
-      "imagens/moto-g9-play-1.png",
-      "imagens/moto-g9-play-2.png"
+      "imagens/caixa_alpha_gold_sm30a-1.png",
+      "imagens/caixa_alpha_gold_sm30a-2.png"
     ],
-    "color": "Cinza",
-    "condition": "Excelente estado"
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
+    "id": 11,
+    "name": "Carregador Veicular B1",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 119,90",
+      "parcelado": "3x R$ 39,97"
+    },
+    "description": "Carregador veicular turbo retrátil 4 em 1, projetado para oferecer velocidade, organização e compatibilidade total com seus dispositivos.",
+    "specs": [
+      "Potência Turbo: 66W com PD e QC",
+      "Conexões 4 em 1: USB-C, Lightning, Micro USB e USB padrão",
+      "Cabos Retráteis Inteligentes: recolhem automaticamente",
+      "Display Digital: mostra a voltagem em tempo real",
+      "Rotação de 180º: ajuste o ângulo",
+      "Compatibilidade Universal: iPhone, Samsung, Xiaomi, Motorola, tablets, fones e mais",
+      "Voltagem: 12V/24V (bivolt)",
+      "Material: ABS resistente com acabamento premium",
+      "Segurança: proteção contra sobrecarga, superaquecimento e curto-circuito",
+      "Cor: Cinza prateado com LED multicolorido"
+    ],
+    "images": [
+      "imagens/carregador_veicular_b1-1.png",
+      "imagens/carregador_veicular_b1-2.png"
+    ],
+    "color": "Cinza prateado",
+    "condition": "Novo"
+  },
+  {
+    "id": 12,
+    "name": "Power Bank HREBOS",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 149,00",
+      "parcelado": "4x R$ 40,00"
+    },
+    "description": "Carregador portátil com design moderno, acabamento branco e detalhes interativos tipo Pop-it, ideal para quem busca potência e estilo.",
+    "specs": [
+      "Capacidade: 10.000mAh – até 3 recargas completas",
+      "Carregamento rápido: 22.5W Turbo – PD e QC",
+      "Conexões: 1 USB, 1 Tipo-C, 1 Lightning",
+      "Display LED inteligente: mostra nível de bateria",
+      "Design Pop-it: textura interativa",
+      "Cor: Branco",
+      "Certificação ANATEL: segurança garantida"
+    ],
+    "images": [
+      "imagens/powerbank_hrebos_pb955-1.png",
+      "imagens/powerbank_hrebos_pb955-2.png"
+    ],
+    "color": "Branco",
+    "condition": "Novo"
+  },
+  {
+    "id": 14,
+    "name": "Power Bank PINENG",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 275,00",
+      "parcelado": "6x R$ 48,50"
+    },
+    "description": "Carregador portátil de alta capacidade, ideal para manter vários dispositivos carregados com rapidez e segurança.",
+    "specs": [
+      "Capacidade: 30.000mAh – 6 a 9 cargas completas",
+      "Carga rápida: 22.5W PD",
+      "Entradas: Tipo-C, Lightning, Micro USB",
+      "Saídas: 2 portas USB simultâneas",
+      "Display LED inteligente",
+      "Bateria: polímero de íon-lítio",
+      "Compatibilidade: smartphones, tablets, fones, câmeras",
+      "Design moderno, compacto e resistente"
+    ],
+    "images": [
+      "imagens/powerbank_pineng_30000-1.png",
+      "imagens/powerbank_pineng_30000-2.png"
+    ],
+    "color": "Branco",
+    "condition": "Novo"
+  },
+  {
+    "id": 15,
+    "name": "Adaptadores USB",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 15,00"
+    },
+    "description": "Adaptadores USB universais, prontos para conectar seus dispositivos com praticidade e segurança.",
+    "specs": [
+      "Modelo A1 (Laranja) – compacto e resistente",
+      "IT-BLUE Série Connector (Preto) – durável e profissional",
+      "USB Compatible (Vermelho/Preto) – design moderno",
+      "Compatibilidade: smartphones Android/iOS, tablets, fones, caixas de som, carregadores"
+    ],
+    "images": [
+      "imagens/adaptadores_usb-1.png",
+      "imagens/adaptadores_usb-2.png"
+    ],
+    "color": "Diversas cores",
+    "condition": "Novo"
   }
 ]
