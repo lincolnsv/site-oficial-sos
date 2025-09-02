@@ -23,8 +23,7 @@
     "images": [
       "imagens/realme-c75x-1.png",
       "imagens/realme-c75x-2.png",
-      "imagens/realme-c75x-3.png",
-      "imagens/realme-c75x-4.png"
+      "imagens/realme-c75x-3.png"
     ],
     "color": "Coral Pink"
   },
@@ -183,3 +182,4 @@
     "condition": "Novo"
   }
 ]
+
