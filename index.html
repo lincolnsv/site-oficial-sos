@@ -248,7 +248,16 @@ function openProductModal(product) {
     const name = prompt("Olá! Qual o seu nome?");
     if(!name) return;
     const priceText = typeof product.price === 'object' ? product.price.avista : product.price;
-    const msg = encodeURIComponent(`Olá, meu nome é ${name}. Tenho interesse no produto: ${product.name}, preço: ${priceText}`);
+    const msg = encodeURIComponent(
+  `Olá, meu nome é ${name}.\n` +
+  `Estou entrando em contato pelo site da S.O.S Celulares.\n\n` +
+  `Tenho interesse no seguinte produto:\n` +
+  `📱 Produto: ${product.name}\n` +
+  `${product.color ? `🎨 Cor: ${product.color}\n` : ''}` +
+  `${product.condition ? `🛠️ Estado: ${product.condition}\n` : ''}` +
+  `💰 Preço: ${priceText}\n\n` +
+  `Gostaria de receber mais informações e verificar disponibilidade.`
+);
     window.open(`https://wa.me/5564999518536?text=${msg}`,'_blank');
   });
 
@@ -261,6 +270,7 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
 
 
 
