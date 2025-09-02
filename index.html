@@ -158,42 +158,72 @@ function renderProducts(products) {
   usedC.innerHTML = '';
   accC.innerHTML = '';
 
-  products.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer';
-    card.innerHTML = `
-      <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
-        <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain" loading="lazy">
-      </div>
-      <div class="p-4">
-        <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
-        <p class="text-gray-600 text-sm mb-2">${p.description}</p>
-        ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
-        ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
-        <p class="text-xl font-bold text-blue-600 mb-4">
-          ${typeof p.price === 'object'
-            ? `<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
-            : p.price}
-        </p>
-      </div>
-    `;
-    const btnWrapper = document.createElement('div');
-btnWrapper.className = 'flex justify-end mt-4 pr-4';
+  const categories = {
+    "Novo": newC,
+    "Seminovo": usedC,
+    "Acessório": accC
+  };
 
-const btn = document.createElement('button');
-btn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition';
-btn.textContent = 'Ver Produto';
-btn.addEventListener('click', () => openProductModal(p));
+  Object.keys(categories).forEach(cat => {
+    const container = categories[cat];
+    const produtosCat = products.filter(p => p.category === cat);
+    
+    // Renderiza só os 3 primeiros inicialmente
+    produtosCat.forEach((p, index) => {
+      const card = document.createElement('div');
+      card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer';
+      if(index >= 3) card.style.display = 'none';
 
-btnWrapper.appendChild(btn);
-card.appendChild(btnWrapper);
-; 
+      card.innerHTML = `
+        <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+          <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain" loading="lazy">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
+          <p class="text-gray-600 text-sm mb-2">${p.description}</p>
+          ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
+          ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
+          <p class="text-xl font-bold text-blue-600 mb-4">
+            ${typeof p.price === 'object'
+              ? `<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
+              : p.price}
+          </p>
+        </div>
+      `;
 
-    if(p.category === "Novo") newC.appendChild(card);
-    else if(p.category === "Seminovo") usedC.appendChild(card);
-    else accC.appendChild(card);
+      const btnWrapper = document.createElement('div');
+      btnWrapper.className = 'flex justify-end mt-4 pr-4';
+      const btn = document.createElement('button');
+      btn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition';
+      btn.textContent = 'Ver Produto';
+      btn.addEventListener('click', () => openProductModal(p));
+      btnWrapper.appendChild(btn);
+      card.appendChild(btnWrapper);
+
+      container.appendChild(card);
+    });
+
+    // Adiciona botão "Ver Mais" se tiver mais de 3 produtos
+    if(produtosCat.length > 3){
+      const verMaisBtn = document.createElement('button');
+      verMaisBtn.textContent = 'Ver Mais';
+      verMaisBtn.className = 'mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600';
+      container.parentNode.appendChild(verMaisBtn);
+
+      verMaisBtn.addEventListener('click', () => {
+        const hiddenCards = Array.from(container.children).filter(c => c.style.display === 'none');
+        if(hiddenCards.length > 0){
+          hiddenCards.forEach(c => c.style.display = 'block');
+          verMaisBtn.textContent = 'Ver Menos';
+        } else {
+          Array.from(container.children).forEach((c,i) => c.style.display = i < 3 ? 'block' : 'none');
+          verMaisBtn.textContent = 'Ver Mais';
+        }
+      });
+    }
   });
 }
+
 
 // Modal
 function openProductModal(product) {
@@ -270,6 +300,7 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
 
 
 
