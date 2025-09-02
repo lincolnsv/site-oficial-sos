@@ -4,8 +4,7 @@
     "name": "Realme C75X",
     "category": "Novo",
     "price": {
-      "avista": "R$ 1.189,90",
-      "parcelado": "12x R$ 128,99"
+      "avista": "R$ 1.189,90"
     },
     "description": "O Realme C75X combina desempenho e estilo, oferecendo uma tela ampla, câmeras de alta qualidade e bateria duradoura para uso diário intenso.",
     "specs": [
@@ -32,8 +31,7 @@
     "name": "Realme Note 14S",
     "category": "Novo",
     "price": {
-      "avista": "R$ 1.420,00",
-      "parcelado": "12x R$ 132,50"
+      "avista": "R$ 1.420,00"
     },
     "description": "O Realme Note 14S oferece alto desempenho, tela ampla e câmeras de alta qualidade, garantindo uma experiência completa para uso diário e entretenimento.",
     "specs": [
@@ -62,8 +60,7 @@
     "name": "Redmi 9A",
     "category": "Seminovo",
     "price": {
-      "avista": "R$ 400,00",
-      "parcelado": "10x R$ 44,00"
+      "avista": "R$ 400,00"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
     "specs": [
@@ -83,32 +80,11 @@
     "condition": "Excelente estado"
   },
   {
-    "id": 4,
-    "name": "Carregador H'Maston",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 45,00"
-    },
-    "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
-    "specs": [
-      "Carregamento Turbo com potência de até 35W",
-      "Bivolt automático (110V–220V)",
-      "Proteção contra sobrecarga, sobrecorrente e superaquecimento",
-      "Design compacto e resistente"
-    ],
-    "images": [
-      "imagens/carregadorH-Maston1.png",
-      "imagens/carregadorH-Maston2.png"
-    ],
-    "color": "Preto"
-  },
-  {
     "id": 5,
     "name": "Samsung A04e",
     "category": "Seminovo",
     "price": {
-      "avista": "R$ 400,00",
-      "parcelado": "10x R$ 44,00"
+      "avista": "R$ 400,00"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
     "specs": [
@@ -133,8 +109,7 @@
     "name": "Samsung A12",
     "category": "Seminovo",
     "price": {
-      "avista": "R$ 450,00",
-      "parcelado": "10x R$ 49,90"
+      "avista": "R$ 450,00"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
     "specs": [
@@ -157,8 +132,7 @@
     "name": "Realme Note 60 X",
     "category": "Novo",
     "price": {
-      "avista": "R$ 849,00",
-      "parcelado": "12x R$ 79,15"
+      "avista": "R$ 849,00"
     },
     "description": "O Realme Note 60 X combina desempenho e estilo em um único smartphone. Com tela ampla, câmeras de alta qualidade e bateria duradoura, ele oferece uma experiência completa para navegar, jogar e registrar seus melhores momentos com nitidez e rapidez.",
     "specs": [
@@ -207,8 +181,7 @@
     "name": "Caixa de Som α GOLD SM-30A",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 589,00",
-      "parcelado": "12x R$ 54,90"
+      "avista": "R$ 589,00"
     },
     "description": "Transforme qualquer ambiente em uma festa com a α GOLD PRO SM-30A, a caixa de som portátil que une design moderno, iluminação LED vibrante e resistência à água IPX6.",
     "specs": [
@@ -230,8 +203,7 @@
     "name": "Carregador Veicular B1",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 119,90",
-      "parcelado": "3x R$ 39,97"
+      "avista": "R$ 119,90"
     },
     "description": "Carregador veicular turbo retrátil 4 em 1, projetado para oferecer velocidade, organização e compatibilidade total com seus dispositivos.",
     "specs": [
@@ -258,8 +230,7 @@
     "name": "Power Bank HREBOS",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 149,00",
-      "parcelado": "4x R$ 40,00"
+      "avista": "R$ 149,00"
     },
     "description": "Carregador portátil com design moderno, acabamento branco e detalhes interativos tipo Pop-it, ideal para quem busca potência e estilo.",
     "specs": [
@@ -283,8 +254,7 @@
     "name": "Power Bank PINENG",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 275,00",
-      "parcelado": "6x R$ 48,50"
+      "avista": "R$ 275,00"
     },
     "description": "Carregador portátil de alta capacidade, ideal para manter vários dispositivos carregados com rapidez e segurança.",
     "specs": [
@@ -324,6 +294,30 @@
     ],
     "color": "Diversas cores",
     "condition": "Novo"
+  },
+  {
+    "id": 13,
+    "name": "Samsung A13",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 650,00"
+    },
+    "description": "Smartphone seminovo em excelente estado, com desempenho confiável, visual moderno e acabamento elegante.",
+    "specs": [
+      "Tela 6,6\" PLS LCD",
+      "4GB RAM",
+      "128GB Armazenamento",
+      "Câmera traseira quádrupla 50MP + 5MP + 2MP + 2MP",
+      "Câmera frontal 8MP",
+      "Bateria 5000mAh",
+      "Android 12",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Samsung-A13-1.png",
+      "imagens/Samsung-A13-2.png"
+    ],
+    "color": "Branco",
+    "condition": "Excelente estado"
   }
 ]
-
