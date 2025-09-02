@@ -177,11 +177,17 @@ function renderProducts(products) {
         </p>
       </div>
     `;
-    const btn = document.createElement('button');
-    btn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition';
-    btn.textContent = 'Ver Produto';
-    btn.addEventListener('click', () => openProductModal(p));
-    card.appendChild(btn); 
+    const btnWrapper = document.createElement('div');
+btnWrapper.className = 'flex justify-center mt-4';
+
+const btn = document.createElement('button');
+btn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition';
+btn.textContent = 'Ver Produto';
+btn.addEventListener('click', () => openProductModal(p));
+
+btnWrapper.appendChild(btn);
+card.appendChild(btnWrapper);
+; 
 
     if(p.category === "Novo") newC.appendChild(card);
     else if(p.category === "Seminovo") usedC.appendChild(card);
@@ -255,4 +261,5 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
 
