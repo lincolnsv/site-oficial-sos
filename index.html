@@ -8,15 +8,46 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
 body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
+
+/* Cards */
+.product-card {
+  @apply bg-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl cursor-pointer;
+}
+.product-card img {
+  @apply object-contain w-full h-48 p-4 bg-gray-100 rounded-t-lg;
+}
+.product-card .price {
+  @apply text-xl font-bold text-blue-700 mb-4 bg-blue-100 px-3 py-1 rounded-lg inline-block;
+}
+.product-card button {
+  @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition shadow-sm;
+}
+
+/* Modal */
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; }
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); }
-.gallery-thumbnail { transition: all 0.2s ease; cursor: pointer; }
-.gallery-thumbnail:hover { transform: scale(1.05); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-.gallery-thumbnail.active { border: 2px solid #3b82f6; }
-#modal-main-image-container { overflow: hidden; position: relative; }
-#modal-main-image { transition: transform 0.3s ease; cursor: zoom-in; }
+
+.product-modal .modal-content {
+  @apply bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6;
+}
+#modal-main-image {
+  @apply w-full h-64 object-contain rounded-lg shadow-md mb-4 transition-transform;
+  cursor: zoom-in;
+}
 #modal-main-image.zoomed { cursor: zoom-out; }
+.gallery-thumbnail {
+  @apply w-20 h-20 object-contain rounded-lg cursor-pointer border border-transparent transition-all;
+}
+.gallery-thumbnail:hover {
+  @apply border-blue-500 scale-105 shadow-md;
+}
+.gallery-thumbnail.active {
+  @apply border-2 border-blue-600;
+}
+#whatsapp-btn {
+  @apply bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition shadow-md;
+}
 </style>
 </head>
 <body class="font-sans">
@@ -75,7 +106,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 <!-- Modal -->
 <div class="product-modal fixed inset-0 z-50 flex items-center justify-center p-4">
   <div class="modal-overlay absolute inset-0"></div>
-  <div class="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto z-10"></div>
+  <div class="modal-content relative"></div>
 </div>
 
 <!-- Contato -->
@@ -154,29 +185,22 @@ function renderProducts(products) {
 
   products.forEach(p => {
     const card = document.createElement('div');
-    card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer';
+    card.className = 'product-card';
     card.innerHTML = `
-      <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
-        <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain">
-      </div>
+      <img src="${p.images[0]}" alt="${p.name}">
       <div class="p-4">
         <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
         <p class="text-gray-600 text-sm mb-2">${p.description}</p>
         ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
         ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
-        <p class="text-xl font-bold text-blue-600 mb-4">
+        <p class="price">
           ${typeof p.price === 'object'
             ? `<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
             : p.price}
         </p>
-        <button 
-          class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition" 
-          onclick='openProductModal(${JSON.stringify(p)})'>
-          Ver Produto
-        </button>
+        <button onclick='openProductModal(${JSON.stringify(p)})'>Ver Produto</button>
       </div>
     `;
-
     if(p.category === "Novo") newC.appendChild(card);
     else if(p.category === "Seminovo") usedC.appendChild(card);
     else accC.appendChild(card);
@@ -186,7 +210,7 @@ function renderProducts(products) {
 // Modal
 function openProductModal(product) {
   const modal = document.querySelector('.product-modal');
-  const modalContent = modal.querySelector('div.relative');
+  const modalContent = modal.querySelector('.modal-content');
   let zoomed = false;
 
   function showImage(index) {
@@ -199,25 +223,21 @@ function openProductModal(product) {
   }
 
   modalContent.innerHTML = `
-    <div class="p-6">
-      <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
-      <div id="modal-main-image-container" class="mb-4">
-        <img id="modal-main-image" src="${product.images[0]}" class="w-full h-64 object-contain rounded-lg mb-4">
-      </div>
-      <div class="flex space-x-2 overflow-x-auto mb-4">
-        ${product.images.map((img,i)=>`<img src="${img}" class="w-20 h-20 object-contain rounded gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
-      </div>
-      <p class="text-gray-600 mb-2">${product.description}</p>
-      ${product.color ? `<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>` : ''}
-      ${product.condition ? `<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>` : ''}
-      ${product.specs && product.specs.length ? `<ul class="text-gray-600 list-disc list-inside mb-4">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>` : ''}
-      <p class="text-xl font-bold text-blue-600 mb-4">
-        ${typeof product.price === 'object'
-          ? `<strong>À vista:</strong> ${product.price.avista || ''}${product.price.parcelado ? `<br><strong>Parcelado:</strong> ${product.price.parcelado}` : ''}`
-          : product.price}
-      </p>
-      <button id="whatsapp-btn" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Enviar via WhatsApp</button>
+    <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
+    <img id="modal-main-image" src="${product.images[0]}" class="mb-4 rounded-lg shadow-md">
+    <div class="flex space-x-2 overflow-x-auto mb-4">
+      ${product.images.map((img,i)=>`<img src="${img}" class="gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
     </div>
+    <p class="text-gray-600 mb-2">${product.description}</p>
+    ${product.color ? `<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>` : ''}
+    ${product.condition ? `<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>` : ''}
+    ${product.specs && product.specs.length ? `<ul class="text-gray-600 list-disc list-inside mb-4">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>` : ''}
+    <p class="text-xl font-bold text-blue-600 mb-4">
+      ${typeof product.price === 'object'
+        ? `<strong>À vista:</strong> ${product.price.avista || ''}${product.price.parcelado ? `<br><strong>Parcelado:</strong> ${product.price.parcelado}` : ''}`
+        : product.price}
+    </p>
+    <button id="whatsapp-btn">Enviar via WhatsApp</button>
   `;
 
   const mainImage = modalContent.querySelector('#modal-main-image');
@@ -226,7 +246,6 @@ function openProductModal(product) {
     mainImage.style.transform = zoomed ? "scale(2)" : "scale(1)";
     mainImage.style.cursor = zoomed ? "zoom-out" : "zoom-in";
   });
-
   modalContent.querySelectorAll('.gallery-thumbnail').forEach((thumb,i)=>thumb.addEventListener('click',()=>showImage(i)));
 
   modalContent.querySelector('#whatsapp-btn').addEventListener('click', () => {
