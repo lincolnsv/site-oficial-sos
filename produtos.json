@@ -52,7 +52,8 @@
     "images": ["imagens/Samsung-A04e-1.png"],
     "color": "Azul",
     "condition": "Excelente estado"
-  },
+   {
+   },
     "id": 6,
     "name": "Samsung A12",
     "category": "Seminovo",
@@ -65,9 +66,7 @@
     "images": ["imagens/Samsung-A12-1.png"],
     "color": "preto",
     "condition": "Excelente estado"
-  },
-  {
-    
+  }, 
   {
     "id": 4,
     "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
@@ -79,5 +78,6 @@
     "color": "Preto"
   }
 ]
+
 
 
