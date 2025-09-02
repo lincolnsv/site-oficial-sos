@@ -205,7 +205,7 @@
   {
     "id": 10,
     "name": "Caixa de Som α GOLD SM-30A",
-    "category": "Novo",
+    "category": "Acessório",
     "price": {
       "avista": "R$ 589,00",
       "parcelado": "12x R$ 54,90"
@@ -326,3 +326,4 @@
     "condition": "Novo"
   }
 ]
+
