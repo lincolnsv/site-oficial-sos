@@ -201,5 +201,32 @@
     ],
     "color": "Preto",
     "model": "LEF-1023A"
+  },
+  {
+    "id": 9,
+    "name": "Moto G9 Play",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 550,00",
+      "parcelado": "10x R$ 60,00"
+    },
+    "description": "Excelente estado, com pequenas marcas de uso, perfeito para quem busca desempenho confiável a um bom preço.",
+    "specs": [
+      "Tela 6,5\" IPS LCD",
+      "Processador Qualcomm Snapdragon 662",
+      "RAM 4GB",
+      "Armazenamento 64GB",
+      "Câmera traseira tripla 48MP + 2MP + 2MP",
+      "Câmera frontal 8MP",
+      "Bateria 5000mAh",
+      "Android 10",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/moto-g9-play-1.png",
+      "imagens/moto-g9-play-2.png"
+    ],
+    "color": "Cinza",
+    "condition": "Excelente estado"
   }
 ]
