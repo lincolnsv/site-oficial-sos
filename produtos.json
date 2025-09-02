@@ -62,7 +62,7 @@
       "parcelado": "10x R$ 49,90"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela 6,5″ | 4 GB RAM | Armazenamento 64 GB | Quad Câmera 48 MP | Bateria 5.000 mAh | Android 12 | Dual SIM],
+    "specs": ["Tela 6,5″ "," 4 GB RAM ", "Armazenamento 64 GB", " Quad Câmera 48 MP ","Bateria 5.000 mAh ", "Android 12 ", " Dual SIM"],
     "images": ["imagens/Samsung-A12-1.png"],
     "color": "preto",
     "condition": "Excelente estado"
@@ -78,6 +78,7 @@
     "color": "Preto"
   }
 ]
+
 
 
 
