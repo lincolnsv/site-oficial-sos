@@ -98,7 +98,7 @@
     ],
     "images": [
       "imagens/carregadorH-Maston1.png",
-      "imagens/carregador(H-Maston)2.png"
+      "imagens/carregadorH-Maston2.png"
     ],
     "color": "Preto"
   },
@@ -182,3 +182,4 @@
     "condition": "Novo"
   }
 ]
+
