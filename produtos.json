@@ -40,6 +40,18 @@
     "condition": "Excelente estado"
   },
   {
+    "id": 4,
+    "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 45,00"
+    },
+    "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
+    "specs": ["Carregamento Turbo com potência de até 35W", "Bivolt automático (110V–220V)", "Proteção contra sobrecarga, sobrecorrente e superaquecimento", "Design compacto e resistente"],
+    "images": ["imagens/carregadorH-Maston1.png", "imagens/carregador(H-Maston)2.png"],
+    "color": "Preto"
+  },
+  {
     "id": 5,
     "name": "Samsung A04e",
     "category": "Seminovo",
@@ -52,34 +64,19 @@
     "images": ["imagens/Samsung-A04e-1.png"],
     "color": "Azul",
     "condition": "Excelente estado"
-   {
-   },
+  },
+  {
     "id": 6,
     "name": "Samsung A12",
     "category": "Seminovo",
     "price": {
-      "avista": "R$ 450",
+      "avista": "R$ 450,00",
       "parcelado": "10x R$ 49,90"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela 6,5″ "," 4 GB RAM ", "Armazenamento 64 GB", " Quad Câmera 48 MP ","Bateria 5.000 mAh ", "Android 12 ", " Dual SIM"],
+    "specs": ["Tela 6,5\"", "4GB RAM", "Armazenamento 64GB", "Quad Câmera 48MP", "Bateria 5.000 mAh", "Android 12", "Dual SIM"],
     "images": ["imagens/Samsung-A12-1.png"],
-    "color": "preto",
+    "color": "Preto",
     "condition": "Excelente estado"
-  }, 
-  {
-    "id": 4,
-    "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
-    "category": "Acessório",
-    "price": "R$ 45,00",
-    "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
-    "specs": ["Carregamento Turbo com potência de até 35W", "Bivolt automático (110V–220V)", "Proteção contra sobrecarga, sobrecorrente e superaquecimento", "Design compacto e resistente"],
-    "images": ["imagens/carregadorH-Maston1.png", "imagens/carregador(H-Maston)2.png"],
-    "color": "Preto"
   }
 ]
-
-
-
-
-
