@@ -25,7 +25,8 @@
       "imagens/realme-c75x-2.png",
       "imagens/realme-c75x-3.png"
     ],
-    "color": "Coral Pink"
+    "color": "Coral Pink",
+    "condition": "Novo"
   },
   {
     "id": 2,
@@ -100,7 +101,8 @@
       "imagens/carregadorH-Maston1.png",
       "imagens/carregadorH-Maston2.png"
     ],
-    "color": "Preto"
+    "color": "Preto",
+    "condition": "Novo"
   },
   {
     "id": 5,
@@ -142,7 +144,7 @@
       "4GB RAM",
       "Armazenamento 64GB",
       "Quad Câmera 48MP",
-      "Bateria 5.000 mAh",
+      "Bateria 5000mAh",
       "Android 12",
       "Dual SIM"
     ],
@@ -182,7 +184,3 @@
     "condition": "Novo"
   }
 ]
-
-
-
-
