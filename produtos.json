@@ -182,5 +182,47 @@
     ],
     "color": "Preto",
     "condition": "Novo"
+  },
+  {
+    "id": 8,
+    "name": "Mouse Gamer Redragon M601",
+    "category": "Informática",
+    "price": {
+      "avista": "R$ 120,00",
+      "parcelado": "6x R$ 20,00"
+    },
+    "description": "Mouse gamer com alta precisão e iluminação RGB personalizável.",
+    "specs": [
+      "Sensor óptico 7200 DPI",
+      "Iluminação RGB",
+      "Botões programáveis",
+      "Conexão USB"
+    ],
+    "images": [
+      "imagens/mouse-redragon.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
+    "id": 9,
+    "name": "Teclado Mecânico Gamer Redragon Kumara",
+    "category": "Informática",
+    "price": {
+      "avista": "R$ 180,00",
+      "parcelado": "6x R$ 30,00"
+    },
+    "description": "Teclado mecânico compacto com switches Outemu Red para alta performance em jogos.",
+    "specs": [
+      "Switches Outemu Red",
+      "Retroiluminação RGB",
+      "Teclado compacto 87 teclas",
+      "Conexão USB"
+    ],
+    "images": [
+      "imagens/teclado-redragon.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
   }
 ]
