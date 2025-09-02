@@ -87,7 +87,8 @@
     "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 45,00"
+      "avista": "R$ 45,00",
+      "parcelado": "—"
     },
     "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
     "specs": [
@@ -182,4 +183,5 @@
     "condition": "Novo"
   }
 ]
+
 
