@@ -164,7 +164,7 @@ function renderProducts(products) {
     ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
     <p class="text-xl font-bold text-blue-600 mb-4">
       ${typeof p.price === 'object'
-        ? `<strong>À vista:</strong> ${p.price.avista}<br><strong>Parcelado:</strong> ${p.price.parcelado}`
+        ? `<strong>À vista:</strong> ${p.price.avista}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
         : p.price}
     </p>
     <button 
@@ -174,7 +174,6 @@ function renderProducts(products) {
     </button>
   </div>
 `;
-
 
     if(p.category === "Novo") newC.appendChild(card);
     else if(p.category === "Seminovo") usedC.appendChild(card);
@@ -212,7 +211,7 @@ function openProductModal(product) {
       ${product.specs && product.specs.length ? `<ul class="text-gray-600 list-disc list-inside mb-4">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>` : ''}
       <p class="text-xl font-bold text-blue-600 mb-4">
         ${typeof product.price === 'object'
-          ? `<strong>À vista:</strong> ${product.price.avista}<br><strong>Parcelado:</strong> ${product.price.parcelado}`
+          ? `<strong>À vista:</strong> ${product.price.avista}${product.price.parcelado ? `<br><strong>Parcelado:</strong> ${product.price.parcelado}` : ''}`
           : product.price}
       </p>
       <button id="whatsapp-btn" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Enviar via WhatsApp</button>
