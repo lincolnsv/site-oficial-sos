@@ -1,16 +1,32 @@
 [
   {
     "id": 1,
-    "name": "iPhone 14 Pro Max",
+    "name": "Realme C75X",
     "category": "Novo",
     "price": {
-      "avista": "R$ 6.999,00",
-      "parcelado": "12x R$ 583,25"
+      "avista": "R$ 1.189,90",
+      "parcelado": "12x R$ 128,99"
     },
-    "description": "O mais avançado iPhone com câmera profissional.",
-    "specs": ["Tela Super Retina XDR 6,7\"", "Chip A16 Bionic", "Câmera 48MP", "128GB"],
-    "images": ["imagens/iphone-14-pro-1.png", "imagens/iphone-14-pro-2.png", "imagens/iphone-14-pro-3.png", "imagens/iphone-14-pro-4.png"],
-    "color": "Roxo"
+    "description": "O Realme C75X combina desempenho e estilo, oferecendo uma tela ampla, câmeras de alta qualidade e bateria duradoura para uso diário intenso.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "8GB RAM",
+      "256GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme-c75x-1.png",
+      "imagens/realme-c75x-2.png",
+      "imagens/realme-c75x-3.png",
+      "imagens/realme-c75x-4.png"
+    ],
+    "color": "Coral Pink"
   },
   {
     "id": 2,
@@ -21,8 +37,16 @@
       "parcelado": "12x R$ 624,92"
     },
     "description": "Smartphone definitivo com S Pen.",
-    "specs": ["Tela Dynamic AMOLED 2X 6,8\"", "Snapdragon 8 Gen 2", "Câmera 200MP"],
-    "images": ["imagens/galaxy-s23-1.png", "imagens/galaxy-s23-2.png", "imagens/galaxy-s23-3.png"],
+    "specs": [
+      "Tela Dynamic AMOLED 2X 6,8\"",
+      "Snapdragon 8 Gen 2",
+      "Câmera 200MP"
+    ],
+    "images": [
+      "imagens/galaxy-s23-1.png",
+      "imagens/galaxy-s23-2.png",
+      "imagens/galaxy-s23-3.png"
+    ],
     "color": "Preto"
   },
   {
@@ -34,8 +58,19 @@
       "parcelado": "10x R$ 44,00"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela LCD 6,1\" HD+", "Processador MediaTek Helio G25", "Armazenamento 64GB", "RAM 2GB", "Câmera tripla 12MP", "Bateria 5000mAh", "Sistema Android 11", "Dual SIM"],
-    "images": ["imagens/Redmi-9A-1.png"],
+    "specs": [
+      "Tela LCD 6,1\" HD+",
+      "Processador MediaTek Helio G25",
+      "Armazenamento 64GB",
+      "RAM 2GB",
+      "Câmera tripla 12MP",
+      "Bateria 5000mAh",
+      "Sistema Android 11",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Redmi-9A-1.png"
+    ],
     "color": "Azul",
     "condition": "Excelente estado"
   },
@@ -47,8 +82,16 @@
       "avista": "R$ 45,00"
     },
     "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
-    "specs": ["Carregamento Turbo com potência de até 35W", "Bivolt automático (110V–220V)", "Proteção contra sobrecarga, sobrecorrente e superaquecimento", "Design compacto e resistente"],
-    "images": ["imagens/carregadorH-Maston1.png", "imagens/carregador(H-Maston)2.png"],
+    "specs": [
+      "Carregamento Turbo com potência de até 35W",
+      "Bivolt automático (110V–220V)",
+      "Proteção contra sobrecarga, sobrecorrente e superaquecimento",
+      "Design compacto e resistente"
+    ],
+    "images": [
+      "imagens/carregadorH-Maston1.png",
+      "imagens/carregador(H-Maston)2.png"
+    ],
     "color": "Preto"
   },
   {
@@ -60,8 +103,20 @@
       "parcelado": "10x R$ 44,00"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela 6,5\" HD+ PLS LCD", "Processador MediaTek Helio P35", "RAM 3GB", "Armazenamento 64GB", "Câmera traseira 13+2MP", "Câmera frontal 5MP", "Bateria 5000mAh", "Android 12", "Dual SIM"],
-    "images": ["imagens/Samsung-A04e-1.png"],
+    "specs": [
+      "Tela 6,5\" HD+ PLS LCD",
+      "Processador MediaTek Helio P35",
+      "RAM 3GB",
+      "Armazenamento 64GB",
+      "Câmera traseira 13+2MP",
+      "Câmera frontal 5MP",
+      "Bateria 5000mAh",
+      "Android 12",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Samsung-A04e-1.png"
+    ],
     "color": "Azul",
     "condition": "Excelente estado"
   },
@@ -74,9 +129,49 @@
       "parcelado": "10x R$ 49,90"
     },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela 6,5\"", "4GB RAM", "Armazenamento 64GB", "Quad Câmera 48MP", "Bateria 5.000 mAh", "Android 12", "Dual SIM"],
-    "images": ["imagens/Samsung-A12-1.png"],
+    "specs": [
+      "Tela 6,5\"",
+      "4GB RAM",
+      "Armazenamento 64GB",
+      "Quad Câmera 48MP",
+      "Bateria 5.000 mAh",
+      "Android 12",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Samsung-A12-1.png"
+    ],
     "color": "Preto",
     "condition": "Excelente estado"
+  },
+  {
+    "id": 7,
+    "name": "Realme Note 60 X",
+    "category": "Novo",
+    "price": {
+      "avista": "R$ 849,00",
+      "parcelado": "12x R$ 79,15"
+    },
+    "description": "O Realme Note 60 X combina desempenho e estilo em um único smartphone. Com tela ampla, câmeras de alta qualidade e bateria duradoura, ele oferece uma experiência completa para navegar, jogar e registrar seus melhores momentos com nitidez e rapidez.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "4GB RAM",
+      "128GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme-note-60x-1.png",
+      "imagens/realme-note-60x-2.png",
+      "imagens/realme-note-60x-3.png",
+      "imagens/realme-note-60x-4.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
   }
 ]
