@@ -148,7 +148,13 @@ async function loadProducts() {
   try {
     const response = await fetch("produtos.json");
     const data = await response.json();
-    products = data.map(p => { if(!p.category) p.category = "Acessório"; return p; });
+    // Padroniza categorias
+    products = data.map(p => {
+      if(!p.category) p.category = "Acessório";
+      // Corrige variações de categoria "acessorio"
+      if(p.category.toLowerCase() === "acessorio") p.category = "Acessório";
+      return p;
+    });
     renderProducts(products);
   } catch (err) { console.error("Erro ao carregar produtos.json", err); }
 }
