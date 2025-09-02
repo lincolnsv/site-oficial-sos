@@ -25,12 +25,66 @@
       "imagens/realme-c75x-2.png",
       "imagens/realme-c75x-3.png"
     ],
-    "color": "Coral Pink",
+    "color": "Coral Pink"
+  },
+  {
+    "id": 2,
+    "name": "Realme Note 14S",
+    "category": "Novo",
+    "price": {
+      "avista": "R$ 1.420,00",
+      "parcelado": "12x R$ 132,50"
+    },
+    "description": "O Realme Note 14S oferece alto desempenho, tela ampla e câmeras de alta qualidade, garantindo uma experiência completa para uso diário e entretenimento.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "8GB RAM",
+      "256GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme-note-14s-1.png",
+      "imagens/realme-note-14s-2.png",
+      "imagens/realme-note-14s-3.png",
+      "imagens/realme-note-14s-4.png"
+    ],
+    "color": "Azul, Preto",
     "condition": "Novo"
   },
   {
+    "id": 3,
+    "name": "Redmi 9A",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 400,00",
+      "parcelado": "10x R$ 44,00"
+    },
+    "description": "Excelente estado, pequenos sinais de uso.",
+    "specs": [
+      "Tela LCD 6,1\" HD+",
+      "Processador MediaTek Helio G25",
+      "Armazenamento 64GB",
+      "RAM 2GB",
+      "Câmera tripla 12MP",
+      "Bateria 5000mAh",
+      "Sistema Android 11",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Redmi-9A-1.png"
+    ],
+    "color": "Azul",
+    "condition": "Excelente estado"
+  },
+  {
     "id": 4,
-    "name": "Carregador Turbo H Maston Tipo-C/V8/Lightning",
+    "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
     "category": "Acessório",
     "price": {
       "avista": "R$ 45,00"
@@ -44,67 +98,85 @@
     ],
     "images": [
       "imagens/carregadorH-Maston1.png",
-      "imagens/carregadorH-Maston2.png"
+      "imagens/carregador(H-Maston)2.png"
+    ],
+    "color": "Preto"
+  },
+  {
+    "id": 5,
+    "name": "Samsung A04e",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 400,00",
+      "parcelado": "10x R$ 44,00"
+    },
+    "description": "Excelente estado, pequenos sinais de uso.",
+    "specs": [
+      "Tela 6,5\" HD+ PLS LCD",
+      "Processador MediaTek Helio P35",
+      "RAM 3GB",
+      "Armazenamento 64GB",
+      "Câmera traseira 13+2MP",
+      "Câmera frontal 5MP",
+      "Bateria 5000mAh",
+      "Android 12",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Samsung-A04e-1.png"
+    ],
+    "color": "Azul",
+    "condition": "Excelente estado"
+  },
+  {
+    "id": 6,
+    "name": "Samsung A12",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 450,00",
+      "parcelado": "10x R$ 49,90"
+    },
+    "description": "Excelente estado, pequenos sinais de uso.",
+    "specs": [
+      "Tela 6,5\"",
+      "4GB RAM",
+      "Armazenamento 64GB",
+      "Quad Câmera 48MP",
+      "Bateria 5.000 mAh",
+      "Android 12",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Samsung-A12-1.png"
     ],
     "color": "Preto",
-    "condition": "Novo"
+    "condition": "Excelente estado"
   },
   {
-    "id": 10,
-    "name": "Cabo USB-C para Lightning H'Maston 1,2m",
-    "category": "Acessório",
+    "id": 7,
+    "name": "Realme Note 60 X",
+    "category": "Novo",
     "price": {
-      "avista": "R$ 25,00"
+      "avista": "R$ 849,00",
+      "parcelado": "12x R$ 79,15"
     },
-    "description": "Cabo de alta qualidade para carregamento rápido e transferência de dados.",
+    "description": "O Realme Note 60 X combina desempenho e estilo em um único smartphone. Com tela ampla, câmeras de alta qualidade e bateria duradoura, ele oferece uma experiência completa para navegar, jogar e registrar seus melhores momentos com nitidez e rapidez.",
     "specs": [
-      "Comprimento 1,2m",
-      "Compatível com USB-C e Lightning",
-      "Suporta carregamento rápido",
-      "Resistente e durável"
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "4GB RAM",
+      "128GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
     ],
     "images": [
-      "imagens/cabo-usbc-lightning.png"
-    ],
-    "color": "Branco",
-    "condition": "Novo"
-  },
-  {
-    "id": 11,
-    "name": "Fone de Ouvido Bluetooth H'Maston",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 75,00"
-    },
-    "description": "Fone sem fio com som de alta qualidade e conforto para uso diário.",
-    "specs": [
-      "Conexão Bluetooth 5.0",
-      "Bateria 8h de reprodução",
-      "Microfone integrado",
-      "Design ergonômico"
-    ],
-    "images": [
-      "imagens/fone-bluetooth.png"
-    ],
-    "color": "Preto",
-    "condition": "Novo"
-  },
-  {
-    "id": 12,
-    "name": "Suporte para Celular H'Maston Ajustável",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 30,00"
-    },
-    "description": "Suporte ajustável para celular, ideal para mesa ou bancada.",
-    "specs": [
-      "Ajustável em altura e inclinação",
-      "Material resistente",
-      "Compatível com todos os modelos de celular",
-      "Leve e portátil"
-    ],
-    "images": [
-      "imagens/suporte-celular.png"
+      "imagens/realme-note-60x-1.png",
+      "imagens/realme-note-60x-2.png",
+      "imagens/realme-note-60x-3.png"
     ],
     "color": "Preto",
     "condition": "Novo"
