@@ -36,11 +36,17 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl md:text-4xl font-bold mb-4">Celulares Novos e Seminovos com Garantia</h2>
     <p class="text-xl mb-8">Os melhores preços e condições de pagamento</p>
-    <div class="flex justify-center space-x-4 flex-wrap">
-      <a href="#novos" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition">Ver Novos</a>
-      <a href="#seminovos" class="bg-blue-800 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-900 transition">Ver Seminovos</a>
-      <a href="#acessorios" class="bg-blue-800 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-900 transition">Ver Acessórios</a>
-    </div>
+    <div class="flex flex-col sm:flex-row justify-center sm:space-x-4 space-y-2 sm:space-y-0">
+  <a href="#novos" class="bg-white text-blue-600 px-4 sm:px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition text-center">
+    Ver Novos
+  </a>
+  <a href="#seminovos" class="bg-blue-800 text-white px-4 sm:px-6 py-3 rounded-lg font-bold hover:bg-blue-900 transition text-center">
+    Ver Seminovos
+  </a>
+  <a href="#acessorios" class="bg-blue-800 text-white px-4 sm:px-6 py-3 rounded-lg font-bold hover:bg-blue-900 transition text-center">
+    Ver Acessórios
+  </a>
+</div>
   </div>
 </section>
 
@@ -306,6 +312,7 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
 
 
 
