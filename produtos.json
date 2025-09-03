@@ -4,7 +4,8 @@
     "name": "Realme C75X",
     "category": "Novo",
     "price": {
-      "avista": "R$ 1.189,90"
+      "avista": "R$ 1.189,90",
+      "parcelado": "12x R$ 128,99"
     },
     "description": "O Realme C75X combina desempenho e estilo, oferecendo uma tela ampla, câmeras de alta qualidade e bateria duradoura para uso diário intenso.",
     "specs": [
@@ -31,7 +32,8 @@
     "name": "Realme Note 14S",
     "category": "Novo",
     "price": {
-      "avista": "R$ 1.420,00"
+      "avista": "R$ 1.420,00",
+      "parcelado": "12x R$ 132,50"
     },
     "description": "O Realme Note 14S oferece alto desempenho, tela ampla e câmeras de alta qualidade, garantindo uma experiência completa para uso diário e entretenimento.",
     "specs": [
@@ -78,6 +80,29 @@
     ],
     "color": "Azul",
     "condition": "Excelente estado"
+  },
+  {
+    "id": 4,
+    "name": "Carregador H-Maston",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 45,00"
+    },
+    "description": "Carregador H-Maston com visor digital LCD, ajuste automático e compatibilidade com diversos modelos de bateria. Ideal para uso doméstico ou manutenção técnica.",
+    "specs": [
+      "Compatível com baterias removíveis de modelos 4/4S/5/6 e outros",
+      "Display LCD inteligente mostrando status do carregamento",
+      "Função ajuste automático de polaridade",
+      "Conexão USB para uso em computador ou carregador de parede",
+      "Design compacto, leve e portátil",
+      "Material resistente e seguro"
+    ],
+    "images": [
+      "imagens/carregadorH-Maston1.png",
+      "imagens/carregadorH-Maston2.png"
+    ],
+    "color": "Branco com detalhes azul",
+    "condition": "Novo"
   },
   {
     "id": 5,
@@ -132,7 +157,8 @@
     "name": "Realme Note 60 X",
     "category": "Novo",
     "price": {
-      "avista": "R$ 849,00"
+      "avista": "R$ 849,00",
+      "parcelado": "12x R$ 79,15"
     },
     "description": "O Realme Note 60 X combina desempenho e estilo em um único smartphone. Com tela ampla, câmeras de alta qualidade e bateria duradoura, ele oferece uma experiência completa para navegar, jogar e registrar seus melhores momentos com nitidez e rapidez.",
     "specs": [
@@ -176,6 +202,28 @@
     "color": "Preto",
     "model": "LEF-1023A"
   },
+  {
+    "id": 9,
+    "name": "Hub USB 2.0 Relog’s – 4 Portas",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Amplie a conectividade do seu computador com o Hub USB 2.0 Relog’s, equipado com 4 portas USB para conectar periféricos, pendrives, teclados, mouses e muito mais.",
+    "specs": [
+      "Modelo: R4-03",
+      "Portas: 4 entradas USB 2.0",
+      "Compatibilidade: Windows, macOS, Linux",
+      "Função Plug & Play",
+      "Design compacto e portátil",
+      "Cor: Preto"
+    ],
+    "images": [
+      "imagens/hub_usb_relogs-1.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
+  }
   {
     "id": 10,
     "name": "Caixa de Som α GOLD SM-30A",
@@ -569,4 +617,5 @@
     "condition": "Novo"
   }
 ]
+
 
