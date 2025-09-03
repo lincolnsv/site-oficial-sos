@@ -7,29 +7,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
-/* Preloader */
-#preloader {
-  position: fixed;
-  inset: 0;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.3s ease;
-}
-
-/* Body e gradiente */
 body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior: smooth; }
 
-/* Modal produtos */
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
 .product-modal .modal-content { background: white; border-radius: 1rem; max-width: 95%; width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; position: relative; }
 #modal-main-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 0.5rem; cursor: zoom-in; transition: transform 0.3s ease; }
 
-/* Thumbnails */
 .gallery-thumbnail { width: 60px; height: 60px; object-fit: contain; border-radius: 0.5rem; margin-right: 0.5rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
 .gallery-thumbnail.active { border-color: #2563eb; }
 .gallery-thumbnail:hover { transform: scale(1.05); border-color: #3b82f6; }
@@ -54,6 +39,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 .card-hover { position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
 .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 .card-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.card-animate.visible { opacity: 1; transform: translateY(0); }
 
 /* Scroll to top */
 .scroll-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #2563eb; color: white; padding: 0.5rem 0.75rem; border-radius: 9999px; cursor: pointer; display: none; z-index: 100; transition: transform 0.2s; }
@@ -61,11 +47,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 </style>
 </head>
 <body class="font-sans">
-
-<!-- Preloader -->
-<div id="preloader">
-  <i class="fas fa-spinner fa-spin text-4xl text-blue-600"></i>
-</div>
 
 <!-- Scroll to top -->
 <div class="scroll-to-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></div>
@@ -119,7 +100,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 </section>
 
 <main class="container mx-auto px-4 py-12">
-
   <!-- Novos -->
   <section id="novos" class="mb-16">
     <div class="flex items-center mb-8">
@@ -146,13 +126,12 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accessories-container"></div>
   </section>
-
 </main>
 
 <!-- Modal -->
-<div class="product-modal">
-  <div class="modal-overlay"></div>
-  <div class="modal-content"></div>
+<div class="product-modal" id="productModal">
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-content" id="modalContent"></div>
 </div>
 
 <!-- Contato -->
@@ -210,21 +189,36 @@ let products = [];
 // Menu mobile toggle
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-menuToggle.addEventListener('click',()=> mobileMenu.classList.toggle('show'));
+menuToggle.addEventListener('click', ()=> mobileMenu.classList.toggle('show'));
 
-// Preload imagens (opcional)
-function preloadProductImages(products){
-  products.forEach(p=>{
-    p.images.forEach(src=>{
-      const img = new Image();
-      img.src = src;
-    });
-  });
+// Hero slider
+const heroSlider = document.getElementById('hero-slider');
+let slideIndex = 0;
+document.getElementById('nextSlide').addEventListener('click', ()=> { slideIndex = (slideIndex+1)%3; heroSlider.style.transform = `translateX(-${slideIndex*100}%)`; });
+document.getElementById('prevSlide').addEventListener('click', ()=> { slideIndex = (slideIndex+2)%3; heroSlider.style.transform = `translateX(-${slideIndex*100}%)`; });
+
+// Modal
+const modal = document.getElementById('productModal');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+function openProductModal(p){
+  modalContent.innerHTML = `
+    <h2 class="text-2xl font-bold mb-4">${p.name}</h2>
+    <img src="${p.images[0]}" alt="${p.name}" class="w-full mb-4 rounded" />
+    <p class="mb-2">${p.description}</p>
+    ${p.color?`<p class="mb-2"><strong>Cor:</strong> ${p.color}</p>`:''}
+    ${p.condition?`<p class="mb-2"><strong>Estado:</strong> ${p.condition}</p>`:''}
+    <p class="text-xl font-bold text-blue-600">
+      ${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}
+    </p>
+  `;
+  modal.classList.add('active');
 }
+modalOverlay.addEventListener('click', ()=> modal.classList.remove('active'));
 
 // Carregar produtos
-async function loadProducts(){
-  try{
+async function loadProducts() {
+  try {
     const response = await fetch("produtos.json");
     const data = await response.json();
     products = data.map(p=>{
@@ -233,17 +227,8 @@ async function loadProducts(){
       return p;
     });
     renderProducts(products);
-    preloadProductImages(products);
-
-    // Remove preloader
-    const preloader = document.getElementById('preloader');
-    preloader.style.opacity = 0;
-    setTimeout(()=>preloader.remove(), 300);
   } catch(err){
     console.error("Erro ao carregar produtos.json", err);
-    const preloader = document.getElementById('preloader');
-    preloader.style.opacity = 0;
-    setTimeout(()=>preloader.remove(), 300);
   }
 }
 
