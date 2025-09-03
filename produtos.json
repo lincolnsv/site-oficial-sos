@@ -58,7 +58,7 @@
     "condition": "Novo"
   },
   {
-    "id": 7,
+    "id": 3,
     "name": "Realme Note 60 X",
     "category": "Novo",
     "price": {
@@ -87,7 +87,7 @@
     "condition": "Novo"
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "Redmi 9A",
     "category": "Seminovo",
     "price": {
@@ -159,7 +159,7 @@
     "condition": "Excelente estado"
   },
   {
-    "id": 13,
+    "id": 7,
     "name": "Samsung A13",
     "category": "Seminovo",
     "price": {
@@ -184,7 +184,7 @@
     "condition": "Excelente estado"
   },
   {
-    "id": 15,
+    "id": 8,
     "name": "Adaptadores USB",
     "category": "Acessório",
     "price": {
@@ -205,7 +205,7 @@
     "condition": "Novo"
   },
   {
-    "id": 10,
+    "id": 9,
     "name": "Caixa de Som α GOLD SM-30A",
     "category": "Acessório",
     "price": {
@@ -227,123 +227,271 @@
     "condition": "Novo"
   },
   {
-    "id": 11,
-    "name": "Carregador Veicular B1",
+    "id": 10,
+    "name": "Carregador Veicular Turbo B1 – 4 em 1",
     "category": "Acessório",
     "price": {
       "avista": "R$ 119,90"
     },
-    "description": "Carregador veicular turbo retrátil 4 em 1, projetado para oferecer velocidade, organização e compatibilidade total com seus dispositivos.",
+    "description": "Carregador veicular turbo retrátil 4 em 1, com velocidade, organização e compatibilidade total com seus dispositivos.",
     "specs": [
       "Potência Turbo: 66W com PD e QC",
       "Conexões 4 em 1: USB-C, Lightning, Micro USB e USB padrão",
-      "Cabos Retráteis Inteligentes: recolhem automaticamente",
-      "Display Digital: mostra a voltagem em tempo real",
-      "Rotação de 180º: ajuste o ângulo",
-      "Compatibilidade Universal: iPhone, Samsung, Xiaomi, Motorola, tablets, fones e mais",
-      "Voltagem: 12V/24V (bivolt)",
-      "Material: ABS resistente com acabamento premium",
-      "Segurança: proteção contra sobrecarga, superaquecimento e curto-circuito",
-      "Cor: Cinza prateado com LED multicolorido"
+      "Cabos Retráteis Inteligentes",
+      "Display Digital mostrando voltagem",
+      "Rotação de 180º",
+      "Compatibilidade Universal: iPhone, Samsung, Xiaomi, Motorola, tablets, fones",
+      "Voltagem: 12V/24V",
+      "Material: ABS resistente",
+      "Segurança: proteção contra sobrecarga, superaquecimento e curto-circuito"
     ],
     "images": [
-      "imagens/carregador_veicular_b1-1.png",
-      "imagens/carregador_veicular_b1-2.png"
+      "imagens/carregador_veicular_b1-1.png"
     ],
     "color": "Cinza prateado",
     "condition": "Novo"
   },
   {
-    "id": 8,
-    "name": "Fone Lehmox Caveira",
+    "id": 11,
+    "name": "Power Bank HREBOS PB-955",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 69,90"
+      "avista": "R$ 149,00"
     },
-    "description": "Estilo radical com som potente! Design único em formato de caveira. Som de alta qualidade. Ideal para músicas, games e presença.",
+    "description": "Carregador portátil 10000mAh com design Pop-it, ideal para quem busca potência, versatilidade e personalidade.",
     "specs": [
-      "Som potente e de alta qualidade",
-      "Design único em formato de caveira",
-      "Compatível com PCs, celulares e consoles",
-      "Cabo removível e confortável",
-      "Ideal para jogos e música"
+      "Carregamento rápido: 22.5W Turbo",
+      "Conexões: USB, Tipo-C, Lightning",
+      "Display LED inteligente",
+      "Design Pop-it",
+      "Cor: Branco",
+      "Certificação ANATEL"
     ],
     "images": [
-      "imagens/fone_lehmox_caveira.png"
+      "imagens/powerbank_hrebos-1.png"
     ],
-    "color": "Preto",
-    "model": "LEF-1023A"
+    "color": "Branco",
+    "condition": "Novo"
   },
   {
     "id": 12,
-    "name": "Power Bank HREBOS",
+    "name": "Power Bank PINENG 30.000mAh",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 149,00",
-      "parcelado": "4x R$ 40,00"
+      "avista": "R$ 275,00"
     },
-    "description": "Carregador portátil com design moderno, acabamento branco e detalhes interativos tipo Pop-it, ideal para quem busca potência e estilo.",
+    "description": "Carregador portátil de alta capacidade, ideal para manter vários dispositivos carregados com rapidez e segurança.",
     "specs": [
-      "Capacidade: 10.000mAh – até 3 recargas completas",
-      "Carregamento rápido: 22.5W Turbo – PD e QC",
-      "Conexões: 1 USB, 1 Tipo-C, 1 Lightning",
-      "Display LED inteligente: mostra nível de bateria",
-      "Design Pop-it: textura interativa",
-      "Cor: Branco",
-      "Certificação ANATEL: segurança garantida"
+      "Carga rápida: 22.5W com suporte a PD",
+      "Entradas: Tipo-C, Lightning, Micro USB",
+      "Saídas: 2 portas USB",
+      "Display LED inteligente",
+      "Bateria: polímero de íon-lítio",
+      "Compatibilidade: smartphones, tablets, fones, câmeras",
+      "Design: moderno, compacto e resistente"
     ],
     "images": [
-      "imagens/powerbank_hrebos_pb955-1.png",
-      "imagens/powerbank_hrebos_pb955-2.png"
+      "imagens/powerbank_pineng-1.png"
     ],
-    "color": "Branco",
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
+    "id": 13,
+    "name": "Cabo Adaptador de Áudio IT-BLUE MAX-0302F",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Conecte fones de ouvido e microfones com mais praticidade usando o Cabo Adaptador IT-BLUE MAX-0302F, ideal para notebooks, PCs e dispositivos com entrada separada para áudio e microfone.",
+    "specs": [
+      "Modelo: MAX-0302F",
+      "Conexão: 1 P3 Fêmea para 2 P2 Macho",
+      "Compatibilidade: notebooks, PCs, caixas de som, headsets e mais",
+      "Identificação rápida: conectores coloridos",
+      "Material: cabo flexível e resistente"
+    ],
+    "images": [
+      "imagens/cabo_adaptador_itblue-1.png"
+    ],
+    "color": "Preto",
     "condition": "Novo"
   },
   {
     "id": 14,
-    "name": "Power Bank PINENG",
+    "name": "Fone de Ouvido Estéreo LELONG LE-0240",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 275,00",
-      "parcelado": "6x R$ 48,50"
+      "avista": "R$ 20,00"
     },
-    "description": "Carregador portátil de alta capacidade, ideal para manter vários dispositivos carregados com rapidez e segurança.",
+    "description": "Desfrute de uma experiência sonora envolvente com o Fone de Ouvido Estéreo LELONG LE-0240, ideal para quem busca qualidade, conforto e estilo no dia a dia.",
     "specs": [
-      "Capacidade: 30.000mAh – 6 a 9 cargas completas",
-      "Carga rápida: 22.5W PD",
-      "Entradas: Tipo-C, Lightning, Micro USB",
-      "Saídas: 2 portas USB simultâneas",
-      "Display LED inteligente",
-      "Bateria: polímero de íon-lítio",
-      "Compatibilidade: smartphones, tablets, fones, câmeras",
-      "Design moderno, compacto e resistente"
+      "Modelo: LE-0240",
+      "Tipo: Fone de ouvido estéreo com fio",
+      "Graves extras",
+      "Design ergonômico",
+      "Compatível com celulares, tablets, notebooks",
+      "Cor: Preto"
     ],
     "images": [
-      "imagens/powerbank_pineng_30000-1.png",
-      "imagens/powerbank_pineng_30000-2.png"
+      "imagens/fone_lelong_le0240-1.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
+    "id": 15,
+    "name": "Carregador Veicular LEVMOX LE-156",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Carregador veicular rápido e seguro, compatível com PD e QC.",
+    "specs": [
+      "Modelo: LE-156",
+      "Potência de saída: 20W",
+      "Chip inteligente: proteção contra sobrecarga, superaquecimento e curto-circuito",
+      "Material: plástico retardante de chama",
+      "Conector USB com LED azul",
+      "Certificação ANATEL",
+      "Compatibilidade: smartphones, tablets, GPS, fones"
+    ],
+    "images": [
+      "imagens/carregador_veicular_levmox-1.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
+    "id": 16,
+    "name": "Adaptador Lightning para P2 LEHMOX LEY-234",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Conecte seus fones de ouvido tradicionais com qualidade máxima usando o Adaptador LEHMOX LEY-234, ideal para dispositivos Apple com entrada Lightning.",
+    "specs": [
+      "Modelo: LEY-234",
+      "Função: Converte Lightning para entrada P2 (3.5mm)",
+      "Compatibilidade: iPhone, iPad e outros dispositivos com porta Lightning",
+      "Qualidade sonora: áudio digital sem perdas",
+      "Chip inteligente: alta fidelidade",
+      "Material: alta resistência",
+      "Design: leve e portátil"
+    ],
+    "images": [
+      "imagens/adaptador_lehmox_ley234-1.png"
     ],
     "color": "Branco",
     "condition": "Novo"
   },
   {
-    "id": 16,
-    "name": "Hub USB 2.0 Relog’s",
+    "id": 17,
+    "name": "Receptor de Música Sem Fio DANAT",
     "category": "Acessório",
     "price": {
       "avista": "R$ 25,00"
     },
-    "description": "Hub USB 2.0 Relog’s com 4 portas, compacto e portátil. Ideal para conectar periféricos, pendrives, teclados e mouses com praticidade e segurança.",
+    "description": "Transforme qualquer caixa de som ou aparelho com entrada auxiliar em um dispositivo Bluetooth com o Receptor de Música Sem Fio DANAT.",
     "specs": [
-      "Modelo: R4-03",
-      "Marca: Relog’s",
-      "Portas: 4 entradas USB 2.0",
-      "Compatibilidade: Windows, macOS, Linux",
-      "Função Plug & Play: sem necessidade de drivers",
-      "Cor: Preto",
-      "Design: compacto e portátil"
+      "Modelo: 09641-22-14258",
+      "Função: transforma aparelhos com entrada P2 em receptores Bluetooth",
+      "Alimentação: via USB",
+      "Conexão de áudio: cabo P2 incluso",
+      "Alcance: até 10 metros",
+      "Compatibilidade: smartphones, tablets, notebooks",
+      "Design compacto e leve",
+      "Instalação plug & play"
     ],
     "images": [
-      "imagens/hub_usb_relogs-1.png",
+      "imagens/receptor_danat-1.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
+    "id": 18,
+    "name": "Carregador Universal LCD USB",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Carregue baterias de celulares com praticidade usando o Carregador Universal LCD USB.",
+    "specs": [
+      "Tipo: carregador universal com visor LCD",
+      "Compatibilidade: modelos 4/4S/5/6",
+      "Conexão USB",
+      "Display LCD mostrando status",
+      "Função inteligente: ajuste automático de polaridade",
+      "Design compacto e leve",
+      "Cor: Branco com detalhes azul"
+    ],
+    "images": [
+      "imagens/carregador_universal_lcd-1.png"
+    ],
+    "color": "Branco com detalhes azul",
+    "condition": "Novo"
+  },
+  {
+    "id": 19,
+    "name": "Fone de Ouvido EarX Lightning",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Experimente som de qualidade com o Fone de Ouvido EarX, desenvolvido especialmente para dispositivos Apple com entrada Lightning.",
+    "specs": [
+      "Modelo: LE-0240",
+      "Conector: Lightning",
+      "Som estéreo com graves reforçados",
+      "Microfone embutido",
+      "Compatível com iOS 15+",
+      "Design moderno, leve e confortável"
+    ],
+    "images": [
+      "imagens/fone_earx_lightning-1.png"
+    ],
+    "color": "Branco",
+    "condition": "Novo"
+  },
+  {
+    "id": 20,
+    "name": "Cabos Micro USB KMASTON – Supercarga 4.8A",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Garanta carregamento rápido e seguro com os Cabos Micro USB KMASTON.",
+    "specs": [
+      "Modelos: α:GOLD CB1 2.1A – 1 metro | Supercarga",
+      "KMASTON 4.8A MAX (2×2.4A) – 1 metro | Supercarga",
+      "Supercarga super rápida",
+      "Material resistente evitando quebras",
+      "Compatibilidade: Android, power banks, carregadores"
+    ],
+    "images": [
+      "imagens/cabos_kmaston-1.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
+    "id": 21,
+    "name": "Hub USB 2.0 Relog’s – 4 Portas",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Amplie a conectividade do seu computador com o Hub USB 2.0 Relog’s, equipado com 4 portas USB para conectar periféricos, pendrives, teclados, mouses e muito mais.",
+    "specs": [
+      "Modelo: R4-03",
+      "Portas: 4 entradas USB 2.0",
+      "Compatibilidade: Windows, macOS, Linux",
+      "Função Plug & Play",
+      "Design compacto e portátil",
+      "Cor: Preto"
+    ],
+    "images": [
       "imagens/hub_usb_relogs-2.png"
     ],
     "color": "Preto",
