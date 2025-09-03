@@ -194,8 +194,27 @@ menuToggle.addEventListener('click', ()=> mobileMenu.classList.toggle('show'));
 // Hero slider
 const heroSlider = document.getElementById('hero-slider');
 let slideIndex = 0;
-document.getElementById('nextSlide').addEventListener('click', ()=> { slideIndex = (slideIndex+1)%3; heroSlider.style.transform = `translateX(-${slideIndex*100}%)`; });
-document.getElementById('prevSlide').addEventListener('click', ()=> { slideIndex = (slideIndex+2)%3; heroSlider.style.transform = `translateX(-${slideIndex*100}%)`; });
+
+function showSlide(index){
+  heroSlider.style.transform = `translateX(-${index*100}%)`;
+}
+
+document.getElementById('nextSlide').addEventListener('click', ()=> { 
+  slideIndex = (slideIndex+1) % 3; 
+  showSlide(slideIndex);
+});
+
+document.getElementById('prevSlide').addEventListener('click', ()=> { 
+  slideIndex = (slideIndex+2) % 3; 
+  showSlide(slideIndex);
+});
+
+// Troca automática
+setInterval(()=> {
+  slideIndex = (slideIndex+1) % 3;
+  showSlide(slideIndex);
+}, 5000);
+
 
 // Modal
 const modal = document.getElementById('productModal');
@@ -298,3 +317,4 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 </body>
 </html>
+
