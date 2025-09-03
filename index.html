@@ -235,6 +235,22 @@ function renderProducts(products){
       `;
       container.appendChild(card);
     });
+
+    if(produtosCat.length>3){
+      const verMaisCard=document.createElement('div');
+      verMaisCard.className='col-span-full flex justify-center mt-4';
+      const verMaisBtn=document.createElement('button');
+      verMaisBtn.className='bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition';
+      verMaisBtn.textContent='Ver Mais';
+      verMaisCard.appendChild(verMaisBtn);
+      container.appendChild(verMaisCard);
+
+      verMaisBtn.addEventListener('click',()=>{
+        const hiddenCards=Array.from(container.children).filter(c=>c!==verMaisCard&&c.style.display==='none');
+        if(hiddenCards.length>0){ hiddenCards.forEach(c=>c.style.display='block'); verMaisBtn.textContent='Ver Menos'; }
+        else{ Array.from(container.children).forEach((c,i)=>{ if(c!==verMaisCard) c.style.display=i<3?'block':'none'; }); verMaisBtn.textContent='Ver Mais'; }
+      });
+    }
   });
 
   // Fade-in
@@ -252,4 +268,5 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
 
