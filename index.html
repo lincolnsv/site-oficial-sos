@@ -261,10 +261,11 @@ function renderProducts(products){
           <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
           <p class="text-gray-600 text-sm mb-2">${p.description}</p>
           ${p.color?`<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>`:''}
-          ${p.condition?`<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>`:''}
-          <p class="text-xl font-bold text-blue-600">${typeof p.price==='object'?`À vista: ${p.price.avista || ''}${p.price.parcelado?` / Parcelado: ${p.price.parcelado}`:''}`:p.price}</p>
-        </div>
-      `;
+          ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
+<p class="text-xl font-bold text-blue-600">
+  ${typeof p.price === 'object' ? `À vista: ${p.price.avista || ''}${p.price.parcelado ? `<br>Parcelado: ${p.price.parcelado}` : ''}` : p.price}
+</p>
+
 
       card.querySelector('button').addEventListener('click',()=>openProductModal(p));
       container.appendChild(card);
@@ -301,3 +302,4 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 </body>
 </html>
+
