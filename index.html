@@ -231,20 +231,25 @@ function openProductModal(product) {
     `;
   }
 
-  // Conteúdo do modal
+  // Conteúdo inicial do modal
   modalContent.innerHTML = `
     <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
     <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
     <img src="${product.images[0]}" alt="${product.name}" class="w-full mb-4 rounded"/>
     <p class="mb-2">${product.description}</p>
     ${variationOptions}
+    <div id="specsContainer" class="mb-2">
+      ${product.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
+    </div>
     <p id="variationPrice" class="text-xl font-bold text-blue-600">
-      ${typeof product.price === 'object' ? `À vista: ${product.price.avista} / Parcelado: ${product.price.parcelado}` : product.price}
+      ${typeof product.price === 'object' ? `À vista: ${product.price.avista}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}` : product.price}
     </p>
     <button id="whatsappBtn" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
   `;
 
   let selectedVariation = null;
+  const specsContainer = modalContent.querySelector('#specsContainer');
+  const variationPrice = modalContent.querySelector('#variationPrice');
 
   // Seleção de variações
   const variationButtons = modalContent.querySelectorAll('#variationButtons button');
@@ -254,15 +259,22 @@ function openProductModal(product) {
       btn.classList.add('bg-blue-500', 'text-white');
       const index = btn.getAttribute('data-index');
       selectedVariation = product.variations[index];
+
+      // Atualiza preço
       variationPrice.textContent = `À vista: ${selectedVariation.price.avista}${selectedVariation.price.parcelado ? ` / Parcelado: ${selectedVariation.price.parcelado}` : ''}`;
+
+      // Atualiza especificações
+      specsContainer.innerHTML = selectedVariation.specs 
+        ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${selectedVariation.specs.map(s => `<li>${s}</li>`).join('')}</ul>` 
+        : '';
     });
   });
 
-  // Botão WhatsApp mantendo sua mensagem original
+  // Botão WhatsApp mantém a sua mensagem original
   document.getElementById('whatsappBtn').addEventListener('click', () => {
     const name = "Seu Nome"; // opcional: pegar do usuário
     const p = selectedVariation || product;
-    const priceText = typeof p.price === 'object' ? `${p.price.avista || ''}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
+    const priceText = typeof p.price === 'object' ? `${p.price.avista}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
     const msg = encodeURIComponent(
       `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
     );
@@ -387,6 +399,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
