@@ -274,7 +274,9 @@
       "Sistema Android com interface Samsung One UI"
     ],
     "images": [
-      "imagens/samsung_a13-1.png"
+      "imagens/samsung_triple_camera-1.png",
+      "imagens/samsung_triple_camera-2.png",
+      "imagens/samsung_triple_camera-3.png"
     ],
     "color": "Branco"
   },
@@ -498,25 +500,6 @@
       "imagens/hub_usb_relogs-2.png"
     ],
     "color": "Preto"
-  },
-  {
-    "id": 24,
-    "name": "Smartphone Samsung – Tripla Câmera | Branco",
-    "category": "Seminovo",
-    "price": {
-      "avista": "R$ 600,00"
-    },
-    "description": "Desempenho confiável, visual moderno e excelente custo-benefício.",
-    "specs": [
-      "RAM 4GB",
-      "Câmera traseira tripla",
-      "Flash LED",
-      "Tela Super AMOLED",
-      "Sistema Android com interface Samsung One UI"
-    ],
-    "images": [
-      "imagens/samsung_triple_camera-1.png"
-    ],
-    "color": "Branco"
   }
 ]
+
