@@ -230,6 +230,7 @@ function openProductModal(product) {
       </div>
     `;
   }
+  
 
   // Conteúdo inicial do modal
   modalContent.innerHTML = `
@@ -356,6 +357,16 @@ function renderProducts(products) {
             : `<p class="text-xl font-bold text-blue-600">${p.price}</p>`}
         </div>
       `;
+      // Troca de imagens dentro do card
+if (p.images.length > 1) {
+  let imgIndex = 0;
+  const imgTag = card.querySelector('img');
+  setInterval(() => {
+    imgIndex = (imgIndex + 1) % p.images.length;
+    imgTag.src = p.images[imgIndex];
+  }, 2000); // troca a cada 2 segundos
+}
+
 
       card.querySelector('button').addEventListener('click', () => openProductModal(p));
       container.appendChild(card);
@@ -399,6 +410,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
