@@ -14,8 +14,9 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
 .product-modal .modal-content { background: white; border-radius: 1rem; max-width: 95%; width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; position: relative; }
-#modal-main-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 0.5rem; cursor: zoom-in; transition: transform 0.3s ease; }
 
+/* Gallery thumbnails */
+#modal-main-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 0.5rem; cursor: zoom-in; transition: transform 0.3s ease; }
 .gallery-thumbnail { width: 60px; height: 60px; object-fit: contain; border-radius: 0.5rem; margin-right: 0.5rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
 .gallery-thumbnail.active { border-color: #2563eb; }
 .gallery-thumbnail:hover { transform: scale(1.05); border-color: #3b82f6; }
@@ -45,9 +46,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 /* Scroll to top */
 .scroll-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #2563eb; color: white; padding: 0.5rem 0.75rem; border-radius: 9999px; cursor: pointer; display: none; z-index: 100; transition: transform 0.2s; }
 .scroll-to-top:hover { transform: scale(1.1); }
-
-/* Travar scroll quando modal aberto */
-body.modal-open { overflow: hidden; }
 </style>
 </head>
 <body class="font-sans">
@@ -75,7 +73,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </header>
 
-<!-- Hero com Carrossel -->
+<!-- Hero -->
 <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
   <div class="container mx-auto px-4 text-center relative">
     <div class="overflow-hidden relative max-w-4xl mx-auto">
@@ -135,16 +133,7 @@ body.modal-open { overflow: hidden; }
 <!-- Modal -->
 <div class="product-modal" id="productModal">
   <div class="modal-overlay" id="modalOverlay"></div>
-  <div class="modal-content">
-    <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-2xl">
-      <i class="fas fa-times"></i>
-    </button>
-    <div id="modalInner"></div>
-    <a id="whatsappBtn" target="_blank"
-       class="mt-6 w-full bg-green-500 text-white py-2 px-4 rounded-lg inline-block text-center hover:bg-green-600 transition">
-      Enviar para WhatsApp
-    </a>
-  </div>
+  <div class="modal-content" id="modalContent"></div>
 </div>
 
 <!-- Contato -->
@@ -199,7 +188,7 @@ body.modal-open { overflow: hidden; }
 <script>
 let products = [];
 
-// Menu mobile toggle
+// Menu mobile
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 menuToggle.addEventListener('click', ()=> mobileMenu.classList.toggle('show'));
@@ -213,61 +202,39 @@ document.getElementById('prevSlide').addEventListener('click', ()=> { slideIndex
 // Modal
 const modal = document.getElementById('productModal');
 const modalOverlay = document.getElementById('modalOverlay');
-const modalInner = document.getElementById('modalInner');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const whatsappBtn = document.getElementById('whatsappBtn');
+const modalContent = document.getElementById('modalContent');
 
 function openProductModal(p) {
-  modalInner.innerHTML = `
+  modalContent.innerHTML = `
     <h2 class="text-2xl font-bold mb-4">${p.name}</h2>
     <img src="${p.images[0]}" alt="${p.name}" class="w-full mb-4 rounded" />
     <p class="mb-2">${p.description}</p>
+    ${p.specs ? `<div class="mb-2"><strong>Especificações:</strong><ul class="list-disc list-inside text-gray-700">${Object.entries(p.specs).map(([key,value])=>`<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul></div>` : ""}
     ${p.color ? `<p class="mb-2"><strong>Cor:</strong> ${p.color}</p>` : ""}
     ${p.condition ? `<p class="mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ""}
     <p class="text-xl font-bold text-blue-600">
       ${typeof p.price === "object" ? `<strong>À vista:</strong> ${p.price.avista || ""}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ""}` : p.price}
     </p>
+    <a id="whatsappBtn" href="#" target="_blank" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Comprar pelo WhatsApp</a>
   `;
-  const msg = `Olá! Tenho interesse no produto: ${p.name}.`;
-  whatsappBtn.href = `https://wa.me/5564999518536?text=${encodeURIComponent(msg)}`;
   modal.classList.add("active");
-  document.body.classList.add("modal-open");
 }
 
-closeModalBtn.addEventListener("click", () => {
-  modal.classList.remove("active");
-  document.body.classList.remove("modal-open");
-});
-modalOverlay.addEventListener("click", () => {
-  modal.classList.remove("active");
-  document.body.classList.remove("modal-open");
-});
+// Fechar modal
+modalOverlay.addEventListener("click", () => modal.classList.remove("active"));
 
-// Função para pré-carregar imagens
-function preloadImages(urls) {
-  return Promise.all(
-    urls.map(src => new Promise(resolve => {
-      const img = new Image();
-      img.src = src;
-      img.onload = resolve;
-      img.onerror = resolve;
-    }))
-  );
-}
+// Pré-carregar imagens
+function preloadImages(urls){ return Promise.all(urls.map(src=>new Promise(resolve=>{const img=new Image(); img.src=src; img.onload=resolve; img.onerror=resolve;})));}
 
 // Carregar produtos
-async function loadProducts() {
-  try {
-    const response = await fetch("produtos.json");
-    const data = await response.json();
-    products = data.map(p => {
-      if (!p.category) p.category = "Acessório";
-      if (!p.images || p.images.length === 0) p.images = ["imagens/default.png"];
-      return p;
-    });
-    await preloadImages(products.flatMap(p => p.images));
+async function loadProducts(){
+  try{
+    const response=await fetch("produtos.json");
+    const data=await response.json();
+    products=data.map(p=>{if(!p.category)p.category="Acessório"; if(!p.images||p.images.length===0)p.images=["imagens/default.png"]; return p;});
+    const allImages=products.flatMap(p=>p.images); await preloadImages(allImages);
     renderProducts(products);
-  } catch(err) { console.error("Erro ao carregar produtos.json", err); }
+  }catch(err){ console.error("Erro ao carregar produtos.json",err);}
 }
 
 // Renderizar produtos
@@ -276,11 +243,12 @@ function renderProducts(products){
   const usedC=document.getElementById('used-phones-container');
   const accC=document.getElementById('accessories-container');
   newC.innerHTML=usedC.innerHTML=accC.innerHTML='';
-
   const categories={"Novo":newC,"Seminovo":usedC,"Acessório":accC};
+
   Object.keys(categories).forEach(cat=>{
     const container=categories[cat];
     const produtosCat=products.filter(p=>p.category===cat);
+
     produtosCat.forEach((p,index)=>{
       const card=document.createElement('div');
       card.className='group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer card-hover card-animate';
@@ -289,67 +257,46 @@ function renderProducts(products){
         <div class="relative h-48 bg-gray-100 flex items-center justify-center p-4 overflow-hidden">
           <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
           <button class="absolute inset-0 flex items-center justify-center bg-black/60 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition"
-            onclick='openProductModal(${JSON.stringify(p).replace(/'/g,"&#39;")})'>
-            Ver Produto
-          </button>
+            onclick='openProductModal(${JSON.stringify(p).replace(/'/g,"&#39;")})'>Ver Produto</button>
         </div>
         <div class="p-4">
           <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
           <p class="text-gray-600 text-sm mb-2">${p.description}</p>
-          ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
-          ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
-          <p class="text-xl font-bold text-blue-600">
-            ${typeof p.price === 'object'
-              ? `<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
-              : p.price}
-          </p>
+          ${p.specs ? `<ul class="text-gray-600 text-sm mb-2 list-disc list-inside">${Object.entries(p.specs).map(([k,v])=>`<li><strong>${k}:</strong> ${v}</li>`).join('')}</ul>` : ""}
+          ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ""}
+          ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ""}
+          <p class="text-xl font-bold text-blue-600">${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista||''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}</p>
         </div>
       `;
       container.appendChild(card);
     });
 
-    // Botão "Ver Mais / Ver Menos"
-    if(produtosCat.length > 3){
-      const verMaisCard = document.createElement('div');
-      verMaisCard.className = 'col-span-full flex justify-center mt-4';
-      const verMaisBtn = document.createElement('button');
-      verMaisBtn.className = 'bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition';
-      verMaisBtn.textContent = 'Ver Mais';
+    if(produtosCat.length>3){
+      const verMaisCard=document.createElement('div');
+      verMaisCard.className='col-span-full flex justify-center mt-4';
+      const verMaisBtn=document.createElement('button');
+      verMaisBtn.className='bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition';
+      verMaisBtn.textContent='Ver Mais';
       verMaisCard.appendChild(verMaisBtn);
       container.appendChild(verMaisCard);
 
-      verMaisBtn.addEventListener('click', ()=>{
-        const hiddenCards = Array.from(container.children).filter(c => c !== verMaisCard && c.style.display === 'none');
-        if(hiddenCards.length > 0){
-          hiddenCards.forEach(c => c.style.display = 'block');
-          verMaisBtn.textContent = 'Ver Menos';
-        } else {
-          Array.from(container.children).forEach((c,i)=>{
-            if(c !== verMaisCard) c.style.display = i < 3 ? 'block' : 'none';
-          });
-          verMaisBtn.textContent = 'Ver Mais';
-        }
+      verMaisBtn.addEventListener('click',()=>{
+        const hiddenCards=Array.from(container.children).filter(c=>c!==verMaisCard&&c.style.display==='none');
+        if(hiddenCards.length>0){ hiddenCards.forEach(c=>c.style.display='block'); verMaisBtn.textContent='Ver Menos'; }
+        else{ Array.from(container.children).forEach((c,i)=>{ if(c!==verMaisCard) c.style.display=i<3?'block':'none'; }); verMaisBtn.textContent='Ver Mais'; }
       });
     }
   });
 
-  // Fade-in das animações
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold: 0.1});
-
-  document.querySelectorAll('.card-animate').forEach(card => observer.observe(card));
+  // Fade-in
+  const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });},{threshold:0.1});
+  document.querySelectorAll('.card-animate').forEach(card=>observer.observe(card));
 }
 
 // Scroll to top
-const scrollBtn = document.getElementById('scrollTopBtn');
-window.addEventListener('scroll', ()=>{ scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
-scrollBtn.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+const scrollBtn=document.getElementById('scrollTopBtn');
+window.addEventListener('scroll',()=>{ scrollBtn.style.display=window.scrollY>300?'block':'none'; });
+scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
