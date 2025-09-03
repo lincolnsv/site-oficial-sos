@@ -206,6 +206,11 @@ function openProductModal(product){
     <p class="text-xl font-bold text-blue-600">${typeof product.price==='object'?`À vista: ${product.price.avista || ''}${product.price.parcelado?` / Parcelado: ${product.price.parcelado}`:''}`:product.price}</p>
     <a href="https://wa.me/5564999518536?text=${encodeURIComponent(`Olá! Tenho interesse no produto: ${product.name}`)}" target="_blank" class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar / WhatsApp</a>
   `;
+// Fechar modal ao clicar no X
+  document.getElementById('closeModal').addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
   modal.classList.add('active');
 }
 
@@ -312,6 +317,7 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 </body>
 </html>
+
 
 
 
