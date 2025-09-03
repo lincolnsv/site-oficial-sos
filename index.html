@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
 body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior: smooth; }
+
+/* Modal */
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
@@ -25,15 +27,25 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 .scroll-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #2563eb; color: white; padding: 0.5rem 0.75rem; border-radius: 9999px; cursor: pointer; display: none; z-index: 100; transition: transform 0.2s; }
 .scroll-to-top:hover { transform: scale(1.1); }
 
-/* Cards chamativos */
+/* Cards */
 .card-hover { position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
 .card-hover:hover { transform: translateY(-10px); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
 .card-hover .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; }
 .card-hover:hover .overlay { opacity: 1; }
 .card-hover .overlay button { background: #2563eb; color: #fff; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: bold; cursor: pointer; }
-
 .card-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.card-animate.visible { opacity: 1; transform: translateY(0); }
+
+/* Mobile Menu */
+.mobile-menu { position: fixed; top: 0; left: -100%; width: 70%; max-width: 300px; height: 100%; background: #2563eb; color: white; transition: left 0.3s ease; z-index: 100; padding: 2rem 1rem; }
+.mobile-menu.active { left: 0; }
+.mobile-menu a { display: block; margin-bottom: 1rem; font-weight: bold; color: white; }
+.mobile-menu-close { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; cursor: pointer; }
+
+.menu-overlay { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.5); z-index: 90; }
+.menu-overlay.active { display: block; }
+
+.menu-button { display: none; font-size: 1.5rem; cursor: pointer; }
+@media(max-width:640px){ .menu-button{ display:block; } nav { display:none; } }
 </style>
 </head>
 <body class="font-sans">
@@ -43,18 +55,29 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 
 <!-- Header -->
 <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
-  <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between">
-    <a href="#"><img src="imagens/logo.png" alt="Logo S.O.S Celulares" class="h-40 w-auto mb-2 sm:mb-0" /></a>
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="#"><img src="imagens/logo.png" alt="Logo S.O.S Celulares" class="h-36 w-auto" /></a>
     <nav class="space-x-4">
       <a href="#novos" class="hover:underline font-bold">Novos</a>
       <a href="#seminovos" class="hover:underline font-bold">Seminovos</a>
       <a href="#acessorios" class="hover:underline font-bold">Acessórios</a>
       <a href="#contato" class="hover:underline font-bold">Contato</a>
     </nav>
+    <div class="menu-button" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
   </div>
 </header>
 
-<!-- Hero com Carrossel -->
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-close" id="mobileMenuClose">&times;</div>
+  <a href="#novos" onclick="closeMobileMenu()">Novos</a>
+  <a href="#seminovos" onclick="closeMobileMenu()">Seminovos</a>
+  <a href="#acessorios" onclick="closeMobileMenu()">Acessórios</a>
+  <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+</div>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- Hero -->
 <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
   <div class="container mx-auto px-4 text-center relative">
     <div class="overflow-hidden relative max-w-4xl mx-auto">
@@ -68,9 +91,9 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
           <p class="text-xl md:text-2xl">Descontos exclusivos em modelos selecionados</p>
         </div>
         <div class="min-w-full text-center px-4 py-10">
-      <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Visite Nossa Loja Física</h2>
-      <p class="text-xl md:text-2xl">Todos os produtos disponíveis para visualização no site e pedidos via WhatsApp</p>
-      </div>
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Visite Nossa Loja Física</h2>
+          <p class="text-xl md:text-2xl">Todos os produtos disponíveis para visualização no site e pedidos via WhatsApp</p>
+        </div>
       </div>
       <button id="prevSlide" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
         <i class="fas fa-chevron-left text-blue-600"></i>
@@ -169,25 +192,27 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 </footer>
 
 <script>
-let products = [];
+let products=[];
 
-// Carregar produtos
-async function loadProducts() {
-  try {
-    const response = await fetch("produtos.json");
-    const data = await response.json();
-    products = data.map(p=>{
-      if(!p.category) p.category="Acessório";
-      if(!p.images || p.images.length===0) p.images=["imagens/default.png"];
-      return p;
-    });
+// Mobile Menu
+const mobileMenu=document.getElementById('mobileMenu');
+const menuOverlay=document.getElementById('menuOverlay');
+document.getElementById('mobileMenuBtn').addEventListener('click',()=>{ mobileMenu.classList.add('active'); menuOverlay.classList.add('active'); });
+document.getElementById('mobileMenuClose').addEventListener('click',closeMobileMenu);
+menuOverlay.addEventListener('click',closeMobileMenu);
+function closeMobileMenu(){ mobileMenu.classList.remove('active'); menuOverlay.classList.remove('active'); }
+
+// Load products
+async function loadProducts(){
+  try{
+    const res=await fetch('produtos.json');
+    const data=await res.json();
+    products=data.map(p=>{ if(!p.category)p.category='Acessório'; if(!p.images||p.images.length===0)p.images=['imagens/default.png']; return p; });
     renderProducts(products);
-  } catch(err){
-    console.error("Erro ao carregar produtos.json", err);
-  }
+  }catch(err){ console.error('Erro ao carregar produtos.json',err); }
 }
 
-// Renderizar produtos
+// Render products
 function renderProducts(products){
   const newC=document.getElementById('new-phones-container');
   const usedC=document.getElementById('used-phones-container');
@@ -195,11 +220,9 @@ function renderProducts(products){
   newC.innerHTML=usedC.innerHTML=accC.innerHTML='';
 
   const categories={"Novo":newC,"Seminovo":usedC,"Acessório":accC};
-
   Object.keys(categories).forEach(cat=>{
     const container=categories[cat];
     const produtosCat=products.filter(p=>p.category===cat);
-
     produtosCat.forEach((p,index)=>{
       const card=document.createElement('div');
       card.className='bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer card-hover card-animate';
@@ -218,7 +241,6 @@ function renderProducts(products){
           </p>
         </div>
       `;
-
       const overlay=document.createElement('div');
       overlay.className='overlay';
       const btnOverlay=document.createElement('button');
@@ -226,10 +248,8 @@ function renderProducts(products){
       btnOverlay.addEventListener('click',()=>openProductModal(p));
       overlay.appendChild(btnOverlay);
       card.appendChild(overlay);
-
       container.appendChild(card);
     });
-
     if(produtosCat.length>3){
       const verMaisCard=document.createElement('div');
       verMaisCard.className='col-span-full flex justify-center mt-4';
@@ -238,42 +258,33 @@ function renderProducts(products){
       verMaisBtn.textContent='Ver Mais';
       verMaisCard.appendChild(verMaisBtn);
       container.appendChild(verMaisCard);
-
       verMaisBtn.addEventListener('click',()=>{
         const hiddenCards=Array.from(container.children).filter(c=>c!==verMaisCard&&c.style.display==='none');
         if(hiddenCards.length>0){ hiddenCards.forEach(c=>c.style.display='block'); verMaisBtn.textContent='Ver Menos'; }
-        else{ Array.from(container.children).forEach((c,i)=>{ if(c!==verMaisCard) c.style.display=i<3?'block':'none'; }); verMaisBtn.textContent='Ver Mais'; }
+        else{ Array.from(container.children).forEach((c,i)=>{ if(c!==verMaisCard)c.style.display=i<3?'block':'none'; }); verMaisBtn.textContent='Ver Mais'; }
       });
     }
   });
-
-  // Fade-in
   const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });},{threshold:0.1});
   document.querySelectorAll('.card-animate').forEach(card=>observer.observe(card));
 }
 
-// Modal
+// Product Modal
 function openProductModal(product){
   const modal=document.querySelector('.product-modal');
   const modalContent=modal.querySelector('.modal-content');
   let zoomed=false;
-
   function showImage(index){
     const mainImage=modalContent.querySelector('#modal-main-image');
     mainImage.src=product.images[index];
-    zoomed=false;
-    mainImage.style.transform="scale(1)";
-    mainImage.style.cursor="zoom-in";
+    zoomed=false; mainImage.style.transform="scale(1)"; mainImage.style.cursor="zoom-in";
     modalContent.querySelectorAll('.gallery-thumbnail').forEach((t,i)=>t.classList.toggle('active',i===index));
   }
-
   modalContent.innerHTML=`
     <button id="modal-close-btn" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl font-bold">&times;</button>
     <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
     <img id="modal-main-image" src="${product.images[0]}" class="mb-4 rounded-lg shadow-md">
-    <div class="flex space-x-2 overflow-x-auto mb-4 pb-2">
-      ${product.images.map((img,i)=>`<img src="${img}" class="gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
-    </div>
+    <div class="flex space-x-2 overflow-x-auto mb-4 pb-2">${product.images.map((img,i)=>`<img src="${img}" class="gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}</div>
     <p class="text-gray-600 mb-2">${product.description}</p>
     ${product.color?`<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>`:''}
     ${product.condition?`<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>`:''}
@@ -281,19 +292,16 @@ function openProductModal(product){
     <p class="text-xl font-bold text-blue-600 mb-4">${typeof product.price==='object'?`<strong>À vista:</strong> ${product.price.avista||''}${product.price.parcelado?`<br><strong>Parcelado:</strong> ${product.price.parcelado}`:''}`:product.price}</p>
     <button id="whatsapp-btn" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Enviar via WhatsApp</button>
   `;
-
   modalContent.querySelector('#modal-close-btn').addEventListener('click',()=>modal.classList.remove('active'));
   const mainImage=modalContent.querySelector('#modal-main-image');
   mainImage.addEventListener('click',()=>{ zoomed=!zoomed; mainImage.style.transform=zoomed?"scale(2)":"scale(1)"; mainImage.style.cursor=zoomed?"zoom-out":"zoom-in"; });
   modalContent.querySelectorAll('.gallery-thumbnail').forEach((t,i)=>t.addEventListener('click',()=>showImage(i)));
   modalContent.querySelector('#whatsapp-btn').addEventListener('click',()=>{
-    const name=prompt("Olá! Qual o seu nome?");
-    if(!name) return;
+    const name=prompt("Olá! Qual o seu nome?"); if(!name) return;
     const priceText=typeof product.price==='object'?product.price.avista:product.price;
     const msg=encodeURIComponent(`Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\n\nTenho interesse no seguinte produto:\n📱 Produto: ${product.name}\n${product.color?`🎨 Cor: ${product.color}\n`:''}${product.condition?`🛠️ Estado: ${product.condition}\n`:''}💰 Preço: ${priceText}\n\nGostaria de receber mais informações e verificar disponibilidade.`);
     window.open(`https://wa.me/5564999518536?text=${msg}`,'_blank');
   });
-
   modal.classList.add('active');
   modal.querySelector('.modal-overlay').addEventListener('click',()=>modal.classList.remove('active'));
 }
@@ -317,4 +325,3 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
-
