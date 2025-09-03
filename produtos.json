@@ -260,7 +260,7 @@
   },
   {
     "id": 12,
-    "name": "Smartphone Samsung A13",
+    "name": "Samsung A13",
     "category": "Seminovo",
     "price": {
       "avista": "R$ 600,00"
@@ -503,5 +503,6 @@
     "color": "Preto"
   }
 ]
+
 
 
