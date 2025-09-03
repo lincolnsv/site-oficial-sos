@@ -8,6 +8,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
 body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior: smooth; }
+
+/* Loading spinner */
+#preloader {
+  position: fixed; inset:0; background:white; display:flex;
+  justify-content:center; align-items:center; z-index:9999; transition: opacity 0.3s ease;
+}
+#preloader.hidden { opacity:0; pointer-events:none; }
+
+/* Product modal */
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
@@ -16,10 +25,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 .gallery-thumbnail { width: 60px; height: 60px; object-fit: contain; border-radius: 0.5rem; margin-right: 0.5rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
 .gallery-thumbnail.active { border-color: #2563eb; }
 .gallery-thumbnail:hover { transform: scale(1.05); border-color: #3b82f6; }
-@media (max-width: 640px) {
-  .gallery-thumbnail { width: 50px; height: 50px; margin-right: 0.25rem; }
-  #modal-main-image { max-height: 300px; }
-}
 
 /* Menu mobile */
 .mobile-menu { display: none; flex-direction: column; gap: 0.5rem; }
@@ -32,7 +37,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
   .mobile-menu.show { display: flex; }
 }
 
-/* Cards chamativos */
+/* Cards */
 .card-hover { position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
 .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 .card-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
@@ -43,6 +48,13 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 </style>
 </head>
 <body class="font-sans">
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="loader">
+    <i class="fas fa-spinner fa-spin text-blue-600 text-5xl"></i>
+  </div>
+</div>
 
 <!-- Scroll to top -->
 <div class="scroll-to-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></div>
@@ -67,7 +79,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
   </div>
 </header>
 
-<!-- Hero com Carrossel -->
+<!-- Hero -->
 <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
   <div class="container mx-auto px-4 text-center relative">
     <div class="overflow-hidden relative max-w-4xl mx-auto">
@@ -132,103 +144,51 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
   <div class="modal-content"></div>
 </div>
 
-<!-- Contato -->
-<section id="contato" class="bg-gray-100 py-12">
-  <div class="container mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Fale Conosco</h2>
-    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 space-y-6 hover:shadow-xl transition">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6">
-          <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
-        </div>
-        <div class="text-center md:text-left">
-          <h3 class="text-xl font-bold text-gray-800">Atendimento por WhatsApp</h3>
-          <p class="text-gray-600">Segunda a Sexta, das 7:30 às 17:30</p>
-          <p class="text-gray-600">Sábado, 08:00 às 12:00</p>
-          <a href="https://wa.me/5564999518536" class="text-blue-600 font-medium hover:underline">(64) 99951-8536</a>
-        </div>
-      </div>
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6">
-          <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
-        </div>
-        <div class="text-center md:text-left">
-          <h3 class="text-xl font-bold text-gray-800">Nosso Endereço</h3>
-          <p class="text-gray-600">Av. Quarta, 94 - Centro</p>
-          <p class="text-gray-600">Mineiros - GO</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Footer -->
 <footer class="bg-gray-800 text-white py-8">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <div class="mb-4 md:mb-0">
-        <h3 class="text-xl font-bold mb-2">S.O.S Celulares</h3>
-        <p class="text-gray-400">Celulares novos e seminovos com garantia</p>
-      </div>
-      <div class="flex space-x-4">
-        <a href="https://www.instagram.com/s.o.scelulares_?igsh=czlla3JnaGc2OXg3" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
-        <a href="https://wa.me/5564999518536" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp text-xl"></i></a>
-      </div>
-    </div>
-    <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
-      <p>&copy; 2025 S.O.S Celulares. Todos os direitos reservados.</p>
-    </div>
+  <div class="container mx-auto px-4 text-center text-gray-400">
+    &copy; 2025 S.O.S Celulares. Todos os direitos reservados.
   </div>
 </footer>
 
 <script>
-let products = [];
+let products=[];
 
 // Menu mobile toggle
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
+const menuToggle=document.getElementById('menuToggle');
+const mobileMenu=document.getElementById('mobileMenu');
 menuToggle.addEventListener('click',()=> mobileMenu.classList.toggle('show'));
 
 // Hero slider
-const heroSlider = document.getElementById('hero-slider');
-const slides = heroSlider.children;
-let currentSlide = 0;
-document.getElementById('nextSlide').addEventListener('click',()=>{ currentSlide = (currentSlide+1)%slides.length; updateHeroSlide(); });
-document.getElementById('prevSlide').addEventListener('click',()=>{ currentSlide = (currentSlide-1+slides.length)%slides.length; updateHeroSlide(); });
-function updateHeroSlide(){ heroSlider.style.transform = `translateX(-${currentSlide*100}%)`; }
-setInterval(()=>{ currentSlide = (currentSlide+1)%slides.length; updateHeroSlide(); }, 8000);
+const heroSlider=document.getElementById('hero-slider');
+const slides=heroSlider.children;
+let currentSlide=0;
+document.getElementById('nextSlide').addEventListener('click',()=>{ currentSlide=(currentSlide+1)%slides.length; updateHeroSlide(); });
+document.getElementById('prevSlide').addEventListener('click',()=>{ currentSlide=(currentSlide-1+slides.length)%slides.length; updateHeroSlide(); });
+function updateHeroSlide(){ heroSlider.style.transform=`translateX(-${currentSlide*100}%)`; }
+setInterval(()=>{ currentSlide=(currentSlide+1)%slides.length; updateHeroSlide(); },8000);
 
 // Carregar produtos
-async function loadProducts() {
-  try {
-    const response = await fetch("produtos.json");
-    const data = await response.json();
-    products = data.map(p=>{
-      if(!p.category) p.category="Acessório";
-      if(!p.images || p.images.length===0) p.images=["imagens/default.png"];
+async function loadProducts(){
+  try{
+    const response=await fetch("produtos.json");
+    const data=await response.json();
+    products=data.map(p=>{
+      if(!p.category)p.category="Acessório";
+      if(!p.images||p.images.length===0)p.images=["imagens/default.png"];
       return p;
     });
-
     renderProducts(products);
-
-    // Pré-carregar imagens
     preloadProductImages(products);
-
-  } catch(err){
-    console.error("Erro ao carregar produtos.json", err);
+    document.getElementById('preloader').classList.add('hidden');
+  }catch(err){
+    console.error("Erro ao carregar produtos.json",err);
+    document.getElementById('preloader').classList.add('hidden');
   }
 }
 
-// Pré-carregar imagens do produto
-function preloadProductImages(products) {
-  products.forEach(p => {
-    if(p.images && p.images.length > 0){
-      p.images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    }
-  });
+function preloadProductImages(products){
+  products.forEach(p=>{ if(p.images)p.images.forEach(src=>{ const img=new Image(); img.src=src; }); });
 }
 
 // Renderizar produtos
@@ -237,7 +197,6 @@ function renderProducts(products){
   const usedC=document.getElementById('used-phones-container');
   const accC=document.getElementById('accessories-container');
   newC.innerHTML=usedC.innerHTML=accC.innerHTML='';
-
   const categories={"Novo":newC,"Seminovo":usedC,"Acessório":accC};
 
   Object.keys(categories).forEach(cat=>{
@@ -258,7 +217,7 @@ function renderProducts(products){
           ${p.color?`<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>`:''}
           ${p.condition?`<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>`:''}
           <p class="text-xl font-bold text-blue-600 mb-4">
-            ${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}
+            ${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista||''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}
           </p>
           <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition w-full" onclick='openProductModal(${JSON.stringify(p).replace(/'/g,"&#39;")})'>Ver Produto</button>
         </div>
@@ -278,31 +237,21 @@ function renderProducts(products){
       verMaisBtn.addEventListener('click',()=>{
         const hiddenCards=Array.from(container.children).filter(c=>c!==verMaisCard&&c.style.display==='none');
         if(hiddenCards.length>0){ hiddenCards.forEach(c=>c.style.display='block'); verMaisBtn.textContent='Ver Menos'; }
-        else{ Array.from(container.children).forEach((c,i)=>{ if(c!==verMaisCard) c.style.display=i<3?'block':'none'; }); verMaisBtn.textContent='Ver Mais'; }
+        else{ Array.from(container.children).forEach((c,i)=>{ if(c!==verMaisCard)c.style.display=i<3?'block':'none'; }); verMaisBtn.textContent='Ver Mais'; }
       });
     }
   });
 
-  // Fade-in
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.1});
+  const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });},{threshold:0.1});
   document.querySelectorAll('.card-animate').forEach(card=>observer.observe(card));
 }
 
-// Modal de produto
-const productModal = document.querySelector('.product-modal');
-const modalContent = productModal.querySelector('.modal-content');
+// Modal
+const productModal=document.querySelector('.product-modal');
+const modalContent=productModal.querySelector('.modal-content');
 function openProductModal(product){
   modalContent.innerHTML=`
-    <div class="mb-4">
-      <img id="modal-main-image" src="${product.images[0]}" alt="${product.name}">
-    </div>
+    <div class="mb-4"><img id="modal-main-image" src="${product.images[0]}" alt="${product.name}"></div>
     <div class="flex mb-4" id="modal-thumbnails">
       ${product.images.map((img,i)=>`<img src="${img}" class="gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
     </div>
@@ -311,25 +260,14 @@ function openProductModal(product){
     ${product.color?`<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>`:''}
     ${product.condition?`<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>`:''}
     <p class="text-lg font-bold text-blue-600">
-      ${typeof product.price==='object'?`<strong>À vista:</strong> ${product.price.avista || ''}${product.price.parcelado?`<br><strong>Parcelado:</strong> ${product.price.parcelado}`:''}`:product.price}
+      ${typeof product.price==='object'?`<strong>À vista:</strong> ${product.price.avista||''}${product.price.parcelado?`<br><strong>Parcelado:</strong> ${product.price.parcelado}`:''}`:product.price}
     </p>
   `;
   productModal.classList.add('active');
-
-  // Miniaturas
-  modalContent.querySelectorAll('.gallery-thumbnail').forEach(thumb=>{
-    thumb.addEventListener('click',()=>{
-      modalContent.querySelector('#modal-main-image').src = thumb.src;
-      modalContent.querySelectorAll('.gallery-thumbnail').forEach(t=>t.classList.remove('active'));
-      thumb.classList.add('active');
-    });
-  });
+  modalContent.querySelectorAll('.gallery-thumbnail').forEach(thumb=>{ thumb.addEventListener('click',()=>{ modalContent.querySelector('#modal-main-image').src=thumb.src; modalContent.querySelectorAll('.gallery-thumbnail').forEach(t=>t.classList.remove('active')); thumb.classList.add('active'); }); });
 }
 
-// Fechar modal ao clicar fora
-productModal.querySelector('.modal-overlay').addEventListener('click',()=>{
-  productModal.classList.remove('active');
-});
+productModal.querySelector('.modal-overlay').addEventListener('click',()=>productModal.classList.remove('active'));
 
 // Scroll to top
 const scrollBtn=document.getElementById('scrollTopBtn');
