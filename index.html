@@ -230,7 +230,6 @@ function openProductModal(product) {
       </div>
     `;
   }
-  
 
   // Conteúdo inicial do modal
   modalContent.innerHTML = `
@@ -282,18 +281,29 @@ function openProductModal(product) {
     window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
   });
 
+  // Slideshow das imagens
+  if (product.images.length > 1) {
+    const modalImage = modalContent.querySelector('img');
+    let modalImgIndex = 0;
+    const modalInterval = setInterval(() => {
+      modalImgIndex = (modalImgIndex + 1) % product.images.length;
+      modalImage.src = product.images[modalImgIndex];
+    }, 1000);
+
+    const stopSlideshow = () => clearInterval(modalInterval);
+    document.getElementById('closeModal').addEventListener('click', stopSlideshow);
+    modalOverlay.addEventListener('click', stopSlideshow);
+  }
+
   // Fechar modal ao clicar no X
-  document.getElementById('closeModal').addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
+  document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('active'));
 
   // Fechar ao clicar fora
-  modalOverlay.addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
+  modalOverlay.addEventListener('click', () => modal.classList.remove('active'));
 
   modal.classList.add('active');
 }
+
 
 // Pré-carregar imagens
 function preloadImages(urls) {
@@ -423,6 +433,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
