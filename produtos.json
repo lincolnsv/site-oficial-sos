@@ -298,52 +298,6 @@
     "condition": "Novo"
   },
   {
-    "id": 14,
-    "name": "Power Bank PINENG",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 275,00"
-    },
-    "description": "Carregador portátil de alta capacidade, ideal para manter vários dispositivos carregados com rapidez e segurança.",
-    "specs": [
-      "Capacidade: 30.000mAh – 6 a 9 cargas completas",
-      "Carga rápida: 22.5W PD",
-      "Entradas: Tipo-C, Lightning, Micro USB",
-      "Saídas: 2 portas USB simultâneas",
-      "Display LED inteligente",
-      "Bateria: polímero de íon-lítio",
-      "Compatibilidade: smartphones, tablets, fones, câmeras",
-      "Design moderno, compacto e resistente"
-    ],
-    "images": [
-      "imagens/powerbank_pineng_30000-1.png",
-      "imagens/powerbank_pineng_30000-2.png"
-    ],
-    "color": "Branco",
-    "condition": "Novo"
-  },
-  {
-    "id": 15,
-    "name": "Adaptadores USB",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 15,00"
-    },
-    "description": "Adaptadores USB universais, prontos para conectar seus dispositivos com praticidade e segurança.",
-    "specs": [
-      "Modelo A1 (Laranja) – compacto e resistente",
-      "IT-BLUE Série Connector (Preto) – durável e profissional",
-      "USB Compatible (Vermelho/Preto) – design moderno",
-      "Compatibilidade: smartphones Android/iOS, tablets, fones, caixas de som, carregadores"
-    ],
-    "images": [
-      "imagens/adaptadores_usb-1.png",
-      "imagens/adaptadores_usb-2.png"
-    ],
-    "color": "Diversas cores",
-    "condition": "Novo"
-  },
-  {
     "id": 13,
     "name": "Samsung A13",
     "category": "Seminovo",
@@ -367,7 +321,7 @@
     ],
     "color": "Branco",
     "condition": "Excelente estado"
-  }
+  },
   {
     "id": 14,
     "name": "Power Bank PINENG",
@@ -425,7 +379,7 @@
     "description": "Conecte fones de ouvido e microfones com mais praticidade usando o Cabo Adaptador IT-BLUE MAX-0302F, ideal para notebooks, PCs e dispositivos com entrada separada para áudio e microfone.",
     "specs": [
       "Modelo: MAX-0302F",
-      "Conexão: 1 P3 Fêmea (entrada para fone com microfone) para 2 P2 Macho (saída separada para fone e microfone)",
+      "Conexão: 1 P3 Fêmea para 2 P2 Macho (saída separada para fone e microfone)",
       "Compatibilidade: notebooks, PCs, caixas de som, headsets e mais",
       "Identificação rápida: conectores coloridos (vermelho e preto)",
       "Material: cabo flexível e resistente"
@@ -617,5 +571,6 @@
     "condition": "Novo"
   }
 ]
+
 
 
