@@ -216,24 +216,58 @@ const modalOverlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 
 function openProductModal(product) {
-  modalContent.innerHTML = `
-  <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
-  <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
-  <img src="${product.images[0]}" alt="${product.name}" class="w-full mb-4 rounded"/>
-  <p class="mb-2">${product.description}</p>
-  ${product.color ? `<p class="mb-2"><strong>Cor:</strong> ${product.color}</p>` : ''}
-  ${product.condition ? `<p class="mb-2"><strong>Estado:</strong> ${product.condition}</p>` : ''}
-  ${product.specs ? `<div class="mb-2"><strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul></div>` : ''}
-  <p class="text-xl font-bold text-blue-600">${typeof product.price === 'object' ? `À vista: ${product.price.avista || ''}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}` : product.price}</p>
-  <button id="whatsappBtn" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
-`;
+  // Criar opções de variações, se existirem
+  let variationOptions = '';
+  if (product.variations && product.variations.length > 0) {
+    variationOptions = `
+      <label class="block mb-2 font-bold">Escolha a variação:</label>
+      <div class="flex gap-2 flex-wrap mb-4" id="variationButtons">
+        ${product.variations.map((v, i) => `
+          <button class="px-3 py-1 border rounded hover:bg-blue-100" data-index="${i}">
+            ${v.name}${v.color ? ` - ${v.color}` : ''}
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
 
-document.getElementById('whatsappBtn').addEventListener('click', () => {
-  const name = "Seu Nome"; // opcional: pegar do usuário
-  const priceText = typeof product.price === 'object' ? `${product.price.avista || ''} ${product.price.parcelado ? ` / ${product.price.parcelado}` : ''}` : product.price;
-  const msg = encodeURIComponent(`Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${product.name}\n${product.color ? `🎨 Cor: ${product.color}\n` : ''}${product.condition ? `🛠️ Estado: ${product.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`);
-  window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
-});
+  // Conteúdo do modal
+  modalContent.innerHTML = `
+    <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
+    <img src="${product.images[0]}" alt="${product.name}" class="w-full mb-4 rounded"/>
+    <p class="mb-2">${product.description}</p>
+    ${variationOptions}
+    <p id="variationPrice" class="text-xl font-bold text-blue-600">
+      ${typeof product.price === 'object' ? `À vista: ${product.price.avista} / Parcelado: ${product.price.parcelado}` : product.price}
+    </p>
+    <button id="whatsappBtn" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
+  `;
+
+  let selectedVariation = null;
+
+  // Seleção de variações
+  const variationButtons = modalContent.querySelectorAll('#variationButtons button');
+  variationButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      variationButtons.forEach(b => b.classList.remove('bg-blue-500', 'text-white'));
+      btn.classList.add('bg-blue-500', 'text-white');
+      const index = btn.getAttribute('data-index');
+      selectedVariation = product.variations[index];
+      variationPrice.textContent = `À vista: ${selectedVariation.price.avista}${selectedVariation.price.parcelado ? ` / Parcelado: ${selectedVariation.price.parcelado}` : ''}`;
+    });
+  });
+
+  // Botão WhatsApp mantendo sua mensagem original
+  document.getElementById('whatsappBtn').addEventListener('click', () => {
+    const name = "Seu Nome"; // opcional: pegar do usuário
+    const p = selectedVariation || product;
+    const priceText = typeof p.price === 'object' ? `${p.price.avista || ''}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
+    const msg = encodeURIComponent(
+      `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
+    );
+    window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
+  });
 
   // Fechar modal ao clicar no X
   document.getElementById('closeModal').addEventListener('click', () => {
@@ -353,6 +387,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
