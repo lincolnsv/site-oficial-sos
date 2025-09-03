@@ -19,8 +19,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 /* Cards */
 .card-hover { position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
 .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-.card-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.card-animate.visible { opacity: 1; transform: translateY(0); }
 
 /* Menu mobile */
 .mobile-menu { display: none; flex-direction: column; gap: 0.5rem; }
@@ -177,8 +175,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 </footer>
 
 <script>
-let products = [];
-
 // Menu mobile
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -193,86 +189,34 @@ document.getElementById('nextSlide').addEventListener('click', () => { slideInde
 document.getElementById('prevSlide').addEventListener('click', () => { slideIndex = (slideIndex - 1 + totalSlides) % totalSlides; updateSlide(); });
 setInterval(() => { slideIndex = (slideIndex + 1) % totalSlides; updateSlide(); }, 5000);
 
+// Scroll to top
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => { scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
 // Modal
 const modal = document.getElementById('productModal');
 const modalOverlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 
 function openProductModal(product) {
-  let variationOptions = '';
-  if (product.variations && product.variations.length > 0) {
-    variationOptions = `
-      <label class="block mb-2 font-bold">Escolha a variação:</label>
-      <div class="flex gap-2 flex-wrap mb-4" id="variationButtons">
-        ${product.variations.map((v, i) => `<button class="px-3 py-1 border rounded hover:bg-blue-100" data-index="${i}">${v.name}${v.color ? ` - ${v.color}` : ''}</button>`).join('')}
-      </div>
-    `;
-  }
-
   modalContent.innerHTML = `
     <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
     <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
     <img src="${product.images[0]}" alt="${product.name}" class="w-full mb-4 rounded"/>
     <p class="mb-2">${product.description}</p>
-    ${variationOptions}
-    <div id="specsContainer" class="mb-2">
-      ${product.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
-    </div>
-    <p id="variationPrice" class="text-xl font-bold text-blue-600">
+    <p class="text-xl font-bold text-blue-600">
       ${typeof product.price === 'object' ? `À vista: ${product.price.avista}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}` : product.price}
     </p>
     <button id="whatsappBtn" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
   `;
-
-  let selectedVariation = null;
-  const specsContainer = modalContent.querySelector('#specsContainer');
-  const variationPrice = modalContent.querySelector('#variationPrice');
-
-  const variationButtons = modalContent.querySelectorAll('#variationButtons button');
-  variationButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      variationButtons.forEach(b => b.classList.remove('bg-blue-500', 'text-white'));
-      btn.classList.add('bg-blue-500', 'text-white');
-      const index = btn.getAttribute('data-index');
-      selectedVariation = product.variations[index];
-      variationPrice.textContent = `À vista: ${selectedVariation.price.avista}${selectedVariation.price.parcelado ? ` / Parcelado: ${selectedVariation.price.parcelado}` : ''}`;
-      specsContainer.innerHTML = selectedVariation.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${selectedVariation.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : '';
-    });
-  });
-
-  document.getElementById('whatsappBtn').addEventListener('click', () => {
-    const name = "Seu Nome";
-    const p = selectedVariation || product;
-    const priceText = typeof p.price === 'object' ? `${p.price.avista}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
-    const msg = encodeURIComponent(
-      `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
-    );
-    window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
-  });
-
-  if (product.images.length > 1) {
-    const modalImage = modalContent.querySelector('img');
-    let modalImgIndex = 0;
-    const modalInterval = setInterval(() => {
-      modalImgIndex = (modalImgIndex + 1) % product.images.length;
-      modalImage.src = product.images[modalImgIndex];
-    }, 1000);
-
-    const stopSlideshow = () => clearInterval(modalInterval);
-    document.getElementById('closeModal').addEventListener('click', stopSlideshow);
-    modalOverlay.addEventListener('click', stopSlideshow);
-  }
-
   document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('active'));
   modalOverlay.addEventListener('click', () => modal.classList.remove('active'));
+  document.getElementById('whatsappBtn').addEventListener('click', () => {
+    const msg = encodeURIComponent(`Olá! Tenho interesse no produto: ${product.name} - Preço: ${typeof product.price==='object'?product.price.avista:product.price}`);
+    window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
+  });
   modal.classList.add('active');
-}
-
-// Pré-carregar imagens
-function preloadImages(urls) {
-  return Promise.all(urls.map(src => new Promise(resolve => {
-    const img = new Image(); img.src = src; img.onload = resolve;
-  })));
 }
 
 // Renderizar produtos
@@ -285,20 +229,24 @@ function renderProducts(containerId, productList) {
     card.innerHTML = `
       <img src="${p.images[0]}" alt="${p.name}" class="w-full h-48 object-contain mb-2 rounded"/>
       <h3 class="text-lg font-bold mb-1">${p.name}</h3>
-      <p class="text-blue-600 font-bold">${typeof p.price === 'object' ? `À vista: ${p.price.avista}` : p.price}</p>
-      ${p.price.parcelado ? `<p class="text-gray-500 text-sm">${p.price.parcelado}</p>` : ''}
+      <p class="text-blue-600 font-bold">${typeof p.price==='object'?`À vista: ${p.price.avista}`:p.price}</p>
+      ${p.price.parcelado?`<p class="text-gray-500 text-sm">${p.price.parcelado}</p>`:''}
     `;
-    card.querySelector('button')?.addEventListener('click', () => openProductModal(p));
     card.addEventListener('click', () => openProductModal(p));
     container.appendChild(card);
   });
 }
 
-// Scroll to top
-const scrollTopBtn = document.getElementById('scrollTopBtn');
-window.addEventListener('scroll', () => { scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
-scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
+// Carregar produtos do JSON
+fetch('produtos.json')
+  .then(res => res.json())
+  .then(data => {
+    renderProducts("new-phones-container", data.filter(p=>p.category==="Novo"));
+    renderProducts("used-phones-container", data.filter(p=>p.category==="Seminovo"));
+    renderProducts("accessories-container", data.filter(p=>p.category==="Acessório"));
+  })
+  .catch(err => console.error("Erro ao carregar produtos:", err));
 </script>
+
 </body>
 </html>
