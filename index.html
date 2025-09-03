@@ -8,17 +8,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
 body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior: smooth; }
-
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
 .product-modal .modal-content { background: white; border-radius: 1rem; max-width: 95%; width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; position: relative; }
 #modal-main-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 0.5rem; cursor: zoom-in; transition: transform 0.3s ease; }
-
 .gallery-thumbnail { width: 60px; height: 60px; object-fit: contain; border-radius: 0.5rem; margin-right: 0.5rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
 .gallery-thumbnail.active { border-color: #2563eb; }
 .gallery-thumbnail:hover { transform: scale(1.05); border-color: #3b82f6; }
-
 @media (max-width: 640px) {
   .gallery-thumbnail { width: 50px; height: 50px; margin-right: 0.25rem; }
   #modal-main-image { max-height: 300px; }
@@ -39,7 +36,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 .card-hover { position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
 .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 .card-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.card-animate.visible { opacity: 1; transform: translateY(0); }
 
 /* Scroll to top */
 .scroll-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #2563eb; color: white; padding: 0.5rem 0.75rem; border-radius: 9999px; cursor: pointer; display: none; z-index: 100; transition: transform 0.2s; }
@@ -100,6 +96,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 </section>
 
 <main class="container mx-auto px-4 py-12">
+
   <!-- Novos -->
   <section id="novos" class="mb-16">
     <div class="flex items-center mb-8">
@@ -126,12 +123,13 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accessories-container"></div>
   </section>
+
 </main>
 
 <!-- Modal -->
-<div class="product-modal" id="productModal">
-  <div class="modal-overlay" id="modalOverlay"></div>
-  <div class="modal-content" id="modalContent"></div>
+<div class="product-modal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content"></div>
 </div>
 
 <!-- Contato -->
@@ -189,51 +187,16 @@ let products = [];
 // Menu mobile toggle
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-menuToggle.addEventListener('click', ()=> mobileMenu.classList.toggle('show'));
+menuToggle.addEventListener('click',()=> mobileMenu.classList.toggle('show'));
 
 // Hero slider
 const heroSlider = document.getElementById('hero-slider');
-let slideIndex = 0;
-
-function showSlide(index){
-  heroSlider.style.transform = `translateX(-${index*100}%)`;
-}
-
-document.getElementById('nextSlide').addEventListener('click', ()=> { 
-  slideIndex = (slideIndex+1) % 3; 
-  showSlide(slideIndex);
-});
-
-document.getElementById('prevSlide').addEventListener('click', ()=> { 
-  slideIndex = (slideIndex+2) % 3; 
-  showSlide(slideIndex);
-});
-
-// Troca automática
-setInterval(()=> {
-  slideIndex = (slideIndex+1) % 3;
-  showSlide(slideIndex);
-}, 5000);
-
-
-// Modal
-const modal = document.getElementById('productModal');
-const modalOverlay = document.getElementById('modalOverlay');
-const modalContent = document.getElementById('modalContent');
-function openProductModal(p){
-  modalContent.innerHTML = `
-    <h2 class="text-2xl font-bold mb-4">${p.name}</h2>
-    <img src="${p.images[0]}" alt="${p.name}" class="w-full mb-4 rounded" />
-    <p class="mb-2">${p.description}</p>
-    ${p.color?`<p class="mb-2"><strong>Cor:</strong> ${p.color}</p>`:''}
-    ${p.condition?`<p class="mb-2"><strong>Estado:</strong> ${p.condition}</p>`:''}
-    <p class="text-xl font-bold text-blue-600">
-      ${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}
-    </p>
-  `;
-  modal.classList.add('active');
-}
-modalOverlay.addEventListener('click', ()=> modal.classList.remove('active'));
+const slides = heroSlider.children;
+let currentSlide = 0;
+document.getElementById('nextSlide').addEventListener('click',()=>{ currentSlide = (currentSlide+1)%slides.length; updateHeroSlide(); });
+document.getElementById('prevSlide').addEventListener('click',()=>{ currentSlide = (currentSlide-1+slides.length)%slides.length; updateHeroSlide(); });
+function updateHeroSlide(){ heroSlider.style.transform = `translateX(-${currentSlide*100}%)`; }
+setInterval(()=>{ currentSlide = (currentSlide+1)%slides.length; updateHeroSlide(); }, 8000);
 
 // Carregar produtos
 async function loadProducts() {
@@ -245,10 +208,27 @@ async function loadProducts() {
       if(!p.images || p.images.length===0) p.images=["imagens/default.png"];
       return p;
     });
+
     renderProducts(products);
+
+    // Pré-carregar imagens
+    preloadProductImages(products);
+
   } catch(err){
     console.error("Erro ao carregar produtos.json", err);
   }
+}
+
+// Pré-carregar imagens do produto
+function preloadProductImages(products) {
+  products.forEach(p => {
+    if(p.images && p.images.length > 0){
+      p.images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    }
+  });
 }
 
 // Renderizar produtos
@@ -304,9 +284,52 @@ function renderProducts(products){
   });
 
   // Fade-in
-  const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });},{threshold:0.1});
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.1});
   document.querySelectorAll('.card-animate').forEach(card=>observer.observe(card));
 }
+
+// Modal de produto
+const productModal = document.querySelector('.product-modal');
+const modalContent = productModal.querySelector('.modal-content');
+function openProductModal(product){
+  modalContent.innerHTML=`
+    <div class="mb-4">
+      <img id="modal-main-image" src="${product.images[0]}" alt="${product.name}">
+    </div>
+    <div class="flex mb-4" id="modal-thumbnails">
+      ${product.images.map((img,i)=>`<img src="${img}" class="gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
+    </div>
+    <h3 class="text-xl font-bold mb-2">${product.name}</h3>
+    <p class="text-gray-600 mb-2">${product.description}</p>
+    ${product.color?`<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>`:''}
+    ${product.condition?`<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>`:''}
+    <p class="text-lg font-bold text-blue-600">
+      ${typeof product.price==='object'?`<strong>À vista:</strong> ${product.price.avista || ''}${product.price.parcelado?`<br><strong>Parcelado:</strong> ${product.price.parcelado}`:''}`:product.price}
+    </p>
+  `;
+  productModal.classList.add('active');
+
+  // Miniaturas
+  modalContent.querySelectorAll('.gallery-thumbnail').forEach(thumb=>{
+    thumb.addEventListener('click',()=>{
+      modalContent.querySelector('#modal-main-image').src = thumb.src;
+      modalContent.querySelectorAll('.gallery-thumbnail').forEach(t=>t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+}
+
+// Fechar modal ao clicar fora
+productModal.querySelector('.modal-overlay').addEventListener('click',()=>{
+  productModal.classList.remove('active');
+});
 
 // Scroll to top
 const scrollBtn=document.getElementById('scrollTopBtn');
@@ -315,6 +338,6 @@ scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}
 
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 </body>
 </html>
-
