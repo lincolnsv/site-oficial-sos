@@ -268,10 +268,11 @@ function renderProducts(products){
     ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
     ${typeof p.price === 'object' 
       ? `<p class="text-xl font-bold text-blue-600 mb-1">À vista: ${p.price.avista || ''}</p>
-         ${p.price.parcelado ? `<p class="text-lg text-blue-500">Parcelado: ${p.price.parcelado}</p>` : ''}`
+         ${p.price.parcelado ? `<p class="text-lg font-semibold text-blue-500">Parcelado: ${p.price.parcelado}</p>` : ''}`
       : `<p class="text-xl font-bold text-blue-600">${p.price}</p>`}
   </div>
 `;
+
 
 
 
@@ -310,5 +311,6 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 </body>
 </html>
+
 
 
