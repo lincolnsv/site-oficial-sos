@@ -7,46 +7,68 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
-body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
+body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior: smooth; }
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
 .product-modal .modal-content { background: white; border-radius: 1rem; max-width: 95%; width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; position: relative; }
 #modal-main-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 0.5rem; cursor: zoom-in; transition: transform 0.3s ease; }
-.gallery-thumbnail { width: 60px; height: 60px; object-fit: contain; border-radius: 0.5rem; margin-right: 0.5rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
+.gallery-thumbnail { width: 60px; height: 60px; object-fit: contain; border-radius: 0.5rem; margin-right: 0.5rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; scroll-snap-align: start; }
 .gallery-thumbnail.active { border-color: #2563eb; }
 .gallery-thumbnail:hover { transform: scale(1.05); border-color: #3b82f6; }
 @media (max-width: 640px) {
   .gallery-thumbnail { width: 50px; height: 50px; margin-right: 0.25rem; }
   #modal-main-image { max-height: 300px; }
 }
+.scroll-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #2563eb; color: white; padding: 0.5rem 0.75rem; border-radius: 9999px; cursor: pointer; display: none; z-index: 100; transition: transform 0.2s; }
+.scroll-to-top:hover { transform: scale(1.1); }
+.card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+.card-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
 </style>
 </head>
 <body class="font-sans">
 
+<!-- Scroll to top button -->
+<div class="scroll-to-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></div>
+
 <!-- Header -->
-<header class="bg-blue-600 text-white shadow-md">
-  <div class="container mx-auto px-4 py-6 flex flex-col items-center text-center">
-    <a href="#"><img src="imagens/logo.png" alt="Logo S.O.S Celulares" class="h-36 w-auto mb-3" /></a>
+<header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between">
+    <a href="#"><img src="imagens/logo.png" alt="Logo S.O.S Celulares" class="h-40 w-auto mb-2 sm:mb-0" /></a>
+    <nav class="space-x-4">
+      <a href="#novos" class="hover:underline font-bold">Novos</a>
+      <a href="#seminovos" class="hover:underline font-bold">Seminovos</a>
+      <a href="#acessorios" class="hover:underline font-bold">Acessórios</a>
+      <a href="#contato" class="hover:underline font-bold">Contato</a>
+    </nav>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-16">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Celulares Novos e Seminovos com Garantia</h2>
-    <p class="text-xl mb-8">Os melhores preços e condições de pagamento</p>
-    <div class="flex flex-col sm:flex-row justify-center sm:space-x-4 space-y-2 sm:space-y-0">
-  <a href="#novos" class="bg-white text-blue-600 px-4 sm:px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition text-center">
-    Ver Novos
-  </a>
-  <a href="#seminovos" class="bg-blue-800 text-white px-4 sm:px-6 py-3 rounded-lg font-bold hover:bg-blue-900 transition text-center">
-    Ver Seminovos
-  </a>
-  <a href="#acessorios" class="bg-blue-800 text-white px-4 sm:px-6 py-3 rounded-lg font-bold hover:bg-blue-900 transition text-center">
-    Ver Acessórios
-  </a>
-</div>
+<!-- Hero com Carrossel -->
+<section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
+  <div class="container mx-auto px-4 text-center relative">
+    <div class="overflow-hidden relative max-w-4xl mx-auto">
+      <div class="flex transition-transform duration-500" id="hero-slider">
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Celulares Novos e Seminovos com Garantia</h2>
+          <p class="text-xl md:text-2xl">Os melhores preços e condições de pagamento</p>
+        </div>
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Promoções Imperdíveis!</h2>
+          <p class="text-xl md:text-2xl">Descontos exclusivos em modelos selecionados</p>
+        </div>
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Entrega Rápida e Garantida</h2>
+          <p class="text-xl md:text-2xl">Compre online e receba no conforto da sua casa</p>
+        </div>
+      </div>
+      <button id="prevSlide" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
+        <i class="fas fa-chevron-left text-blue-600"></i>
+      </button>
+      <button id="nextSlide" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
+        <i class="fas fa-chevron-right text-blue-600"></i>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -91,7 +113,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 <section id="contato" class="bg-gray-100 py-12">
   <div class="container mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Fale Conosco</h2>
-    <div class="max-w-2xl mx-auto bg-blue rounded-lg shadow-md p-6 space-y-6">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 space-y-6 hover:shadow-xl transition">
       <div class="flex flex-col md:flex-row items-center">
         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6">
           <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
@@ -100,7 +122,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
           <h3 class="text-xl font-bold text-gray-800">Atendimento por WhatsApp</h3>
           <p class="text-gray-600">Segunda a Sexta, das 7:30 às 17:30</p>
           <p class="text-gray-600">Sábado, 08:00 às 12:00</p>
-          <a href="https://wa.me/5564999518536" class="text-blue-600 font-medium hover:underline">(64) 99951-8536</a>
+          <a href="https://wa.me/5564999518536" class="text-green-600 font-bold hover:underline text-lg">(64) 99951-8536</a>
         </div>
       </div>
       <div class="flex flex-col md:flex-row items-center">
@@ -137,9 +159,9 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); }
 </footer>
 
 <script>
+// ========== Carregar e renderizar produtos ==========
 let products = [];
 
-// Carregar produtos
 async function loadProducts() {
   try {
     const response = await fetch("produtos.json");
@@ -150,109 +172,92 @@ async function loadProducts() {
       return p;
     });
     renderProducts(products);
-  } catch (err) {
-    console.error("Erro ao carregar produtos.json", err);
-  }
+  } catch (err) { console.error("Erro ao carregar produtos.json", err); }
 }
 
-// Renderizar produtos
-function renderProducts(products) {
+function renderProducts(products){
   const newC = document.getElementById('new-phones-container');
   const usedC = document.getElementById('used-phones-container');
   const accC = document.getElementById('accessories-container');
-  newC.innerHTML = '';
-  usedC.innerHTML = '';
-  accC.innerHTML = '';
+  newC.innerHTML=''; usedC.innerHTML=''; accC.innerHTML='';
 
-  const categories = {
-    "Novo": newC,
-    "Seminovo": usedC,
-    "Acessório": accC
-  };
+  const categories = { "Novo": newC, "Seminovo": usedC, "Acessório": accC };
 
-  Object.keys(categories).forEach(cat => {
+  Object.keys(categories).forEach(cat=>{
     const container = categories[cat];
-    const produtosCat = products.filter(p => p.category === cat);
-    
-    produtosCat.forEach((p, index) => {
-      const card = document.createElement('div');
-      card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer';
-      if(index >= 3) card.style.display = 'none';
+    const produtosCat = products.filter(p=>p.category===cat);
 
-      card.innerHTML = `
+    produtosCat.forEach((p,index)=>{
+      const card = document.createElement('div');
+      card.className='bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer card-hover card-animate';
+      if(index>=3) card.style.display='none';
+
+      card.innerHTML=`
         <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
           <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain" loading="lazy">
         </div>
         <div class="p-4">
           <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
           <p class="text-gray-600 text-sm mb-2">${p.description}</p>
-          ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
-          ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
+          ${p.color?`<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>`:''}
+          ${p.condition?`<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>`:''}
           <p class="text-xl font-bold text-blue-600 mb-4">
-            ${typeof p.price === 'object'
-              ? `<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado ? `<br><strong>Parcelado:</strong> ${p.price.parcelado}` : ''}`
-              : p.price}
+            ${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}
           </p>
         </div>
       `;
 
       const btnWrapper = document.createElement('div');
-      btnWrapper.className = 'flex justify-end mt-4 pr-4';
+      btnWrapper.className='flex justify-end mt-4 pr-4';
       const btn = document.createElement('button');
-      btn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition';
-      btn.textContent = 'Ver Produto';
-      btn.addEventListener('click', () => openProductModal(p));
+      btn.className='bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition';
+      btn.textContent='Ver Produto';
+      btn.addEventListener('click',()=>openProductModal(p));
       btnWrapper.appendChild(btn);
       card.appendChild(btnWrapper);
-
       container.appendChild(card);
     });
 
-    // Adiciona botão "Ver Mais" **dentro do grid**
-    if(produtosCat.length > 3){
-      const verMaisCard = document.createElement('div');
-      verMaisCard.className = 'col-span-full flex justify-center mt-4';
-      const verMaisBtn = document.createElement('button');
-      verMaisBtn.className = 'bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition';
-      verMaisBtn.textContent = 'Ver Mais';
+    if(produtosCat.length>3){
+      const verMaisCard=document.createElement('div');
+      verMaisCard.className='col-span-full flex justify-center mt-4';
+      const verMaisBtn=document.createElement('button');
+      verMaisBtn.className='bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition';
+      verMaisBtn.textContent='Ver Mais';
       verMaisCard.appendChild(verMaisBtn);
       container.appendChild(verMaisCard);
 
-      verMaisBtn.addEventListener('click', () => {
-        const hiddenCards = Array.from(container.children).filter(c => c !== verMaisCard && c.style.display === 'none');
-        if(hiddenCards.length > 0){
-          hiddenCards.forEach(c => c.style.display = 'block');
-          verMaisBtn.textContent = 'Ver Menos';
-        } else {
-          Array.from(container.children).forEach((c,i) => {
-            if(c === verMaisCard) return;
-            c.style.display = i < 3 ? 'block' : 'none';
-          });
-          verMaisBtn.textContent = 'Ver Mais';
-        }
+      verMaisBtn.addEventListener('click',()=>{
+        const hiddenCards=Array.from(container.children).filter(c=>c!==verMaisCard&&c.style.display==='none');
+        if(hiddenCards.length>0){ hiddenCards.forEach(c=>c.style.display='block'); verMaisBtn.textContent='Ver Menos'; }
+        else{ Array.from(container.children).forEach((c,i)=>{ if(c!==verMaisCard) c.style.display=i<3?'block':'none'; }); verMaisBtn.textContent='Ver Mais'; }
       });
     }
   });
+
+  // Animação fade-in
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  },{threshold:0.1});
+  document.querySelectorAll('.card-animate').forEach(card=>observer.observe(card));
 }
 
+// ========== Modal ==========
+function openProductModal(product){
+  const modal=document.querySelector('.product-modal');
+  const modalContent=modal.querySelector('.modal-content');
+  let zoomed=false;
 
-
-// Modal
-function openProductModal(product) {
-  const modal = document.querySelector('.product-modal');
-  const modalContent = modal.querySelector('.modal-content');
-  let zoomed = false;
-
-  function showImage(index) {
-    const mainImage = modalContent.querySelector('#modal-main-image');
-    mainImage.src = product.images[index];
-    zoomed = false;
-    mainImage.style.transform = "scale(1)";
-    mainImage.style.cursor = "zoom-in";
-    modalContent.querySelectorAll('.gallery-thumbnail').forEach((thumb,i)=>thumb.classList.toggle('active',i===index));
+  function showImage(index){
+    const mainImage=modalContent.querySelector('#modal-main-image');
+    mainImage.src=product.images[index];
+    zoomed=false;
+    mainImage.style.transform="scale(1)";
+    mainImage.style.cursor="zoom-in";
+    modalContent.querySelectorAll('.gallery-thumbnail').forEach((t,i)=>t.classList.toggle('active',i===index));
   }
 
-  modalContent.innerHTML = `
+  modalContent.innerHTML=`
     <button id="modal-close-btn" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl font-bold">&times;</button>
     <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
     <img id="modal-main-image" src="${product.images[0]}" class="mb-4 rounded-lg shadow-md">
@@ -260,46 +265,22 @@ function openProductModal(product) {
       ${product.images.map((img,i)=>`<img src="${img}" class="gallery-thumbnail ${i===0?'active':''}" data-index="${i}">`).join('')}
     </div>
     <p class="text-gray-600 mb-2">${product.description}</p>
-    ${product.color ? `<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>` : ''}
-    ${product.condition ? `<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>` : ''}
-    ${product.specs && product.specs.length ? `<ul class="text-gray-600 list-disc list-inside mb-4">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>` : ''}
-    <p class="text-xl font-bold text-blue-600 mb-4">
-      ${typeof product.price === 'object'
-        ? `<strong>À vista:</strong> ${product.price.avista || ''}${product.price.parcelado ? `<br><strong>Parcelado:</strong> ${product.price.parcelado}` : ''}`
-        : product.price}
-    </p>
+    ${product.color?`<p class="text-gray-600 mb-2"><strong>Cor:</strong> ${product.color}</p>`:''}
+    ${product.condition?`<p class="text-gray-600 mb-2"><strong>Estado:</strong> ${product.condition}</p>`:''}
+    ${product.specs&&product.specs.length?`<ul class="text-gray-600 list-disc list-inside mb-4">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>`:''}
+    <p class="text-xl font-bold text-blue-600 mb-4">${typeof product.price==='object'?`<strong>À vista:</strong> ${product.price.avista||''}${product.price.parcelado?`<br><strong>Parcelado:</strong> ${product.price.parcelado}`:''}`:product.price}</p>
     <button id="whatsapp-btn" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Enviar via WhatsApp</button>
   `;
 
-  modalContent.querySelector('#modal-close-btn').addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
-
-  const mainImage = modalContent.querySelector('#modal-main-image');
-  mainImage.addEventListener('click', () => {
-    zoomed = !zoomed;
-    mainImage.style.transform = zoomed ? "scale(2)" : "scale(1)";
-    mainImage.style.cursor = zoomed ? "zoom-out" : "zoom-in";
-  });
-
-  modalContent.querySelectorAll('.gallery-thumbnail').forEach((thumb,i)=>{
-    thumb.addEventListener('click',()=>showImage(i));
-  });
-
-  modalContent.querySelector('#whatsapp-btn').addEventListener('click', () => {
-    const name = prompt("Olá! Qual o seu nome?");
+  modalContent.querySelector('#modal-close-btn').addEventListener('click',()=>modal.classList.remove('active'));
+  const mainImage=modalContent.querySelector('#modal-main-image');
+  mainImage.addEventListener('click',()=>{ zoomed=!zoomed; mainImage.style.transform=zoomed?"scale(2)":"scale(1)"; mainImage.style.cursor=zoomed?"zoom-out":"zoom-in"; });
+  modalContent.querySelectorAll('.gallery-thumbnail').forEach((t,i)=>t.addEventListener('click',()=>showImage(i)));
+  modalContent.querySelector('#whatsapp-btn').addEventListener('click',()=>{
+    const name=prompt("Olá! Qual o seu nome?");
     if(!name) return;
-    const priceText = typeof product.price === 'object' ? product.price.avista : product.price;
-    const msg = encodeURIComponent(
-  `Olá, meu nome é ${name}.\n` +
-  `Estou entrando em contato pelo site da S.O.S Celulares.\n\n` +
-  `Tenho interesse no seguinte produto:\n` +
-  `📱 Produto: ${product.name}\n` +
-  `${product.color ? `🎨 Cor: ${product.color}\n` : ''}` +
-  `${product.condition ? `🛠️ Estado: ${product.condition}\n` : ''}` +
-  `💰 Preço: ${priceText}\n\n` +
-  `Gostaria de receber mais informações e verificar disponibilidade.`
-);
+    const priceText=typeof product.price==='object'?product.price.avista:product.price;
+    const msg=encodeURIComponent(`Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\n\nTenho interesse no seguinte produto:\n📱 Produto: ${product.name}\n${product.color?`🎨 Cor: ${product.color}\n`:''}${product.condition?`🛠️ Estado: ${product.condition}\n`:''}💰 Preço: ${priceText}\n\nGostaria de receber mais informações e verificar disponibilidade.`);
     window.open(`https://wa.me/5564999518536?text=${msg}`,'_blank');
   });
 
@@ -307,21 +288,22 @@ function openProductModal(product) {
   modal.querySelector('.modal-overlay').addEventListener('click',()=>modal.classList.remove('active'));
 }
 
+// ========== Hero Slider ==========
+let slideIndex=0;
+const slider=document.getElementById('hero-slider');
+const totalSlides=slider.children.length;
+function showSlide(index){ slider.style.transform=`translateX(-${index*100}%)`; }
+document.getElementById('prevSlide').addEventListener('click',()=>{ slideIndex=(slideIndex-1+totalSlides)%totalSlides; showSlide(slideIndex); });
+document.getElementById('nextSlide').addEventListener('click',()=>{ slideIndex=(slideIndex+1)%totalSlides; showSlide(slideIndex); });
+setInterval(()=>{ slideIndex=(slideIndex+1)%totalSlides; showSlide(slideIndex); },5000);
+
+// ========== Scroll to top ==========
+const scrollBtn=document.getElementById('scrollTopBtn');
+window.addEventListener('scroll',()=>{ scrollBtn.style.display=window.scrollY>300?'block':'none'; });
+scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
