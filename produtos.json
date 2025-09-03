@@ -501,7 +501,7 @@
       "imagens/hub_usb_relogs-2.png"
     ],
     "color": "Preto"
-  }
+  },
   {
   "id": 24,
   "name": "POCO C75",
@@ -547,6 +547,7 @@
       "price": { "avista": "R$ 990,00", "parcelado": "12x R$ 95,00" }
     }
 ]
+
 
 
 
