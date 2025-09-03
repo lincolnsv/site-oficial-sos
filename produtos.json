@@ -507,7 +507,11 @@
     "name": "POCO C75",
     "category": "Novo",
     "description": "O POCO C75 é potente, com câmeras de alta qualidade e bateria duradoura.",
-    "images": ["imagens/poco_c75.png"],
+    "images": ["imagens/poco_c75.png",
+    "imagens/poco_c75-2568-pretoverdegold-1.png",
+    "imagens/poco_c75-2568-pretoverdegold-2.png",
+      "imagens/poco_c75-1286-pretoverde-1.png",
+      "imagens/poco_c75-1286-pretoverde-2.png"],
     "specs": ["Tela 6.88\"", "Bateria 5160mAh", "Câmera 50MP"],
     "price": {
       "avista": "R$ 890,00",
@@ -557,6 +561,7 @@
 ]
 }
 ]
+
 
 
 
