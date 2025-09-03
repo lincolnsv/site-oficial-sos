@@ -58,6 +58,35 @@
     "condition": "Novo"
   },
   {
+    "id": 7,
+    "name": "Realme Note 60 X",
+    "category": "Novo",
+    "price": {
+      "avista": "R$ 849,00",
+      "parcelado": "12x R$ 79,15"
+    },
+    "description": "O Realme Note 60 X combina desempenho e estilo em um único smartphone. Com tela ampla, câmeras de alta qualidade e bateria duradoura, ele oferece uma experiência completa para navegar, jogar e registrar seus melhores momentos com nitidez e rapidez.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "4GB RAM",
+      "128GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme-note-60x-1.png",
+      "imagens/realme-note-60x-2.png",
+      "imagens/realme-note-60x-3.png"
+    ],
+    "color": "Preto",
+    "condition": "Novo"
+  },
+  {
     "id": 3,
     "name": "Redmi 9A",
     "category": "Seminovo",
@@ -80,29 +109,6 @@
     ],
     "color": "Azul",
     "condition": "Excelente estado"
-  },
-  {
-    "id": 4,
-    "name": "Carregador H-Maston",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 45,00"
-    },
-    "description": "Carregador H-Maston com visor digital LCD, ajuste automático e compatibilidade com diversos modelos de bateria. Ideal para uso doméstico ou manutenção técnica.",
-    "specs": [
-      "Compatível com baterias removíveis de modelos 4/4S/5/6 e outros",
-      "Display LCD inteligente mostrando status do carregamento",
-      "Função ajuste automático de polaridade",
-      "Conexão USB para uso em computador ou carregador de parede",
-      "Design compacto, leve e portátil",
-      "Material resistente e seguro"
-    ],
-    "images": [
-      "imagens/carregadorH-Maston1.png",
-      "imagens/carregadorH-Maston2.png"
-    ],
-    "color": "Branco com detalhes azul",
-    "condition": "Novo"
   },
   {
     "id": 5,
@@ -153,77 +159,51 @@
     "condition": "Excelente estado"
   },
   {
-    "id": 7,
-    "name": "Realme Note 60 X",
-    "category": "Novo",
+    "id": 13,
+    "name": "Samsung A13",
+    "category": "Seminovo",
     "price": {
-      "avista": "R$ 849,00",
-      "parcelado": "12x R$ 79,15"
+      "avista": "R$ 650,00"
     },
-    "description": "O Realme Note 60 X combina desempenho e estilo em um único smartphone. Com tela ampla, câmeras de alta qualidade e bateria duradoura, ele oferece uma experiência completa para navegar, jogar e registrar seus melhores momentos com nitidez e rapidez.",
+    "description": "Smartphone seminovo em excelente estado, com desempenho confiável, visual moderno e acabamento elegante.",
     "specs": [
-      "Tela AMOLED 6,6\" Full HD+",
-      "Processador MediaTek Dimensity 6100+",
+      "Tela 6,6\" PLS LCD",
       "4GB RAM",
       "128GB Armazenamento",
-      "Câmera traseira dupla 64MP + 2MP",
-      "Câmera frontal 16MP",
+      "Câmera traseira quádrupla 50MP + 5MP + 2MP + 2MP",
+      "Câmera frontal 8MP",
       "Bateria 5000mAh",
-      "Carregamento rápido 33W",
-      "Android 13",
+      "Android 12",
       "Dual SIM"
     ],
     "images": [
-      "imagens/realme-note-60x-1.png",
-      "imagens/realme-note-60x-2.png",
-      "imagens/realme-note-60x-3.png"
+      "imagens/Samsung-A13-1.png",
+      "imagens/Samsung-A13-2.png"
     ],
-    "color": "Preto",
-    "condition": "Novo"
+    "color": "Branco",
+    "condition": "Excelente estado"
   },
   {
-    "id": 8,
-    "name": "Fone Lehmox Caveira",
+    "id": 15,
+    "name": "Adaptadores USB",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 69,90"
+      "avista": "R$ 15,00"
     },
-    "description": "Estilo radical com som potente! Design único em formato de caveira. Som de alta qualidade. Ideal para músicas, games e presença.",
+    "description": "Adaptadores USB universais, prontos para conectar seus dispositivos com praticidade e segurança.",
     "specs": [
-      "Som potente e de alta qualidade",
-      "Design único em formato de caveira",
-      "Compatível com PCs, celulares e consoles",
-      "Cabo removível e confortável",
-      "Ideal para jogos e música"
+      "Modelo A1 (Laranja) – compacto e resistente",
+      "IT-BLUE Série Connector (Preto) – durável e profissional",
+      "USB Compatible (Vermelho/Preto) – design moderno",
+      "Compatibilidade: smartphones Android/iOS, tablets, fones, caixas de som, carregadores"
     ],
     "images": [
-      "imagens/fone_lehmox_caveira.png"
+      "imagens/adaptadores_usb-1.png",
+      "imagens/adaptadores_usb-2.png"
     ],
-    "color": "Preto",
-    "model": "LEF-1023A"
-  },
-  {
-    "id": 9,
-    "name": "Hub USB 2.0 Relog’s – 4 Portas",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 25,00"
-    },
-    "description": "Amplie a conectividade do seu computador com o Hub USB 2.0 Relog’s, equipado com 4 portas USB para conectar periféricos, pendrives, teclados, mouses e muito mais.",
-    "specs": [
-      "Modelo: R4-03",
-      "Portas: 4 entradas USB 2.0",
-      "Compatibilidade: Windows, macOS, Linux",
-      "Função Plug & Play",
-      "Design compacto e portátil",
-      "Cor: Preto"
-    ],
-    "images": [
-      "imagens/hub_usb_relogs-1.png"
-    ],
-    "color": "Preto",
+    "color": "Diversas cores",
     "condition": "Novo"
-  }
+  },
   {
     "id": 10,
     "name": "Caixa de Som α GOLD SM-30A",
@@ -274,11 +254,33 @@
     "condition": "Novo"
   },
   {
+    "id": 8,
+    "name": "Fone Lehmox Caveira",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 69,90"
+    },
+    "description": "Estilo radical com som potente! Design único em formato de caveira. Som de alta qualidade. Ideal para músicas, games e presença.",
+    "specs": [
+      "Som potente e de alta qualidade",
+      "Design único em formato de caveira",
+      "Compatível com PCs, celulares e consoles",
+      "Cabo removível e confortável",
+      "Ideal para jogos e música"
+    ],
+    "images": [
+      "imagens/fone_lehmox_caveira.png"
+    ],
+    "color": "Preto",
+    "model": "LEF-1023A"
+  },
+  {
     "id": 12,
     "name": "Power Bank HREBOS",
     "category": "Acessório",
     "price": {
-      "avista": "R$ 149,00"
+      "avista": "R$ 149,00",
+      "parcelado": "4x R$ 40,00"
     },
     "description": "Carregador portátil com design moderno, acabamento branco e detalhes interativos tipo Pop-it, ideal para quem busca potência e estilo.",
     "specs": [
@@ -296,31 +298,6 @@
     ],
     "color": "Branco",
     "condition": "Novo"
-  },
-  {
-    "id": 13,
-    "name": "Samsung A13",
-    "category": "Seminovo",
-    "price": {
-      "avista": "R$ 650,00"
-    },
-    "description": "Smartphone seminovo em excelente estado, com desempenho confiável, visual moderno e acabamento elegante.",
-    "specs": [
-      "Tela 6,6\" PLS LCD",
-      "4GB RAM",
-      "128GB Armazenamento",
-      "Câmera traseira quádrupla 50MP + 5MP + 2MP + 2MP",
-      "Câmera frontal 8MP",
-      "Bateria 5000mAh",
-      "Android 12",
-      "Dual SIM"
-    ],
-    "images": [
-      "imagens/Samsung-A13-1.png",
-      "imagens/Samsung-A13-2.png"
-    ],
-    "color": "Branco",
-    "condition": "Excelente estado"
   },
   {
     "id": 14,
@@ -349,228 +326,27 @@
     "condition": "Novo"
   },
   {
-    "id": 15,
-    "name": "Adaptadores USB",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 15,00"
-    },
-    "description": "Adaptadores USB universais, prontos para conectar seus dispositivos com praticidade e segurança.",
-    "specs": [
-      "Modelo A1 (Laranja) – compacto e resistente",
-      "IT-BLUE Série Connector (Preto) – durável e profissional",
-      "USB Compatible (Vermelho/Preto) – design moderno",
-      "Compatibilidade: smartphones Android/iOS, tablets, fones, caixas de som, carregadores"
-    ],
-    "images": [
-      "imagens/adaptadores_usb-1.png",
-      "imagens/adaptadores_usb-2.png"
-    ],
-    "color": "Diversas cores",
-    "condition": "Novo"
-  },
-  {
     "id": 16,
-    "name": "Cabo Adaptador de Áudio IT-BLUE MAX-0302F",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 20,00"
-    },
-    "description": "Conecte fones de ouvido e microfones com mais praticidade usando o Cabo Adaptador IT-BLUE MAX-0302F, ideal para notebooks, PCs e dispositivos com entrada separada para áudio e microfone.",
-    "specs": [
-      "Modelo: MAX-0302F",
-      "Conexão: 1 P3 Fêmea para 2 P2 Macho (saída separada para fone e microfone)",
-      "Compatibilidade: notebooks, PCs, caixas de som, headsets e mais",
-      "Identificação rápida: conectores coloridos (vermelho e preto)",
-      "Material: cabo flexível e resistente"
-    ],
-    "images": [
-      "imagens/cabo_adaptador_itblue-1.png"
-    ],
-    "color": "Preto",
-    "condition": "Novo"
-  },
-  {
-    "id": 17,
-    "name": "Fone de Ouvido Estéreo LELONG LE-0240",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 20,00"
-    },
-    "description": "Desfrute de uma experiência sonora envolvente com o Fone de Ouvido Estéreo LELONG LE-0240, ideal para quem busca qualidade, conforto e estilo no dia a dia.",
-    "specs": [
-      "Modelo: LE-0240",
-      "Tipo: Fone de ouvido estéreo com fio",
-      "Graves extras para uma experiência sonora mais intensa",
-      "Design ergonômico para uso prolongado",
-      "Compatível com celulares, tablets, notebooks e outros dispositivos com entrada P2",
-      "Cor: Preto"
-    ],
-    "images": [
-      "imagens/fone_lelong_le0240-1.png"
-    ],
-    "color": "Preto",
-    "condition": "Novo"
-  },
-  {
-    "id": 18,
-    "name": "Carregador Veicular LEVMOX LE-156",
+    "name": "Hub USB 2.0 Relog’s",
     "category": "Acessório",
     "price": {
       "avista": "R$ 25,00"
     },
-    "description": "Mantenha seus dispositivos carregados com rapidez e segurança enquanto dirige com o Carregador Veicular LEVMOX LE-156.",
-    "specs": [
-      "Modelo: LE-156",
-      "Potência de saída: 20W – compatível com PD e QC",
-      "Chip inteligente: proteção contra sobrecarga, superaquecimento e curto-circuito",
-      "Material: plástico retardante de chama",
-      "Conector USB com LED azul",
-      "Certificação ANATEL",
-      "Compatibilidade: smartphones, tablets, GPS, fones e outros dispositivos USB"
-    ],
-    "images": [
-      "imagens/carregador_veicular_levmox-1.png"
-    ],
-    "color": "Preto",
-    "condition": "Novo"
-  },
-  {
-    "id": 19,
-    "name": "Adaptador Lightning para P2 LEHMOX LEY-234",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 20,00"
-    },
-    "description": "Conecte seus fones de ouvido tradicionais com qualidade máxima usando o Adaptador LEHMOX LEY-234, ideal para dispositivos Apple com entrada Lightning.",
-    "specs": [
-      "Modelo: LEY-234",
-      "Função: Converte Lightning para entrada P2 (3.5mm)",
-      "Compatibilidade: iPhone, iPad e outros dispositivos com porta Lightning",
-      "Qualidade sonora: áudio digital sem perdas com redução de chiado",
-      "Chip inteligente: alta fidelidade e estabilidade de conexão",
-      "Material: alta resistência e acabamento premium",
-      "Design: leve, portátil e fácil de usar"
-    ],
-    "images": [
-      "imagens/adaptador_lehmox_ley234-1.png"
-    ],
-    "color": "Branco",
-    "condition": "Novo"
-  },
-  {
-    "id": 20,
-    "name": "Receptor de Música Sem Fio DANAT",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 25,00"
-    },
-    "description": "Transforme qualquer caixa de som ou aparelho com entrada auxiliar em um dispositivo Bluetooth com o Receptor de Música Sem Fio DANAT.",
-    "specs": [
-      "Modelo: 09641-22-14258",
-      "Função: transforma caixas de som, rádios ou aparelhos com entrada P2 em receptores Bluetooth",
-      "Alimentação: via USB",
-      "Conexão de áudio: cabo P2 incluso (3.5mm estéreo)",
-      "Alcance: até 10 metros",
-      "Compatibilidade: smartphones, tablets, notebooks e outros dispositivos com Bluetooth",
-      "Design compacto e leve",
-      "Instalação plug & play"
-    ],
-    "images": [
-      "imagens/receptor_danat-1.png"
-    ],
-    "color": "Preto",
-    "condition": "Novo"
-  },
-  {
-    "id": 21,
-    "name": "Carregador Universal LCD USB",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 25,00"
-    },
-    "description": "Carregue baterias de celulares com praticidade e segurança usando o Carregador Universal LCD USB, ideal para modelos como 4, 4S, 5, 6 e outros.",
-    "specs": [
-      "Tipo: carregador universal com visor LCD",
-      "Compatibilidade: modelos 4/4S/5/6 e outros com bateria removível",
-      "Conexão USB",
-      "Display LCD mostrando status de carregamento em tempo real",
-      "Função inteligente: ajuste automático de polaridade",
-      "Design compacto e leve",
-      "Cor: Branco com detalhes transparentes e azul"
-    ],
-    "images": [
-      "imagens/carregador_universal_lcd-1.png"
-    ],
-    "color": "Branco com detalhes azul",
-    "condition": "Novo"
-  },
-  {
-    "id": 22,
-    "name": "Fone de Ouvido EarX Lightning",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 25,00"
-    },
-    "description": "Experimente som de qualidade com o Fone de Ouvido EarX, desenvolvido especialmente para dispositivos Apple com entrada Lightning.",
-    "specs": [
-      "Modelo: LE-0240",
-      "Conector: Lightning",
-      "Som estéreo com graves reforçados",
-      "Microfone embutido para chamadas e comandos de voz",
-      "Compatível com iOS 15 e versões superiores",
-      "Design moderno, leve e confortável"
-    ],
-    "images": [
-      "imagens/fone_earx_lightning-1.png"
-    ],
-    "color": "Branco",
-    "condition": "Novo"
-  },
-  {
-    "id": 23,
-    "name": "Cabos Micro USB KMASTON – Supercarga 4.8A",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 20,00"
-    },
-    "description": "Garanta carregamento rápido e seguro com os Cabos Micro USB KMASTON, ideais para quem busca desempenho e durabilidade.",
-    "specs": [
-      "Modelos: α:GOLD CB1 2.1A – 1 metro | Supercarga",
-      "KMASTON 4.8A MAX (2×2.4A) – 1 metro | Supercarga",
-      "Supercarga super rápida para celulares, tablets, caixas de som e mais",
-      "Material resistente evitando quebras e desgastes",
-      "Compatibilidade: Android, power banks, carregadores veiculares e de parede"
-    ],
-    "images": [
-      "imagens/cabos_kmaston-1.png"
-    ],
-    "color": "Preto",
-    "condition": "Novo"
-  },
-  {
-    "id": 24,
-    "name": "Hub USB 2.0 Relog’s – 4 Portas",
-    "category": "Acessório",
-    "price": {
-      "avista": "R$ 25,00"
-    },
-    "description": "Amplie a conectividade do seu computador com o Hub USB 2.0 Relog’s, equipado com 4 portas USB para conectar periféricos, pendrives, teclados, mouses e muito mais.",
+    "description": "Hub USB 2.0 Relog’s com 4 portas, compacto e portátil. Ideal para conectar periféricos, pendrives, teclados e mouses com praticidade e segurança.",
     "specs": [
       "Modelo: R4-03",
+      "Marca: Relog’s",
       "Portas: 4 entradas USB 2.0",
       "Compatibilidade: Windows, macOS, Linux",
-      "Função Plug & Play",
-      "Design compacto e portátil",
-      "Cor: Preto"
+      "Função Plug & Play: sem necessidade de drivers",
+      "Cor: Preto",
+      "Design: compacto e portátil"
     ],
     "images": [
+      "imagens/hub_usb_relogs-1.png",
       "imagens/hub_usb_relogs-2.png"
     ],
     "color": "Preto",
     "condition": "Novo"
   }
 ]
-
-
-
