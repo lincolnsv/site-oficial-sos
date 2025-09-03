@@ -3,261 +3,520 @@
     "id": 1,
     "name": "Realme C75X",
     "category": "Novo",
-    "price": { "avista": "R$ 1.189,90" },
+    "price": {
+      "avista": "R$ 1.189,90",
+      "parcelado": "12x R$ 128,99"
+    },
     "description": "O Realme C75X combina desempenho e estilo, oferecendo uma tela ampla, câmeras de alta qualidade e bateria duradoura para uso diário intenso.",
-    "specs": ["Tela AMOLED 6,6\" Full HD+", "Processador MediaTek Dimensity 6100+", "8GB RAM", "256GB Armazenamento", "Câmera traseira dupla 64MP + 2MP", "Câmera frontal 16MP", "Bateria 5000mAh", "Carregamento rápido 33W", "Android 13", "Dual SIM"],
-    "images": ["imagens/realme-c75x-1.png", "imagens/realme-c75x-2.png", "imagens/realme-c75x-3.png"],
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "8GB RAM",
+      "256GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme-c75x-1.png",
+      "imagens/realme-c75x-2.png",
+      "imagens/realme-c75x-3.png"
+    ],
     "color": "Coral Pink"
   },
   {
     "id": 2,
     "name": "Realme Note 14S",
     "category": "Novo",
-    "price": { "avista": "R$ 1.420,00" },
+    "price": {
+      "avista": "R$ 1.420,00",
+      "parcelado": "12x R$ 132,50"
+    },
     "description": "O Realme Note 14S oferece alto desempenho, tela ampla e câmeras de alta qualidade, garantindo uma experiência completa para uso diário e entretenimento.",
-    "specs": ["Tela AMOLED 6,6\" Full HD+", "Processador MediaTek Dimensity 6100+", "8GB RAM", "256GB Armazenamento", "Câmera traseira dupla 64MP + 2MP", "Câmera frontal 16MP", "Bateria 5000mAh", "Carregamento rápido 33W", "Android 13", "Dual SIM"],
-    "images": ["imagens/realme-note-14s-1.png", "imagens/realme-note-14s-2.png", "imagens/realme-note-14s-3.png", "imagens/realme-note-14s-4.png"],
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "8GB RAM",
+      "256GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme-note-14s-1.png",
+      "imagens/realme-note-14s-2.png",
+      "imagens/realme-note-14s-3.png",
+      "imagens/realme-note-14s-4.png"
+    ],
     "color": "Azul, Preto"
   },
   {
     "id": 3,
     "name": "Redmi 9A",
     "category": "Seminovo",
-    "price": { "avista": "R$ 400,00" },
+    "price": {
+      "avista": "R$ 400,00"
+    },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela LCD 6,1\" HD+", "Processador MediaTek Helio G25", "Armazenamento 64GB", "RAM 2GB", "Câmera tripla 12MP", "Bateria 5000mAh", "Sistema Android 11", "Dual SIM"],
-    "images": ["imagens/Redmi-9A-1.png"],
-    "color": "Azul",
-    "condition": "Excelente estado"
+    "specs": [
+      "Tela LCD 6,1\" HD+",
+      "Processador MediaTek Helio G25",
+      "Armazenamento 64GB",
+      "RAM 2GB",
+      "Câmera tripla 12MP",
+      "Bateria 5000mAh",
+      "Sistema Android 11",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Redmi-9A-1.png"
+    ],
+    "color": "Azul"
   },
   {
     "id": 4,
-    "name": "Samsung A04e",
-    "category": "Seminovo",
-    "price": { "avista": "R$ 400,00" },
-    "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela 6,5\" HD+ PLS LCD", "Processador MediaTek Helio P35", "RAM 3GB", "Armazenamento 64GB", "Câmera traseira 13+2MP", "Câmera frontal 5MP", "Bateria 5000mAh", "Android 12", "Dual SIM"],
-    "images": ["imagens/Samsung-A04e-1.png"],
-    "color": "Azul",
-    "condition": "Excelente estado"
+    "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 45,00"
+    },
+    "description": "O Carregador Turbo H'Maston é a escolha perfeita para quem busca velocidade, eficiência e proteção.",
+    "specs": [
+      "Carregamento Turbo com potência de até 35W",
+      "Bivolt automático (110V–220V)",
+      "Proteção contra sobrecarga, sobrecorrente e superaquecimento",
+      "Design compacto e resistente"
+    ],
+    "images": [
+      "imagens/carregadorH-Maston1.png",
+      "imagens/carregadorH-Maston2.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 5,
-    "name": "Samsung A12",
+    "name": "Samsung A04e",
     "category": "Seminovo",
-    "price": { "avista": "R$ 450,00" },
+    "price": {
+      "avista": "R$ 400,00"
+    },
     "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": ["Tela 6,5\"", "4GB RAM", "Armazenamento 64GB", "Quad Câmera 48MP", "Bateria 5.000 mAh", "Android 12", "Dual SIM"],
-    "images": ["imagens/Samsung-A12-1.png"],
-    "color": "Preto",
-    "condition": "Excelente estado"
+    "specs": [
+      "Tela 6,5\" HD+ PLS LCD",
+      "Processador MediaTek Helio P35",
+      "RAM 3GB",
+      "Armazenamento 64GB",
+      "Câmera traseira 13+2MP",
+      "Câmera frontal 5MP",
+      "Bateria 5000mAh",
+      "Android 12",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Samsung-A04e-1.png"
+    ],
+    "color": "Azul"
   },
   {
     "id": 6,
-    "name": "Realme Note 60 X",
-    "category": "Novo",
-    "price": { "avista": "R$ 849,00" },
-    "description": "O Realme Note 60 X combina desempenho e estilo, oferecendo experiência completa para navegar, jogar e registrar momentos.",
-    "specs": ["Tela AMOLED 6,6\" Full HD+", "Processador MediaTek Dimensity 6100+", "4GB RAM", "128GB Armazenamento", "Câmera traseira dupla 64MP + 2MP", "Câmera frontal 16MP", "Bateria 5000mAh", "Carregamento rápido 33W", "Android 13", "Dual SIM"],
-    "images": ["imagens/realme-note-60x-1.png", "imagens/realme-note-60x-2.png", "imagens/realme-note-60x-3.png"],
+    "name": "Samsung A12",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 450,00"
+    },
+    "description": "Excelente estado, pequenos sinais de uso.",
+    "specs": [
+      "Tela 6,5\"",
+      "4GB RAM",
+      "Armazenamento 64GB",
+      "Quad Câmera 48MP",
+      "Bateria 5.000 mAh",
+      "Android 12",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/Samsung-A12-1.png"
+    ],
     "color": "Preto"
   },
   {
     "id": 7,
-    "name": "Samsung A13",
-    "category": "Seminovo",
-    "price": { "avista": "R$ 550,00" },
-    "description": "Excelente estado, visual moderno e desempenho confiável.",
-    "specs": ["Tela 6,5\" PLS LCD", "4GB RAM", "128GB Armazenamento", "Câmera tripla 50MP", "Bateria 5000mAh", "Android 12", "Dual SIM"],
-    "images": ["imagens/Samsung-A13-1.png"],
-    "color": "Branco",
-    "condition": "Excelente estado"
+    "name": "Realme Note 60 X",
+    "category": "Novo",
+    "price": {
+      "avista": "R$ 849,00",
+      "parcelado": "12x R$ 79,15"
+    },
+    "description": "O Realme Note 60 X combina desempenho e estilo em um único smartphone.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "4GB RAM",
+      "128GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme-note-60x-1.png",
+      "imagens/realme-note-60x-2.png",
+      "imagens/realme-note-60x-3.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 8,
-    "name": "α GOLD PRO SM-30A",
+    "name": "Fone Lehmox Caveira",
     "category": "Acessório",
-    "price": { "avista": "R$ 589,00" },
-    "description": "Caixa de som portátil com design moderno, iluminação LED e resistência à água IPX6.",
-    "specs": ["Modelo: SM-30A", "Cor: Preto com LED multicolorido", "Resistência IPX6", "Compacta com alça para transporte", "LED dinâmico frontal"],
-    "images": ["imagens/caixa_som_alpha-1.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 69,90"
+    },
+    "description": "Estilo radical com som potente! Design único em formato de caveira.",
+    "specs": [
+      "Som potente e de alta qualidade",
+      "Design único em formato de caveira",
+      "Compatível com PCs, celulares e consoles",
+      "Cabo removível e confortável"
+    ],
+    "images": [
+      "imagens/fone_lehmox_caveira.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 9,
-    "name": "Fone Lehmox Caveira",
+    "name": "Caixa de Som α GOLD PRO SM-30A",
     "category": "Acessório",
-    "price": { "avista": "R$ 69,90" },
-    "description": "Estilo radical com som potente e design único em formato de caveira.",
-    "specs": ["Som potente e de alta qualidade", "Design único caveira", "Compatível com PCs, celulares e consoles", "Cabo removível", "Ideal para jogos e música"],
-    "images": ["imagens/fone_lehmox_caveira.png"],
-    "color": "Preto",
-    "model": "LEF-1023A"
+    "price": {
+      "avista": "R$ 589,00"
+    },
+    "description": "Transforme qualquer ambiente em uma festa com a α GOLD PRO SM-30A, a caixa de som portátil resistente à água IPX6.",
+    "specs": [
+      "Modelo: SM-30A",
+      "Cor: Preto com LED multicolorido",
+      "Resistência: IPX6",
+      "Design compacto com alça para transporte",
+      "Iluminação LED dinâmica"
+    ],
+    "images": [
+      "imagens/caixa_som_alphagold_sm30a-1.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 10,
     "name": "Carregador Veicular Turbo 66W B1",
     "category": "Acessório",
-    "price": { "avista": "R$ 119,90" },
-    "description": "Carregador veicular 4 em 1 com cabos retráteis, display digital e rotação de 180º.",
-    "specs": ["Potência: 66W PD/QC", "USB-C, Lightning, Micro USB, USB", "Cabos retráteis", "Display digital", "Rotação 180º", "Bivolt 12V/24V"],
-    "images": ["imagens/carregador_veicular_b1-1.png"],
-    "color": "Cinza prateado",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 119,90"
+    },
+    "description": "Carregador veicular turbo retrátil 4 em 1 com display digital e cabos retráteis.",
+    "specs": [
+      "Potência Turbo: 66W com suporte PD e QC",
+      "Conexões 4 em 1: USB-C, Lightning, Micro USB, USB padrão",
+      "Cabos retráteis inteligentes",
+      "Display digital",
+      "Rotação de 180º",
+      "Compatibilidade universal",
+      "Voltagem entrada: 12V/24V",
+      "Material ABS resistente"
+    ],
+    "images": [
+      "imagens/carregador_veicular_b1-1.png"
+    ],
+    "color": "Cinza prateado"
   },
   {
     "id": 11,
     "name": "Power Bank HREBOS PB-955",
     "category": "Acessório",
-    "price": { "avista": "R$ 149,00" },
+    "price": {
+      "avista": "R$ 149,00",
+      "parcelado": "4x R$ 40,00"
+    },
     "description": "Carregador portátil 10000mAh com design Pop-it, 22.5W Turbo e LED display.",
-    "specs": ["Portas: USB, Tipo-C, Lightning", "Display LED inteligente", "Design Pop-it", "Compatível com smartphones e tablets"],
-    "images": ["imagens/powerbank_hrebos-1.png"],
-    "color": "Branco",
-    "condition": "Novo"
+    "specs": [
+      "Capacidade real: 10.000mAh",
+      "Carregamento rápido 22.5W Turbo",
+      "Conexões: USB, Tipo-C, Lightning",
+      "Display LED inteligente",
+      "Design Pop-it",
+      "Cor: Branco",
+      "Certificação ANATEL"
+    ],
+    "images": [
+      "imagens/powerbank_hrebos_pb955-1.png"
+    ],
+    "color": "Branco"
   },
   {
     "id": 12,
-    "name": "Smartphone Samsung 128GB 4GB RAM",
+    "name": "Smartphone Samsung A13",
     "category": "Seminovo",
-    "price": { "avista": "R$ 600,00" },
-    "description": "Desempenho confiável, visual moderno e excelente custo-benefício.",
-    "specs": ["Câmera traseira tripla", "Flash LED", "Tela Super AMOLED", "Android Samsung One UI", "Cor Branco"],
-    "images": ["imagens/samsung_semi-1.png"],
-    "color": "Branco",
-    "condition": "Excelente estado"
+    "price": {
+      "avista": "R$ 600,00"
+    },
+    "description": "Desempenho confiável, visual moderno e excelente custo-benefício. Semi novo, em excelente estado.",
+    "specs": [
+      "RAM 4GB",
+      "Câmera traseira tripla",
+      "Flash LED",
+      "Tela Super AMOLED",
+      "Sistema Android com interface Samsung One UI"
+    ],
+    "images": [
+      "imagens/samsung_a13-1.png"
+    ],
+    "color": "Branco"
   },
   {
     "id": 13,
     "name": "Power Bank PINENG 30.000mAh",
     "category": "Acessório",
-    "price": { "avista": "R$ 275,00" },
+    "price": {
+      "avista": "R$ 275,00",
+      "parcelado": "6x R$ 48,50"
+    },
     "description": "Carregador portátil de alta capacidade com display LED inteligente e múltiplas entradas.",
-    "specs": ["Entradas: Tipo-C, Lightning, Micro USB", "Saídas: 2 portas USB", "Polímero de íon-lítio", "Compatibilidade: smartphones, tablets, fones"],
-    "images": ["imagens/powerbank_pineng-1.png"],
-    "color": "Branco",
-    "condition": "Novo"
+    "specs": [
+      "Capacidade real: 30.000mAh",
+      "Carga rápida: 22.5W PD",
+      "Entradas: Tipo-C, Lightning, Micro USB",
+      "Saídas: 2 portas USB",
+      "Display LED inteligente",
+      "Bateria de polímero de íon-lítio",
+      "Compatibilidade: smartphones, tablets, fones"
+    ],
+    "images": [
+      "imagens/powerbank_pineng_30000-1.png"
+    ],
+    "color": "Branco"
   },
   {
     "id": 14,
-    "name": "Adaptadores USB Diversos",
+    "name": "Adaptadores USB – Modelos Diversos",
     "category": "Acessório",
-    "price": { "avista": "R$ 15,00" },
-    "description": "Adaptadores USB universais, compatíveis com smartphones Android e iOS, tablets, fones e carregadores.",
-    "specs": ["Modelo A1 Laranja", "IT-BLUE Série Connector Preto", "USB Compatible Vermelho/Preto", "Compatibilidade universal", "Produto novo"],
-    "images": ["imagens/adaptadores_usb-1.png"],
-    "color": "Variado",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 15,00"
+    },
+    "description": "Adaptadores USB universais para conexão rápida e compatível com diversos dispositivos.",
+    "specs": [
+      "Modelo A1 (Laranja) – compacto e resistente",
+      "IT-BLUE Série Connector (Preto) – durabilidade e acabamento profissional",
+      "USB Compatible (Vermelho/Preto) – design moderno, embalagem circular",
+      "Compatibilidade: Android, iOS, tablets, fones, caixas de som"
+    ],
+    "images": [
+      "imagens/adaptadores_usb-1.png"
+    ],
+    "color": "Diversas cores"
   },
   {
     "id": 15,
     "name": "Cabo Adaptador de Áudio IT-BLUE MAX-0302F",
     "category": "Acessório",
-    "price": { "avista": "R$ 20,00" },
-    "description": "Conecte fones e microfones com mais praticidade usando o cabo adaptador IT-BLUE MAX-0302F.",
-    "specs": ["Modelo: MAX-0302F", "Conexão: 1 P3 Fêmea para 2 P2 Macho", "Compatibilidade: notebooks, PCs, headsets", "Material flexível e resistente"],
-    "images": ["imagens/cabo_adaptador_itblue-1.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Cabo adaptador para notebooks, PCs e dispositivos com entrada separada para áudio e microfone.",
+    "specs": [
+      "Modelo: MAX-0302F",
+      "Conexão: 1 P3 Fêmea para 2 P2 Macho",
+      "Compatibilidade: notebooks, PCs, caixas de som, headsets",
+      "Identificação rápida: conectores coloridos",
+      "Material: cabo flexível e resistente"
+    ],
+    "images": [
+      "imagens/cabo_adaptador_itblue-1.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 16,
     "name": "Fone de Ouvido Estéreo LELONG LE-0240",
     "category": "Acessório",
-    "price": { "avista": "R$ 20,00" },
-    "description": "Fone de ouvido estéreo com som de qualidade, design ergonômico e conforto para uso diário.",
-    "specs": ["Modelo: LE-0240", "Graves extras", "Design ergonômico", "Compatível com celulares, tablets e notebooks", "Cor Preto"],
-    "images": ["imagens/fone_lelong_le0240-1.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Fone de ouvido estéreo com fio, graves extras e design ergonômico.",
+    "specs": [
+      "Modelo: LE-0240",
+      "Compatível com celulares, tablets, notebooks",
+      "Design ergonômico",
+      "Graves reforçados"
+    ],
+    "images": [
+      "imagens/fone_lelong_le0240-1.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 17,
     "name": "Carregador Veicular LEVMOX LE-156",
     "category": "Acessório",
-    "price": { "avista": "R$ 25,00" },
-    "description": "Carregador veicular rápido e seguro, compatível com smartphones, tablets e GPS.",
-    "specs": ["Modelo: LE-156", "Potência: 20W", "Chip inteligente", "Material plástico", "Conector USB LED azul", "Certificação ANATEL"],
-    "images": ["imagens/carregador_veicular_levmox-1.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Carregador veicular com proteção inteligente contra sobrecarga, superaquecimento e curto-circuito.",
+    "specs": [
+      "Potência de saída: 20W",
+      "Compatível com PD e QC",
+      "Chip inteligente",
+      "Material: plástico retardante de chama",
+      "Conector USB com LED azul",
+      "Certificação ANATEL"
+    ],
+    "images": [
+      "imagens/carregador_veicular_levmox-1.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 18,
     "name": "Adaptador Lightning para P2 LEHMOX LEY-234",
     "category": "Acessório",
-    "price": { "avista": "R$ 20,00" },
-    "description": "Adaptador Lightning para P2 para dispositivos Apple.",
-    "specs": ["Modelo: LEY-234", "Converte Lightning para P2", "Compatibilidade: iPhone, iPad", "Design leve e portátil"],
-    "images": ["imagens/adaptador_lehmox_ley234-1.png"],
-    "color": "Branco",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Adaptador para dispositivos Apple com entrada Lightning.",
+    "specs": [
+      "Converte Lightning para P2 (3.5mm)",
+      "Compatibilidade: iPhone, iPad",
+      "Áudio digital sem perdas",
+      "Chip inteligente",
+      "Material resistente"
+    ],
+    "images": [
+      "imagens/adaptador_lehmox_ley234-1.png"
+    ],
+    "color": "Branco"
   },
   {
     "id": 19,
     "name": "Receptor de Música Sem Fio DANAT",
     "category": "Acessório",
-    "price": { "avista": "R$ 25,00" },
-    "description": "Transforme qualquer aparelho com entrada auxiliar em Bluetooth.",
-    "specs": ["Transforma P2 em Bluetooth", "Alimentação USB", "Cabo P2 incluso", "Alcance: 10m", "Design compacto"],
-    "images": ["imagens/receptor_danat-1.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Transforme qualquer caixa de som ou aparelho com entrada auxiliar em um dispositivo Bluetooth.",
+    "specs": [
+      "Função: transforma caixas de som em receptores Bluetooth",
+      "Alimentação via USB",
+      "Cabo P2 incluso",
+      "Alcance até 10 metros",
+      "Compatibilidade: smartphones, tablets, notebooks",
+      "Design compacto",
+      "Plug & Play"
+    ],
+    "images": [
+      "imagens/receptor_danat-1.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 20,
     "name": "Carregador Universal LCD USB",
     "category": "Acessório",
-    "price": { "avista": "R$ 25,00" },
-    "description": "Carregador universal para baterias de celulares com visor LCD.",
-    "specs": ["Compatível com modelos 4/4S/5/6", "Conexão USB", "Display LCD", "Ajuste automático de polaridade", "Design compacto"],
-    "images": ["imagens/carregador_universal_lcd-1.png"],
-    "color": "Branco com detalhes azul",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Carregador universal com visor LCD para baterias de celulares.",
+    "specs": [
+      "Compatibilidade: modelos 4/4S/5/6 e outros com bateria removível",
+      "Conexão USB",
+      "Display LCD mostrando status de carregamento",
+      "Função inteligente: ajuste automático de polaridade",
+      "Design compacto"
+    ],
+    "images": [
+      "imagens/carregador_universal_lcd-1.png"
+    ],
+    "color": "Branco com detalhes azul"
   },
   {
     "id": 21,
     "name": "Fone de Ouvido EarX Lightning",
     "category": "Acessório",
-    "price": { "avista": "R$ 25,00" },
+    "price": {
+      "avista": "R$ 25,00"
+    },
     "description": "Fone de ouvido para dispositivos Apple com entrada Lightning.",
-    "specs": ["Modelo: LE-0240", "Conector Lightning", "Som estéreo", "Microfone embutido", "Compatível com iOS 15+", "Design leve"],
-    "images": ["imagens/fone_earx_lightning-1.png"],
-    "color": "Branco",
-    "condition": "Novo"
+    "specs": [
+      "Conector Lightning",
+      "Som estéreo com graves reforçados",
+      "Microfone embutido",
+      "Design leve e confortável"
+    ],
+    "images": [
+      "imagens/fone_earx_lightning-1.png"
+    ],
+    "color": "Branco"
   },
   {
     "id": 22,
-    "name": "Cabos Micro USB KMASTON Supercarga 4.8A",
+    "name": "Cabos Micro USB KMASTON – Supercarga 4.8A",
     "category": "Acessório",
-    "price": { "avista": "R$ 20,00" },
+    "price": {
+      "avista": "R$ 20,00"
+    },
     "description": "Cabos Micro USB para carregamento rápido e seguro.",
-    "specs": ["Modelos: α:GOLD CB1 2.1A 1m | Supercarga", "KMASTON 4.8A MAX 1m | Supercarga", "Compatibilidade: Android, power banks, carregadores"],
-    "images": ["imagens/cabos_kmaston-1.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "specs": [
+      "Modelos: α:GOLD CB1 2.1A – 1 metro | Supercarga",
+      "KMASTON 4.8A MAX (2×2.4A) – 1 metro | Supercarga",
+      "Compatibilidade: Android, power banks, carregadores"
+    ],
+    "images": [
+      "imagens/cabos_kmaston-1.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 23,
     "name": "Hub USB 2.0 Relog’s – 4 Portas",
     "category": "Acessório",
-    "price": { "avista": "R$ 25,00" },
-    "description": "Hub USB 2.0 com 4 portas para ampliar a conectividade do computador.",
-    "specs": ["Modelo: R4-03", "Portas: 4 USB 2.0", "Compatível com Windows/macOS/Linux", "Plug & Play", "Design compacto"],
-    "images": ["imagens/hub_usb_relogs-2.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Hub USB 2.0 com 4 portas para ampliar conectividade.",
+    "specs": [
+      "Modelo: R4-03",
+      "Portas: 4 entradas USB 2.0",
+      "Compatibilidade: Windows, macOS, Linux",
+      "Plug & Play",
+      "Design compacto"
+    ],
+    "images": [
+      "imagens/hub_usb_relogs-2.png"
+    ],
+    "color": "Preto"
   },
   {
     "id": 24,
-    "name": "Carregador Turbo H'Maston Tipo-C/V8/Lightning",
-    "category": "Acessório",
-    "price": { "avista": "R$ 45,00" },
-    "description": "Carregador Turbo eficiente e compacto para múltiplos dispositivos.",
-    "specs": ["Potência até 35W", "Bivolt automático", "Proteção contra sobrecarga, sobrecorrente e superaquecimento", "Design compacto e resistente"],
-    "images": ["imagens/carregadorH-Maston1.png", "imagens/carregadorH-Maston2.png"],
-    "color": "Preto",
-    "condition": "Novo"
+    "name": "Smartphone Samsung – Tripla Câmera | Branco",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 600,00"
+    },
+    "description": "Desempenho confiável, visual moderno e excelente custo-benefício.",
+    "specs": [
+      "RAM 4GB",
+      "Câmera traseira tripla",
+      "Flash LED",
+      "Tela Super AMOLED",
+      "Sistema Android com interface Samsung One UI"
+    ],
+    "images": [
+      "imagens/samsung_triple_camera-1.png"
+    ],
+    "color": "Branco"
   }
 ]
