@@ -8,14 +8,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
 body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior: smooth; }
+
 .product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
 .product-modal.active { opacity: 1; visibility: visible; }
 .modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
 .product-modal .modal-content { background: white; border-radius: 1rem; max-width: 95%; width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; position: relative; }
 #modal-main-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 0.5rem; cursor: zoom-in; transition: transform 0.3s ease; }
+
 .gallery-thumbnail { width: 60px; height: 60px; object-fit: contain; border-radius: 0.5rem; margin-right: 0.5rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
 .gallery-thumbnail.active { border-color: #2563eb; }
 .gallery-thumbnail:hover { transform: scale(1.05); border-color: #3b82f6; }
+
 @media (max-width: 640px) {
   .gallery-thumbnail { width: 50px; height: 50px; margin-right: 0.25rem; }
   #modal-main-image { max-height: 300px; }
@@ -82,9 +85,9 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
           <p class="text-xl md:text-2xl">Descontos exclusivos em modelos selecionados</p>
         </div>
         <div class="min-w-full text-center px-4 py-10">
-      <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Visite Nossa Loja Física</h2>
-      <p class="text-xl md:text-2xl">Todos os produtos disponíveis para visualização no site e pedidos via WhatsApp</p>
-      </div>
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Visite Nossa Loja Física</h2>
+          <p class="text-xl md:text-2xl">Todos os produtos disponíveis para visualização no site e pedidos via WhatsApp</p>
+        </div>
       </div>
       <button id="prevSlide" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
         <i class="fas fa-chevron-left text-blue-600"></i>
@@ -97,7 +100,6 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 </section>
 
 <main class="container mx-auto px-4 py-12">
-
   <!-- Novos -->
   <section id="novos" class="mb-16">
     <div class="flex items-center mb-8">
@@ -124,13 +126,12 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accessories-container"></div>
   </section>
-
 </main>
 
 <!-- Modal -->
-<div class="product-modal">
-  <div class="modal-overlay"></div>
-  <div class="modal-content"></div>
+<div class="product-modal" id="productModal">
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-content" id="modalContent"></div>
 </div>
 
 <!-- Contato -->
@@ -188,7 +189,32 @@ let products = [];
 // Menu mobile toggle
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-menuToggle.addEventListener('click',()=> mobileMenu.classList.toggle('show'));
+menuToggle.addEventListener('click', ()=> mobileMenu.classList.toggle('show'));
+
+// Hero slider
+const heroSlider = document.getElementById('hero-slider');
+let slideIndex = 0;
+document.getElementById('nextSlide').addEventListener('click', ()=> { slideIndex = (slideIndex+1)%3; heroSlider.style.transform = `translateX(-${slideIndex*100}%)`; });
+document.getElementById('prevSlide').addEventListener('click', ()=> { slideIndex = (slideIndex+2)%3; heroSlider.style.transform = `translateX(-${slideIndex*100}%)`; });
+
+// Modal
+const modal = document.getElementById('productModal');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+function openProductModal(p){
+  modalContent.innerHTML = `
+    <h2 class="text-2xl font-bold mb-4">${p.name}</h2>
+    <img src="${p.images[0]}" alt="${p.name}" class="w-full mb-4 rounded" />
+    <p class="mb-2">${p.description}</p>
+    ${p.color?`<p class="mb-2"><strong>Cor:</strong> ${p.color}</p>`:''}
+    ${p.condition?`<p class="mb-2"><strong>Estado:</strong> ${p.condition}</p>`:''}
+    <p class="text-xl font-bold text-blue-600">
+      ${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}
+    </p>
+  `;
+  modal.classList.add('active');
+}
+modalOverlay.addEventListener('click', ()=> modal.classList.remove('active'));
 
 // Carregar produtos
 async function loadProducts() {
@@ -206,7 +232,7 @@ async function loadProducts() {
   }
 }
 
-/// Renderizar produtos
+// Renderizar produtos
 function renderProducts(products){
   const newC=document.getElementById('new-phones-container');
   const usedC=document.getElementById('used-phones-container');
@@ -235,17 +261,9 @@ function renderProducts(products){
           <p class="text-xl font-bold text-blue-600 mb-4">
             ${typeof p.price==='object'?`<strong>À vista:</strong> ${p.price.avista || ''}${p.price.parcelado?`<br><strong>Parcelado:</strong> ${p.price.parcelado}`:''}`:p.price}
           </p>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition w-full" onclick='openProductModal(${JSON.stringify(p).replace(/'/g,"&#39;")})'>Ver Produto</button>
         </div>
       `;
-
-      const overlay=document.createElement('div');
-      overlay.className='overlay';
-      const btnOverlay=document.createElement('button');
-      btnOverlay.textContent='Ver Produto';
-      btnOverlay.addEventListener('click',()=>openProductModal(p));
-      overlay.appendChild(btnOverlay);
-      card.appendChild(overlay);
-
       container.appendChild(card);
     });
 
@@ -278,9 +296,5 @@ scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}
 
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
-
 </body>
 </html>
-
-
-
