@@ -196,7 +196,8 @@ const modalOverlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 
 function openProductModal(product){
-  modalContent.innerHTML=`
+  modalContent.innerHTML = `
+    <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
     <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
     <img src="${product.images[0]}" alt="${product.name}" class="w-full mb-4 rounded"/>
     <p class="mb-2">${product.description}</p>
@@ -206,15 +207,14 @@ function openProductModal(product){
     <p class="text-xl font-bold text-blue-600">${typeof product.price==='object'?`À vista: ${product.price.avista || ''}${product.price.parcelado?` / Parcelado: ${product.price.parcelado}`:''}`:product.price}</p>
     <a href="https://wa.me/5564999518536?text=${encodeURIComponent(`Olá! Tenho interesse no produto: ${product.name}`)}" target="_blank" class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar / WhatsApp</a>
   `;
-// Fechar modal ao clicar no X
+
+  // Fechar modal ao clicar no X
   document.getElementById('closeModal').addEventListener('click', () => {
     modal.classList.remove('active');
   });
 
   modal.classList.add('active');
 }
-
-modalOverlay.addEventListener('click', ()=> modal.classList.remove('active'));
 
 // Pré-carregar imagens
 function preloadImages(urls){
@@ -317,6 +317,7 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 </body>
 </html>
+
 
 
 
