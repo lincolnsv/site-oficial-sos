@@ -225,8 +225,7 @@ function openProductModal(product) {
     ${product.condition ? `<p class="mb-2"><strong>Estado:</strong> ${product.condition}</p>` : ''}
     ${product.specs ? `<div class="mb-2"><strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul></div>` : ''}
     <p class="text-xl font-bold text-blue-600">${typeof product.price === 'object' ? `À vista: ${product.price.avista || ''}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}` : product.price}</p>
-    <a href="https://wa.me/5564999518536?text=${encodeURIComponent(`Olá! Tenho interesse no produto: ${product.name}`)}" target="_blank" class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar / WhatsApp</a>
-  `;
+    const msg = encodeURIComponent( Olá, meu nome é ${name}.\n + Estou entrando em contato pelo site da S.O.S Celulares.\n\n + Tenho interesse no seguinte produto:\n + 📱 Produto: ${product.name}\n + ${product.color ? 🎨 Cor: ${product.color}\n : ''} + ${product.condition ? 🛠️ Estado: ${product.condition}\n : ''} + 💰 Preço: ${priceText}\n\n + Gostaria de receber mais informações e verificar disponibilidade. ); window.open(https://wa.me/5564999518536?text=${msg},'_blank'); });
 
   // Fechar modal ao clicar no X
   document.getElementById('closeModal').addEventListener('click', () => {
@@ -346,3 +345,4 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
