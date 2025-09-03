@@ -68,11 +68,31 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
   </div>
 </header>
 
-<!-- Hero -->
-<section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Celulares Novos e Seminovos com Garantia</h2>
-    <p class="text-xl md:text-2xl">Todos os produtos disponíveis na loja física e pedidos via WhatsApp</p>
+<!-- Hero com Carrossel -->
+<section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
+  <div class="container mx-auto px-4 text-center relative">
+    <div class="overflow-hidden relative max-w-4xl mx-auto">
+      <div class="flex transition-transform duration-500" id="hero-slider">
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Celulares Novos e Seminovos com Garantia</h2>
+          <p class="text-xl md:text-2xl">Os melhores preços e condições de pagamento</p>
+        </div>
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Promoções Imperdíveis!</h2>
+          <p class="text-xl md:text-2xl">Descontos exclusivos em modelos selecionados</p>
+        </div>
+        <div class="min-w-full text-center px-4 py-10">
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Visite Nossa Loja Física</h2>
+      <p class="text-xl md:text-2xl">Todos os produtos disponíveis para visualização no site e pedidos via WhatsApp</p>
+      </div>
+      </div>
+      <button id="prevSlide" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
+        <i class="fas fa-chevron-left text-blue-600"></i>
+      </button>
+      <button id="nextSlide" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
+        <i class="fas fa-chevron-right text-blue-600"></i>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -232,3 +252,4 @@ document.addEventListener('DOMContentLoaded', loadProducts);
 
 </body>
 </html>
+
