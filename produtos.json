@@ -343,6 +343,7 @@
     ],
     "color": "Preto"
   },
+  [
   {
     "id": 16,
     "name": "Fone de Ouvido Estéreo LELONG LE-0240",
@@ -505,6 +506,7 @@
   {
     "id": 24,
     "name": "POCO C75 128/6",
+    "category": "Novo",
     "color": "Preto/Verde",
     "images": [
       "imagens/poco_c75-1286-pretoverde-1.png",
@@ -530,6 +532,7 @@
   {
     "id": 25,
     "name": "POCO C75 256/8",
+    "category": "Novo",
     "color": "Preto/Verde/Gold",
     "images": [
       "imagens/poco_c75-2568-pretoverdegold-1.png",
@@ -550,62 +553,63 @@
     "price": {
       "avista": "R$ 990,00",
       "parcelado": "12x R$ 95,00"
+    }
+  },
+  {
+    "id": 26,
+    "name": "Realme Note 70 128/4",
+    "category": "Novo",
+    "price": {
+      "avista": "R$ 950,00",
+      "parcelado": "12x R$ 89,00"
     },
-    {
-  "id": 26,
-  "name": "Realme Note 70 128/4",
-  "category": "Novo",
-  "price": {
-    "avista": "R$ 950,00",
-    "parcelado": "12x R$ 89,00"
+    "description": "O Realme Note 70 128/4 oferece desempenho ágil, tela ampla de alta qualidade e câmeras potentes para uso diário.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "4GB RAM",
+      "128GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme_note70-1284-dourado-1.png",
+      "imagens/realme_note70-1284-preto-2.png"
+    ],
+    "color": "Dourado/Preto"
   },
-  "description": "O Realme Note 70 128/4 oferece desempenho ágil, tela ampla de alta qualidade e câmeras potentes para uso diário.",
-  "specs": [
-    "Tela AMOLED 6,6\" Full HD+",
-    "Processador MediaTek Dimensity 6100+",
-    "4GB RAM",
-    "128GB Armazenamento",
-    "Câmera traseira dupla 64MP + 2MP",
-    "Câmera frontal 16MP",
-    "Bateria 5000mAh",
-    "Carregamento rápido 33W",
-    "Android 13",
-    "Dual SIM"
-  ],
-  "images": [
-    "imagens/realme_note70-1284-dourado-1.png",
-    "imagens/realme_note70-1284-preto-2.png"
-  ],
-  "color": "Dourado/Preto"
-},
-{
-  "id": 27,
-  "name": "Realme Note 70 256/8",
-  "category": "Novo",
-  "price": {
-    "avista": "R$ 1.140,00",
-    "parcelado": "12x R$ 106,40"
+  {
+    "id": 27,
+    "name": "Realme Note 70 256/8",
+    "category": "Novo",
+    "price": {
+      "avista": "R$ 1.140,00",
+      "parcelado": "12x R$ 106,40"
+    },
+    "description": "O Realme Note 70 256/8 combina alto desempenho, grande armazenamento e câmeras potentes para uso diário e entretenimento.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "8GB RAM",
+      "256GB Armazenamento",
+      "Câmera traseira dupla 64MP + 2MP",
+      "Câmera frontal 16MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/realme_note70-2568-dourado-1.png",
+      "imagens/realme_note70-2568-preto-2.png"
+    ],
+    "color": "Dourado/Preto"
   },
-  "description": "O Realme Note 70 256/8 combina alto desempenho, grande armazenamento e câmeras potentes para uso diário e entretenimento.",
-  "specs": [
-    "Tela AMOLED 6,6\" Full HD+",
-    "Processador MediaTek Dimensity 6100+",
-    "8GB RAM",
-    "256GB Armazenamento",
-    "Câmera traseira dupla 64MP + 2MP",
-    "Câmera frontal 16MP",
-    "Bateria 5000mAh",
-    "Carregamento rápido 33W",
-    "Android 13",
-    "Dual SIM"
-  ],
-  "images": [
-    "imagens/realme_note70-2568-dourado-1.png",
-    "imagens/realme_note70-2568-preto-2.png"
-  ],
-  "color": "Dourado/Preto"
-},
-{
+  {
     "id": 28,
     "name": "Redmi 13 256GB/8GB",
     "category": "Novo",
@@ -634,6 +638,8 @@
     "color": "Preto/Gold/Azul"
   }
 ]
+
+
 
 
 
