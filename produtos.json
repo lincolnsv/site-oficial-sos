@@ -508,8 +508,10 @@
     "category": "Novo",
     "description": "O Poco C75 combina desempenho e estilo, oferecendo uma tela ampla e câmeras de qualidade.",
     "images": [
-      "imagens/poco_c75_1.png",
-      "imagens/poco_c75_2.png"
+      "imagens/poco_c75-1286-pretoverde-1.png",
+      "imagens/poco_c75-1286-pretoverde-1.png",
+      "imagens/poco_c75-2568-pretoverdegold-1.png",
+      "imagens/poco_c75-2568-pretoverdegold-2.png"
     ],
     "variations": [
       {
@@ -543,6 +545,7 @@
     ]
   }
 ]
+
 
 
 
