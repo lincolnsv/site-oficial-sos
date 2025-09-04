@@ -278,6 +278,16 @@ modalContent.innerHTML = `
     });
   });
 
+  // Navegação das imagens
+  document.getElementById('prevImage').addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+    modalImage.src = product.images[currentImageIndex];
+  });
+  document.getElementById('nextImage').addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % product.images.length;
+    modalImage.src = product.images[currentImageIndex];
+  });
+
   // Botão WhatsApp
 document.getElementById('whatsappBtn').addEventListener('click', () => {
   const nameInput = document.getElementById('customerName').value.trim();
@@ -411,6 +421,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
