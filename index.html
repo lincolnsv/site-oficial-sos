@@ -283,27 +283,31 @@ function openProductModal(product) {
         ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${selectedVariation.specs.map(s => `<li>${s}</li>`).join('')}</ul>` 
         : '';
 
-  // Troca automática de imagens a cada 3 segundos
-  let imageInterval = setInterval(() => {
-    currentImageIndex = (currentImageIndex + 1) % product.images.length;
-    modalImage.src = product.images[currentImageIndex];
+  let imageInterval;
+
+function startImageRotation(images) {
+  let index = 0;
+  modalImage.src = images[index];
+  imageInterval = setInterval(() => {
+    index = (index + 1) % images.length;
+    modalImage.src = images[index];
   }, 3000);
+}
 
-  // Navegação das imagens
-  const prevBtn = document.getElementById('prevImage');
-  const nextBtn = document.getElementById('nextImage');
+function stopImageRotation() {
+  clearInterval(imageInterval);
+}
 
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
-      modalImage.src = product.images[currentImageIndex];
-    });
-    nextBtn.addEventListener('click', () => {
-      currentImageIndex = (currentImageIndex + 1) % product.images.length;
-      modalImage.src = product.images[currentImageIndex];
-    });
-  }
+document.getElementById('closeModal').addEventListener('click', () => {
+  modal.classList.remove('active');
+  stopImageRotation();
+});
 
+modalOverlay.addEventListener('click', () => {
+  modal.classList.remove('active');
+  stopImageRotation();
+});
+      
   // Botão WhatsApp
   document.getElementById('whatsappBtn').addEventListener('click', () => {
     const nameInput = document.getElementById('customerName').value.trim();
@@ -436,6 +440,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
