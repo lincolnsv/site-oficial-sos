@@ -1,242 +1,401 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>S.O.S Celulares - Celulares Novos e Seminovos</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
-    .modal { display: none; }
-    .modal.active { display: flex; }
-    #mobileMenu { display: none; }
-    #mobileMenu.show { display: block; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>S.O.S Celulares - Celulares Novos e Seminovos</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior: smooth; }
+
+/* Modal */
+.product-modal { transition: all 0.3s ease; opacity: 0; visibility: hidden; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
+.product-modal.active { opacity: 1; visibility: visible; }
+.modal-overlay { background-color: rgba(0,0,0,0.7); position: absolute; inset:0; }
+.product-modal .modal-content { background: white; border-radius: 1rem; max-width: 95%; width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; position: relative; }
+#modalContent img { width: 100%; max-height: 400px; object-fit: contain; border-radius: 0.5rem; }
+
+/* Cards */
+.card-hover { position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+.card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.card-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.card-animate.visible { opacity: 1; transform: translateY(0); }
+
+/* Menu mobile */
+.mobile-menu { display: none; flex-direction: column; gap: 0.5rem; }
+.mobile-menu a { padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 0.5rem; font-weight: bold; text-align: center; }
+.mobile-menu a:hover { background: rgba(255,255,255,0.3); }
+.menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+@media(max-width: 640px){
+  nav.desktop-menu { display: none; }
+  .menu-toggle { display: block; color: white; }
+  .mobile-menu.show { display: flex; }
+}
+
+/* Scroll to top */
+.scroll-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #2563eb; color: white; padding: 0.5rem 0.75rem; border-radius: 9999px; cursor: pointer; display: none; z-index: 100; transition: transform 0.2s; }
+.scroll-to-top:hover { transform: scale(1.1); }
+
+</style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="font-sans">
 
-  <!-- Header -->
-  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">S.O.S Celulares</h1>
-    <button id="menuToggle" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
-    <nav class="hidden md:flex gap-4">
-      <a href="#" class="hover:underline">Início</a>
-      <a href="#" class="hover:underline">Produtos</a>
-      <a href="#" class="hover:underline">Contato</a>
+<!-- Scroll to top -->
+<div class="scroll-to-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></div>
+
+<!-- Header -->
+<header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="#"><img src="imagens/logo.png" alt="Logo S.O.S Celulares" class="h-24 w-auto" /></a>
+    <nav class="desktop-menu flex space-x-4">
+      <a href="#novos" class="hover:underline font-bold">Novos</a>
+      <a href="#seminovos" class="hover:underline font-bold">Seminovos</a>
+      <a href="#acessorios" class="hover:underline font-bold">Acessórios</a>
+      <a href="#contato" class="hover:underline font-bold">Contato</a>
     </nav>
-  </header>
-
-  <!-- Menu Mobile -->
-  <nav id="mobileMenu" class="bg-blue-500 text-white p-4 md:hidden">
-    <a href="#" class="block py-2">Início</a>
-    <a href="#" class="block py-2">Produtos</a>
-    <a href="#" class="block py-2">Contato</a>
-  </nav>
-
-  <!-- Produtos -->
-  <main class="p-4">
-    <h2 class="text-2xl font-bold mb-4">Celulares em Destaque</h2>
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-  </main>
-
-  <!-- Modal -->
-  <div id="modalOverlay" class="modal fixed inset-0 bg-black/50 justify-center items-center z-50">
-    <div id="productModal" class="bg-white rounded-lg shadow-lg p-6 relative max-w-lg w-full"></div>
+    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
   </div>
+  <div class="mobile-menu px-4 py-2" id="mobileMenu">
+    <a href="#novos">Novos</a>
+    <a href="#seminovos">Seminovos</a>
+    <a href="#acessorios">Acessórios</a>
+    <a href="#contato">Contato</a>
+  </div>
+</header>
 
-  <script>
-    let products = [];
-
-    // Menu mobile
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuToggle.addEventListener('click', ()=> mobileMenu.classList.toggle('show'));
-
-    // Carregar produtos JSON
-    fetch("produtos.json")
-      .then(res => res.json())
-      .then(data => {
-        products = data;
-        renderProducts();
-      });
-
-    // Renderizar cards
-    function renderProducts() {
-      const grid = document.getElementById("productGrid");
-      grid.innerHTML = "";
-
-      products.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "bg-white rounded-lg shadow p-4 flex flex-col";
-
-        card.innerHTML = `
-          <img src="${p.images[0]}" alt="${p.name}" class="h-40 object-contain mb-2 mx-auto">
-          <h3 class="text-lg font-bold mb-1">${p.name}</h3>
-          <p class="text-sm mb-2">${p.description}</p>
-          ${p.variants ? `
-            <select id="variantSelect${p.id}" class="border rounded px-2 py-1 mb-2">
-              ${p.variants.map((v, i)=> `<option value="${i}">${v.name}</option>`).join("")}
-            </select>
-          ` : ""}
-          <p class="text-blue-600 font-bold mb-2 priceArea"></p>
-          <div class="specsContainer text-sm mb-2"></div>
-          <button class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 mt-auto verProdutoBtn">Ver produto</button>
-        `;
-
-        grid.appendChild(card);
-
-        const priceEl = card.querySelector(".priceArea");
-        const specsEl = card.querySelector(".specsContainer");
-
-        function updateVariant(variant) {
-          priceEl.innerHTML = `À vista: ${variant.price.avista}${
-            variant.price.parcelado ? ` / Parcelado: ${variant.price.parcelado}` : ''
-          }`;
-
-          specsEl.innerHTML = variant.specs 
-            ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${variant.specs.map(s => `<li>${s}</li>`).join('')}</ul>`
-            : '';
-        }
-
-        if (p.variants) {
-          const select = card.querySelector(`#variantSelect${p.id}`);
-          updateVariant(p.variants[0]);
-          select.addEventListener("change", (e) => {
-            updateVariant(p.variants[e.target.value]);
-          });
-        } else {
-          priceEl.textContent = typeof p.price === "object"
-            ? `À vista: ${p.price.avista}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}`
-            : p.price;
-
-          specsEl.innerHTML = p.specs 
-            ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${p.specs.map(s => `<li>${s}</li>`).join('')}</ul>`
-            : '';
-        }
-
-        // Abrir modal
-        card.querySelector(".verProdutoBtn").addEventListener("click", () => openProductModal(p));
-      });
-    }
-
-    // Modal
-    const modal = document.getElementById('productModal');
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalContent = document.getElementById('productModal');
-
-    function openProductModal(product) {
-      let currentImageIndex = 0;
-
-      let variantSelectHtml = '';
-      if (product.variants) {
-        variantSelectHtml = `
-          <label class="block mb-1 font-bold">Armazenamento:</label>
-          <select class="w-full border rounded px-2 py-1 mb-2" id="modalVariantSelect">
-            ${product.variants.map((v, i) => `<option value="${i}">${v.name}</option>`).join('')}
-          </select>
-        `;
-      }
-
-      modalContent.innerHTML = `
-        <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
-        <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
-        <div class="relative mb-4">
-          <img id="modalProductImage" src="${product.images[0]}" alt="${product.name}" class="w-full rounded"/>
-          ${product.images.length > 1 ? `
-            <button id="prevImage" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">‹</button>
-            <button id="nextImage" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">›</button>
-          ` : ''}
+<!-- Hero -->
+<section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
+  <div class="container mx-auto px-4 text-center relative">
+    <div class="overflow-hidden relative max-w-4xl mx-auto">
+      <div class="flex transition-transform duration-500" id="hero-slider">
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Celulares Novos e Seminovos com Garantia</h2>
+          <p class="text-xl md:text-2xl">Os melhores preços e condições de pagamento</p>
         </div>
-        <p class="mb-2">${product.description}</p>
-        ${variantSelectHtml}
-        <div id="specsContainer" class="mb-2"></div>
-        <p id="variationPrice" class="text-xl font-bold text-blue-600"></p>
-        <div class="mb-4">
-          <label for="customerName" class="block font-bold mb-1">Seu nome:</label>
-          <input type="text" id="customerName" class="w-full border rounded px-3 py-2" placeholder="Digite seu nome">
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Promoções Imperdíveis!</h2>
+          <p class="text-xl md:text-2xl">Descontos exclusivos em modelos selecionados</p>
         </div>
-        <button id="whatsappBtn" class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
+        <div class="min-w-full text-center px-4 py-10">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Visite Nossa Loja Física</h2>
+          <p class="text-xl md:text-2xl">Todos os produtos disponíveis para visualização no site e pedidos via WhatsApp</p>
+        </div>
+      </div>
+      <button id="prevSlide" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
+        <i class="fas fa-chevron-left text-blue-600"></i>
+      </button>
+      <button id="nextSlide" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition">
+        <i class="fas fa-chevron-right text-blue-600"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+  <!-- Novos -->
+  <section id="novos" class="mb-16">
+    <div class="flex items-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Celulares Novos</h2>
+      <span class="ml-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Garantia de fábrica</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="new-phones-container"></div>
+  </section>
+
+  <!-- Seminovos -->
+  <section id="seminovos" class="mb-16">
+    <div class="flex items-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Celulares Seminovos</h2>
+      <span class="ml-4 bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">Testados e aprovados</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="used-phones-container"></div>
+  </section>
+
+  <!-- Acessórios -->
+  <section id="acessorios" class="mb-16">
+    <div class="flex items-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Acessórios</h2>
+      <span class="ml-4 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Capinhas, fones, carregadores</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accessories-container"></div>
+  </section>
+</main>
+
+<!-- Modal -->
+<div class="product-modal" id="productModal">
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<!-- Contato -->
+<section id="contato" class="bg-gray-100 py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Fale Conosco</h2>
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 space-y-6 hover:shadow-xl transition">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6">
+          <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-xl font-bold text-gray-800">Atendimento por WhatsApp</h3>
+          <p class="text-gray-600">Segunda a Sexta, das 7:30 às 17:30</p>
+          <p class="text-gray-600">Sábado, 08:00 às 12:00</p>
+          <a href="https://wa.me/5564999518536" class="text-blue-600 font-medium hover:underline">(64) 99951-8536</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6">
+          <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-xl font-bold text-gray-800">Nosso Endereço</h3>
+          <p class="text-gray-600">Av. Quarta, 94 - Centro</p>
+          <p class="text-gray-600">Mineiros - GO</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-8">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <h3 class="text-xl font-bold mb-2">S.O.S Celulares</h3>
+        <p class="text-gray-400">Celulares novos e seminovos com garantia</p>
+      </div>
+      <div class="flex space-x-4">
+        <a href="https://www.instagram.com/s.o.scelulares_?igsh=czlla3JnaGc2OXg3" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+        <a href="https://wa.me/5564999518536" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp text-xl"></i></a>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+      <p>&copy; 2025 S.O.S Celulares. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+let products = [];
+
+// Menu mobile
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('show'));
+
+// Hero slider
+const heroSlider = document.getElementById('hero-slider');
+let slideIndex = 0;
+const totalSlides = heroSlider.children.length;
+
+function updateSlide() { heroSlider.style.transform = `translateX(-${slideIndex * 100}%)`; }
+
+document.getElementById('nextSlide').addEventListener('click', () => {
+  slideIndex = (slideIndex + 1) % totalSlides;
+  updateSlide();
+});
+document.getElementById('prevSlide').addEventListener('click', () => {
+  slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+  updateSlide();
+});
+setInterval(() => {
+  slideIndex = (slideIndex + 1) % totalSlides;
+  updateSlide();
+}, 5000);
+
+// Modal
+const modal = document.getElementById('productModal');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+
+function openProductModal(product) {
+  let currentImageIndex = 0;
+  modalContent.innerHTML = `
+    <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
+    <div class="relative mb-4">
+      <img id="modalProductImage" src="${product.images[0]}" alt="${product.name}" class="w-full rounded"/>
+      ${product.images.length > 1 ? `
+        <button id="prevImage" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">‹</button>
+        <button id="nextImage" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">›</button>
+      ` : ''}
+    </div>
+    <p class="mb-2">${product.description}</p>
+    <div id="specsContainer" class="mb-2">
+      ${product.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
+    </div>
+    <p id="variationPrice" class="text-xl font-bold text-blue-600">
+      ${typeof product.price === 'object' ? `À vista: ${product.price.avista}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}` : product.price}
+    </p>
+    <div class="mb-4">
+      <label for="customerName" class="block font-bold mb-1">Seu nome:</label>
+      <input type="text" id="customerName" class="w-full border rounded px-3 py-2" placeholder="Digite seu nome">
+    </div>
+    <button id="whatsappBtn" class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
+  `;
+
+  const modalImage = document.getElementById('modalProductImage');
+  let imageInterval = setInterval(() => {
+    currentImageIndex = (currentImageIndex + 1) % product.images.length;
+    modalImage.src = product.images[currentImageIndex];
+  }, 3000);
+
+  const prevBtn = document.getElementById('prevImage');
+  const nextBtn = document.getElementById('nextImage');
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+      modalImage.src = product.images[currentImageIndex];
+    });
+    nextBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % product.images.length;
+      modalImage.src = product.images[currentImageIndex];
+    });
+  }
+
+  document.getElementById('whatsappBtn').addEventListener('click', () => {
+    const nameInput = document.getElementById('customerName').value.trim();
+    const name = nameInput ? nameInput : "Cliente";
+    const p = product;
+    const priceText = typeof p.price === 'object' ? `${p.price.avista}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
+    const msg = encodeURIComponent(
+      `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
+    );
+    window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
+  });
+
+  document.getElementById('closeModal').addEventListener('click', () => { modal.classList.remove('active'); });
+  modalOverlay.addEventListener('click', () => { modal.classList.remove('active'); });
+
+  modal.classList.add('active');
+}
+
+// Pré-carregar imagens
+function preloadImages(urls) {
+  return Promise.all(urls.map(src => new Promise(resolve => {
+    const img = new Image();
+    img.src = src;
+    img.onload = resolve;
+    img.onerror = resolve;
+  })));
+}
+
+// Carregar produtos
+async function loadProducts() {
+  try {
+    const response = await fetch('produtos.json');
+    const data = await response.json();
+    products = data.map(p => {
+      if (!p.category) p.category = "Novo";
+      return p;
+    });
+    renderProducts(products);
+  } catch (err) {
+    console.error('Erro ao carregar produtos:', err);
+  }
+}
+
+function renderProducts(products) {
+  const newC = document.getElementById('new-phones-container');
+  const usedC = document.getElementById('used-phones-container');
+  const accC = document.getElementById('accessories-container');
+  newC.innerHTML = usedC.innerHTML = accC.innerHTML = '';
+
+  const categories = { "Novo": newC, "Seminovo": usedC, "Acessório": accC };
+
+  Object.keys(categories).forEach(cat => {
+    const container = categories[cat];
+    const produtosCat = products.filter(p => p.category === cat);
+
+    produtosCat.forEach((p, index) => {
+      const card = document.createElement('div');
+      card.className = 'group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer card-hover card-animate';
+      if (index >= 3) card.style.display = 'none';
+
+      // Dropdown de variações
+      const variantOptions = p.variants ? `
+        <label class="block mb-1 font-bold">Modelo:</label>
+        <select class="w-full border rounded px-2 py-1 mb-2" id="variantSelect${p.id}">
+          ${p.variants.map((v, i) => `<option value="${i}">${v.name}</option>`).join('')}
+        </select>
+      ` : '';
+
+      card.innerHTML = `
+        <div class="relative h-48 bg-gray-100 flex items-center justify-center p-4 overflow-hidden">
+          <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
+          <button class="absolute inset-0 flex items-center justify-center bg-black/60 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition">Ver Produto</button>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
+          <p class="text-gray-600 text-sm mb-2">${p.description}</p>
+          ${variantOptions}
+          <div class="specsContainer mb-2">
+            ${p.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${p.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
+          </div>
+          <p class="text-xl font-bold text-blue-600 mb-1">${typeof p.price === 'object' ? `À vista: ${p.price.avista}` : p.price}</p>
+          ${p.price.parcelado ? `<p class="text-xl font-bold text-blue-600">Parcelado: ${p.price.parcelado}</p>` : ''}
+        </div>
       `;
 
-      // Galeria automática
-      const modalImage = document.getElementById('modalProductImage');
-      let imageInterval = setInterval(() => {
-        currentImageIndex = (currentImageIndex + 1) % product.images.length;
-        modalImage.src = product.images[currentImageIndex];
-      }, 3000);
+      card.querySelector('button').addEventListener('click', () => openProductModal(p));
+      container.appendChild(card);
 
-      const prevBtn = document.getElementById('prevImage');
-      const nextBtn = document.getElementById('nextImage');
-      if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-          currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
-          modalImage.src = product.images[currentImageIndex];
-        });
-        nextBtn.addEventListener('click', () => {
-          currentImageIndex = (currentImageIndex + 1) % product.images.length;
-          modalImage.src = product.images[currentImageIndex];
+      // Listener de mudança de variação
+      if (p.variants) {
+        const select = card.querySelector(`#variantSelect${p.id}`);
+        const priceEl = card.querySelector('.text-blue-600');
+        const specsEl = card.querySelector('.specsContainer');
+
+        select.addEventListener('change', (e) => {
+          const variant = p.variants[e.target.value];
+          priceEl.innerHTML = `À vista: ${variant.price.avista}${variant.price.parcelado ? ` / Parcelado: ${variant.price.parcelado}` : ''}`;
+          specsEl.innerHTML = variant.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${variant.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : '';
         });
       }
+    });
 
-      // Atualização preço/specs
-      const priceEl = document.getElementById("variationPrice");
-      const specsEl = document.getElementById("specsContainer");
+    // Ver mais
+    if (produtosCat.length > 3) {
+      const verMaisCard = document.createElement('div');
+      verMaisCard.className = 'col-span-full flex justify-center mt-4';
+      const verMaisBtn = document.createElement('button');
+      verMaisBtn.className = 'bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition';
+      verMaisBtn.textContent = 'Ver Mais';
+      verMaisCard.appendChild(verMaisBtn);
+      container.appendChild(verMaisCard);
 
-      function updateVariant(variant) {
-        priceEl.innerHTML = `À vista: ${variant.price.avista}${
-          variant.price.parcelado ? ` / Parcelado: ${variant.price.parcelado}` : ''
-        }`;
-        specsEl.innerHTML = variant.specs 
-          ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${variant.specs.map(s => `<li>${s}</li>`).join('')}</ul>`
-          : '';
-      }
-
-      if (product.variants) {
-        const select = document.getElementById("modalVariantSelect");
-        updateVariant(product.variants[0]);
-        select.addEventListener("change", (e) => {
-          updateVariant(product.variants[e.target.value]);
-        });
-      } else {
-        priceEl.textContent = typeof product.price === "object"
-          ? `À vista: ${product.price.avista}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}`
-          : product.price;
-        specsEl.innerHTML = product.specs 
-          ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul>`
-          : '';
-      }
-
-      // WhatsApp
-      document.getElementById('whatsappBtn').addEventListener('click', () => {
-        const nameInput = document.getElementById('customerName').value.trim();
-        const name = nameInput ? nameInput : "Cliente";
-        let priceText = priceEl.textContent;
-        let variantText = '';
-        if (product.variants) {
-          const select = document.getElementById("modalVariantSelect");
-          const chosen = product.variants[select.value];
-          variantText = `📦 Versão: ${chosen.name}\n`;
-        }
-        const msg = encodeURIComponent(
-          `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${product.name}\n${variantText}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
-        );
-        window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
-      });
-
-      // Fechar modal
-      document.getElementById('closeModal').addEventListener('click', () => { 
-        modalOverlay.classList.remove('active'); 
-        clearInterval(imageInterval);
-      });
-      modalOverlay.addEventListener('click', (e) => { 
-        if (e.target === modalOverlay) {
-          modalOverlay.classList.remove('active'); 
-          clearInterval(imageInterval);
+      verMaisBtn.addEventListener('click', () => {
+        const hiddenCards = Array.from(container.children).filter(c => c !== verMaisCard && c.style.display === 'none');
+        if (hiddenCards.length > 0) { 
+          hiddenCards.forEach(c => c.style.display = 'block'); 
+          verMaisBtn.textContent = 'Ver Menos'; 
+        } else { 
+          Array.from(container.children).forEach((c, i) => { if (c !== verMaisCard) c.style.display = i < 3 ? 'block' : 'none'; }); 
+          verMaisBtn.textContent = 'Ver Mais'; 
         }
       });
-
-      modalOverlay.classList.add('active');
     }
-  </script>
+  });
+
+  // Fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.card-animate').forEach(card => observer.observe(card));
+}
+
+// Scroll top button
+const scrollBtn = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => { scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+loadProducts();
+</script>
 </body>
 </html>
