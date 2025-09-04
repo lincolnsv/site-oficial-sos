@@ -174,46 +174,409 @@
     "color": "Preto"
   },
   {
-    "id": 24,
-    "name": "Poco C75 128GB ",
-    "category": "Novo",
+    "id": 8,
+    "name": "Fone Lehmox Caveira",
+    "category": "Acessório",
     "price": {
-      "avista": "R$ 1.199,90",
-      "parcelado": "12x R$ 119,99"
+      "avista": "R$ 69,90"
     },
-    "description": "O Poco C75 combina desempenho e estilo, oferecendo uma tela ampla e câmeras de qualidade.",
+    "description": "Estilo radical com som potente! Design único em formato de caveira.",
     "specs": [
-      "Tela 6.6''",
-      "Câmera traseira 50MP + 2MP",
-      "Processador Octa-core 2.0GHz",
-      "Bateria 5000mAh"
+      "Som potente e de alta qualidade",
+      "Design único em formato de caveira",
+      "Compatível com PCs, celulares e consoles",
+      "Cabo removível e confortável"
     ],
     "images": [
-      "imagens/poco_c75-1286-pretoverde-1.png",
-      "imagens/poco_c75-1286-pretoverde-1.png"
+      "imagens/fone_lehmox_caveira.png"
     ],
-    "color": "Preto/verde"
+    "color": "Preto"
   },
   {
-    "id": 25,
-    "name": "Poco C75 256GB ",
-    "category": "Novo",
+    "id": 9,
+    "name": "Caixa de Som α GOLD PRO SM-30A",
+    "category": "Acessório",
     "price": {
-      "avista": "R$ 1.399,90",
-      "parcelado": "12x R$ 139,99"
+      "avista": "R$ 589,00"
     },
-    "description": "O Poco C75 combina desempenho e estilo, oferecendo uma tela ampla e câmeras de qualidade.",
+    "description": "Transforme qualquer ambiente em uma festa com a α GOLD PRO SM-30A, a caixa de som portátil resistente à água IPX6.",
     "specs": [
-      "Tela 6.6''",
-      "Câmera traseira 50MP + 2MP",
-      "Processador Octa-core 2.0GHz",
-      "Bateria 5000mAh"
+      "Modelo: SM-30A",
+      "Cor: Preto com LED multicolorido",
+      "Resistência: IPX6",
+      "Design compacto com alça para transporte",
+      "Iluminação LED dinâmica"
     ],
     "images": [
-      "imagens/poco_c75-2568-pretoverdegold-1.png",
-      "imagens/poco_c75-2568-pretoverdegold-2.png"
+      "imagens/caixa_som_alphagold_sm30a-1.png"
     ],
-    "color": "Preto/Verde/gold"
+    "color": "Preto"
+  },
+  {
+    "id": 10,
+    "name": "Carregador Veicular Turbo 66W B1",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 119,90"
+    },
+    "description": "Carregador veicular turbo retrátil 4 em 1 com display digital e cabos retráteis.",
+    "specs": [
+      "Potência Turbo: 66W com suporte PD e QC",
+      "Conexões 4 em 1: USB-C, Lightning, Micro USB, USB padrão",
+      "Cabos retráteis inteligentes",
+      "Display digital",
+      "Rotação de 180º",
+      "Compatibilidade universal",
+      "Voltagem entrada: 12V/24V",
+      "Material ABS resistente"
+    ],
+    "images": [
+      "imagens/carregador_veicular_b1-1.png"
+    ],
+    "color": "Cinza prateado"
+  },
+  {
+    "id": 11,
+    "name": "Power Bank HREBOS PB-955",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 149,00",
+      "parcelado": "4x R$ 40,00"
+    },
+    "description": "Carregador portátil 10000mAh com design Pop-it, 22.5W Turbo e LED display.",
+    "specs": [
+      "Capacidade real: 10.000mAh",
+      "Carregamento rápido 22.5W Turbo",
+      "Conexões: USB, Tipo-C, Lightning",
+      "Display LED inteligente",
+      "Design Pop-it",
+      "Cor: Branco",
+      "Certificação ANATEL"
+    ],
+    "images": [
+      "imagens/powerbank_hrebos_pb955-1.png"
+    ],
+    "color": "Branco"
+  },
+  {
+    "id": 12,
+    "name": "Samsung A13",
+    "category": "Seminovo",
+    "price": {
+      "avista": "R$ 600,00"
+    },
+    "description": "Desempenho confiável, visual moderno e excelente custo-benefício. Semi novo, em excelente estado.",
+    "specs": [
+      "Armazenamento 128GB",
+      "RAM 4GB",
+      "Câmera traseira tripla",
+      "Flash LED",
+      "Tela Super AMOLED",
+      "Sistema Android com interface Samsung One UI"
+    ],
+    "images": [
+      "imagens/samsung_triple_camera-1.png",
+      "imagens/samsung_triple_camera-2.png",
+      "imagens/samsung_triple_camera-3.png"
+    ],
+    "color": "Branco"
+  },
+  {
+    "id": 13,
+    "name": "Power Bank PINENG 30.000mAh",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 275,00",
+      "parcelado": "6x R$ 48,50"
+    },
+    "description": "Carregador portátil de alta capacidade com display LED inteligente e múltiplas entradas.",
+    "specs": [
+      "Capacidade real: 30.000mAh",
+      "Carga rápida: 22.5W PD",
+      "Entradas: Tipo-C, Lightning, Micro USB",
+      "Saídas: 2 portas USB",
+      "Display LED inteligente",
+      "Bateria de polímero de íon-lítio",
+      "Compatibilidade: smartphones, tablets, fones"
+    ],
+    "images": [
+      "imagens/powerbank_pineng_30000-1.png"
+    ],
+    "color": "Branco"
+  },
+  {
+    "id": 14,
+    "name": "Adaptadores USB – Modelos Diversos",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 15,00"
+    },
+    "description": "Adaptadores USB universais para conexão rápida e compatível com diversos dispositivos.",
+    "specs": [
+      "Modelo A1 (Laranja) – compacto e resistente",
+      "IT-BLUE Série Connector (Preto) – durabilidade e acabamento profissional",
+      "USB Compatible (Vermelho/Preto) – design moderno, embalagem circular",
+      "Compatibilidade: Android, iOS, tablets, fones, caixas de som"
+    ],
+    "images": [
+      "imagens/adaptadores_usb-1.png"
+    ],
+    "color": "Diversas cores"
+  },
+  {
+    "id": 15,
+    "name": "Cabo Adaptador de Áudio IT-BLUE MAX-0302F",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Cabo adaptador para notebooks, PCs e dispositivos com entrada separada para áudio e microfone.",
+    "specs": [
+      "Modelo: MAX-0302F",
+      "Conexão: 1 P3 Fêmea para 2 P2 Macho",
+      "Compatibilidade: notebooks, PCs, caixas de som, headsets",
+      "Identificação rápida: conectores coloridos",
+      "Material: cabo flexível e resistente"
+    ],
+    "images": [
+      "imagens/cabo_adaptador_itblue-1.png"
+    ],
+    "color": "Preto"
+  },
+  {
+    "id": 16,
+    "name": "Fone de Ouvido Estéreo LELONG LE-0240",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Fone de ouvido estéreo com fio, graves extras e design ergonômico.",
+    "specs": [
+      "Modelo: LE-0240",
+      "Compatível com celulares, tablets, notebooks",
+      "Design ergonômico",
+      "Graves reforçados"
+    ],
+    "images": [
+      "imagens/fone_lelong_le0240-1.png"
+    ],
+    "color": "Preto"
+  },
+  {
+    "id": 17,
+    "name": "Carregador Veicular LEVMOX LE-156",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Carregador veicular com proteção inteligente contra sobrecarga, superaquecimento e curto-circuito.",
+    "specs": [
+      "Potência de saída: 20W",
+      "Compatível com PD e QC",
+      "Chip inteligente",
+      "Material: plástico retardante de chama",
+      "Conector USB com LED azul",
+      "Certificação ANATEL"
+    ],
+    "images": [
+      "imagens/carregador_veicular_levmox-1.png"
+    ],
+    "color": "Preto"
+  },
+  {
+    "id": 18,
+    "name": "Adaptador Lightning para P2 LEHMOX LEY-234",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Adaptador para dispositivos Apple com entrada Lightning.",
+    "specs": [
+      "Converte Lightning para P2 (3.5mm)",
+      "Compatibilidade: iPhone, iPad",
+      "Áudio digital sem perdas",
+      "Chip inteligente",
+      "Material resistente"
+    ],
+    "images": [
+      "imagens/adaptador_lehmox_ley234-1.png"
+    ],
+    "color": "Branco"
+  },
+  {
+    "id": 19,
+    "name": "Receptor de Música Sem Fio DANAT",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Transforme qualquer caixa de som ou aparelho com entrada auxiliar em um dispositivo Bluetooth.",
+    "specs": [
+      "Função: transforma caixas de som em receptores Bluetooth",
+      "Alimentação via USB",
+      "Cabo P2 incluso",
+      "Alcance até 10 metros",
+      "Compatibilidade: smartphones, tablets, notebooks",
+      "Design compacto",
+      "Plug & Play"
+    ],
+    "images": [
+      "imagens/receptor_danat-1.png"
+    ],
+    "color": "Preto"
+  },
+  {
+    "id": 20,
+    "name": "Carregador Universal LCD USB",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Carregador universal com visor LCD para baterias de celulares.",
+    "specs": [
+      "Compatibilidade: modelos 4/4S/5/6 e outros com bateria removível",
+      "Conexão USB",
+      "Display LCD mostrando status de carregamento",
+      "Função inteligente: ajuste automático de polaridade",
+      "Design compacto"
+    ],
+    "images": [
+      "imagens/carregador_universal_lcd-1.png"
+    ],
+    "color": "Branco com detalhes azul"
+  },
+  {
+    "id": 21,
+    "name": "Fone de Ouvido EarX Lightning",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Fone de ouvido para dispositivos Apple com entrada Lightning.",
+    "specs": [
+      "Conector Lightning",
+      "Som estéreo com graves reforçados",
+      "Microfone embutido",
+      "Design leve e confortável"
+    ],
+    "images": [
+      "imagens/fone_earx_lightning-1.png"
+    ],
+    "color": "Branco"
+  },
+  {
+    "id": 22,
+    "name": "Cabos Micro USB KMASTON – Supercarga 4.8A",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 20,00"
+    },
+    "description": "Cabos Micro USB para carregamento rápido e seguro.",
+    "specs": [
+      "Modelos: α:GOLD CB1 2.1A – 1 metro | Supercarga",
+      "KMASTON 4.8A MAX (2×2.4A) – 1 metro | Supercarga",
+      "Compatibilidade: Android, power banks, carregadores"
+    ],
+    "images": [
+      "imagens/cabos_kmaston-1.png"
+    ],
+    "color": "Preto"
+  },
+  {
+    "id": 23,
+    "name": "Hub USB 2.0 Relog’s – 4 Portas",
+    "category": "Acessório",
+    "price": {
+      "avista": "R$ 25,00"
+    },
+    "description": "Hub USB 2.0 com 4 portas para ampliar conectividade.",
+    "specs": [
+      "Modelo: R4-03",
+      "Portas: 4 entradas USB 2.0",
+      "Compatibilidade: Windows, macOS, Linux",
+      "Plug & Play",
+      "Design compacto"
+    ],
+    "images": [
+      "imagens/hub_usb_relogs-2.png"
+    ],
+    "color": "Preto"
+  },
+  {
+    "id": 24,
+    "name": "POCO C75",
+    "category": "Novo",
+    "description": "O POCO C75 é potente, com câmeras de alta qualidade e bateria duradoura.",
+    "images": [
+      "imagens/poco_c75.png",
+      "imagens/poco_c75-2568-pretoverdegold-1.png",
+      "imagens/poco_c75-2568-pretoverdegold-2.png",
+      "imagens/poco_c75-1286-pretoverde-1.png",
+      "imagens/poco_c75-1286-pretoverde-2.png"
+    ],
+    "specs": [
+      "Tela 6.88\"",
+      "Bateria 5160mAh",
+      "Câmera 50MP"
+    ],
+    "price": {
+      "avista": "R$ 890,00",
+      "parcelado": "12x R$ 85,00"
+    },
+    "variations": [
+      {
+        "name": "POCO C75 128/6",
+        "color": "Preto/Verde",
+        "images": [
+          "imagens/poco_c75-1286-pretoverde-1.png",
+          "imagens/poco_c75-1286-pretoverde-2.png"
+        ],
+        "specs": [
+          "Tela LCD IPS 6,88\" HD+ 120Hz",
+          "Processador MediaTek Helio G81-Ultra",
+          "6GB RAM",
+          "128GB Armazenamento",
+          "Câmera traseira 50MP",
+          "Câmera frontal 13MP",
+          "Bateria 5160mAh, Carregamento 18W",
+          "HyperOS Android 14",
+          "Dual SIM"
+        ],
+        "price": {
+          "avista": "R$ 890,00",
+          "parcelado": "12x R$ 85,00"
+        }
+      },
+      {
+        "name": "POCO C75 256/8",
+        "color": "Preto/Verde/Gold",
+        "images": [
+          "imagens/poco_c75-2568-pretoverdegold-1.png",
+          "imagens/poco_c75-2568-pretoverdegold-2.png"
+        ],
+        "specs": [
+          "Tela LCD IPS 6,88\" HD+ 120Hz",
+          "Processador MediaTek Helio G81-Ultra",
+          "8GB RAM",
+          "256GB Armazenamento",
+          "Câmera traseira 50MP",
+          "Câmera frontal 13MP",
+          "Bateria 5160mAh, Carregamento 18W",
+          "HyperOS Android 14",
+          "Dual SIM"
+        ],
+        "price": {
+          "avista": "R$ 990,00",
+          "parcelado": "12x R$ 95,00"
+        }
+      }
+    ]
   }
 ]
+
+
+
+
+
+
 
