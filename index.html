@@ -388,6 +388,16 @@ function renderProducts(products) {
         priceHTML = `<p class="text-xl font-bold text-blue-600">${p.price}</p>`;
       }
 
+      // Aviso de outras variações
+      let variationNotice = '';
+      if (p.variations && p.variations.length > 1) {
+        const otherVariations = p.variations
+          .filter((v, i) => i !== 0)
+          .map(v => v.storage)
+          .join(', ');
+        variationNotice = `<p class="text-sm text-gray-500 mt-1">Também disponível em: ${otherVariations}</p>`;
+      }
+
       card.innerHTML = `
         <div class="relative h-48 bg-gray-100 flex items-center justify-center p-4 overflow-hidden">
           <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
@@ -399,6 +409,7 @@ function renderProducts(products) {
           ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
           ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
           ${priceHTML}
+          ${variationNotice}
         </div>
       `;
 
@@ -436,7 +447,6 @@ function renderProducts(products) {
   document.querySelectorAll('.card-animate').forEach(card => observer.observe(card));
 }
 
-
 // Scroll to top
 const scrollBtn = document.getElementById('scrollTopBtn');
 window.addEventListener('scroll', () => { scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
@@ -445,6 +455,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
