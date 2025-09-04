@@ -606,34 +606,35 @@
   "color": "Dourado/Preto"
 },
 {
-  "id": 28,
-  "name": "Redmi 13 256GB/8GB",
-  "category": "Novo",
-  "price": {
-    "avista": "R$ 1.120,00",
-    "parcelado": "12x R$ 104,53"
-  },
-  "description": "O Redmi 13 256GB/8GB oferece alto desempenho, grande armazenamento e câmeras de alta qualidade para uso diário e entretenimento.",
-  "specs": [
-    "Tela AMOLED 6,6\" Full HD+",
-    "Processador MediaTek Dimensity 6100+",
-    "8GB RAM",
-    "256GB Armazenamento",
-    "Câmera traseira dupla 50MP + 2MP",
-    "Câmera frontal 13MP",
-    "Bateria 5000mAh",
-    "Carregamento rápido 33W",
-    "Android 13",
-    "Dual SIM"
-  ],
-  "images": [
-    "imagens/redmi13-2568-preto-1.png",
-    "imagens/redmi13-2568-gold-2.png",
-    "imagens/redmi13-2568-azul-3.png"
-  ],
-  "color": "Preto/Gold/Azul"
- }
+    "id": 28,
+    "name": "Redmi 13 256GB/8GB",
+    "category": "Novo",
+    "price": {
+      "avista": "R$ 1.120,00",
+      "parcelado": "12x R$ 104,53"
+    },
+    "description": "O Redmi 13 256GB/8GB oferece alto desempenho, grande armazenamento e câmeras de alta qualidade para uso diário e entretenimento.",
+    "specs": [
+      "Tela AMOLED 6,6\" Full HD+",
+      "Processador MediaTek Dimensity 6100+",
+      "8GB RAM",
+      "256GB Armazenamento",
+      "Câmera traseira dupla 50MP + 2MP",
+      "Câmera frontal 13MP",
+      "Bateria 5000mAh",
+      "Carregamento rápido 33W",
+      "Android 13",
+      "Dual SIM"
+    ],
+    "images": [
+      "imagens/redmi13-2568-preto-1.png",
+      "imagens/redmi13-2568-gold-2.png",
+      "imagens/redmi13-2568-azul-3.png"
+    ],
+    "color": "Preto/Gold/Azul"
+  }
 ]
+
 
 
 
