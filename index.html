@@ -375,6 +375,19 @@ function renderProducts(products) {
       card.className = 'group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer card-hover card-animate';
       if (index >= 3) card.style.display = 'none';
 
+      // Determinar preço a exibir
+      let priceHTML = '';
+      if (p.variations && p.variations.length > 0) {
+        const v = p.variations[0];
+        priceHTML = `<p class="text-xl font-bold text-blue-600 mb-1">À vista: ${v.price.avista || ''}</p>`;
+        if (v.price.parcelado) priceHTML += `<p class="text-xl font-bold text-blue-600">Parcelado: ${v.price.parcelado}</p>`;
+      } else if (typeof p.price === 'object') {
+        priceHTML = `<p class="text-xl font-bold text-blue-600 mb-1">À vista: ${p.price.avista || ''}</p>`;
+        if (p.price.parcelado) priceHTML += `<p class="text-xl font-bold text-blue-600">Parcelado: ${p.price.parcelado}</p>`;
+      } else {
+        priceHTML = `<p class="text-xl font-bold text-blue-600">${p.price}</p>`;
+      }
+
       card.innerHTML = `
         <div class="relative h-48 bg-gray-100 flex items-center justify-center p-4 overflow-hidden">
           <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
@@ -385,10 +398,7 @@ function renderProducts(products) {
           <p class="text-gray-600 text-sm mb-2">${p.description}</p>
           ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
           ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
-          ${typeof p.price === 'object' 
-            ? `<p class="text-xl font-bold text-blue-600 mb-1">À vista: ${p.price.avista || ''}</p>
-               ${p.price.parcelado ? `<p class="text-xl font-bold text-blue-600">Parcelado: ${p.price.parcelado}</p>` : ''}`
-            : `<p class="text-xl font-bold text-blue-600">${p.price}</p>`}
+          ${priceHTML}
         </div>
       `;
 
@@ -426,6 +436,7 @@ function renderProducts(products) {
   document.querySelectorAll('.card-animate').forEach(card => observer.observe(card));
 }
 
+
 // Scroll to top
 const scrollBtn = document.getElementById('scrollTopBtn');
 window.addEventListener('scroll', () => { scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
@@ -434,6 +445,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
