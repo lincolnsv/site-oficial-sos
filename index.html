@@ -216,91 +216,69 @@ const modalOverlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 
 function openProductModal(product) {
-  // Criar opções de variações, se existirem
-  let variationOptions = '';
-  if (product.variations && product.variations.length > 0) {
-    variationOptions = `
-      <label class="block mb-2 font-bold">Escolha a variação:</label>
-      <div class="flex gap-2 flex-wrap mb-4" id="variationButtons">
-        ${product.variations.map((v, i) => `
-          <button class="px-3 py-1 border rounded hover:bg-blue-100" data-index="${i}">
-            ${v.name}${v.color ? ` - ${v.color}` : ''}
-          </button>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  // Conteúdo inicial do modal com campo de nome
-modalContent.innerHTML = `
-  <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
-  <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
-  <img src="${product.images[0]}" alt="${product.name}" class="w-full mb-4 rounded"/>
-  <p class="mb-2">${product.description}</p>
-  ${variationOptions}
-  <div id="specsContainer" class="mb-2">
-    ${product.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
-  </div>
-  <p id="variationPrice" class="text-xl font-bold text-blue-600">
-    ${typeof product.price === 'object' ? `À vista: ${product.price.avista}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}` : product.price}
-  </p>
-
-  <!-- Campo para nome do cliente -->
-  <div class="mb-4">
-    <label for="customerName" class="block font-bold mb-1">Seu nome:</label>
-    <input type="text" id="customerName" class="w-full border rounded px-3 py-2" placeholder="Digite seu nome">
-  </div>
-
-  <button id="whatsappBtn" class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
-`;
-
-
   let selectedVariation = null;
-  const specsContainer = modalContent.querySelector('#specsContainer');
-  const variationPrice = modalContent.querySelector('#variationPrice');
+  let currentImageIndex = 0;
 
-  // Seleção de variações
-  const variationButtons = modalContent.querySelectorAll('#variationButtons button');
-  variationButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      variationButtons.forEach(b => b.classList.remove('bg-blue-500', 'text-white'));
-      btn.classList.add('bg-blue-500', 'text-white');
-      const index = btn.getAttribute('data-index');
-      selectedVariation = product.variations[index];
+  // Conteúdo inicial do modal com navegação de imagens
+  modalContent.innerHTML = `
+    <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
 
-      // Atualiza preço
-      variationPrice.textContent = `À vista: ${selectedVariation.price.avista}${selectedVariation.price.parcelado ? ` / Parcelado: ${selectedVariation.price.parcelado}` : ''}`;
+    <div class="relative mb-4">
+      <img id="modalProductImage" src="${product.images[0]}" alt="${product.name}" class="w-full rounded"/>
+      ${product.images.length > 1 ? `
+        <button id="prevImage" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">‹</button>
+        <button id="nextImage" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">›</button>
+      ` : ''}
+    </div>
 
-      // Atualiza especificações
-      specsContainer.innerHTML = selectedVariation.specs 
-        ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${selectedVariation.specs.map(s => `<li>${s}</li>`).join('')}</ul>` 
-        : '';
-    });
-  });
+    <p class="mb-2">${product.description}</p>
+
+    <div id="specsContainer" class="mb-2">
+      ${product.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
+    </div>
+
+    <p id="variationPrice" class="text-xl font-bold text-blue-600">
+      ${typeof product.price === 'object' ? `À vista: ${product.price.avista}${product.price.parcelado ? ` / Parcelado: ${product.price.parcelado}` : ''}` : product.price}
+    </p>
+
+    <div class="mb-4">
+      <label for="customerName" class="block font-bold mb-1">Seu nome:</label>
+      <input type="text" id="customerName" class="w-full border rounded px-3 py-2" placeholder="Digite seu nome">
+    </div>
+
+    <button id="whatsappBtn" class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar via WhatsApp</button>
+  `;
+
+  const modalImage = document.getElementById('modalProductImage');
 
   // Navegação das imagens
-  document.getElementById('prevImage').addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
-    modalImage.src = product.images[currentImageIndex];
-  });
-  document.getElementById('nextImage').addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % product.images.length;
-    modalImage.src = product.images[currentImageIndex];
-  });
+  const prevBtn = document.getElementById('prevImage');
+  const nextBtn = document.getElementById('nextImage');
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+      modalImage.src = product.images[currentImageIndex];
+    });
+    nextBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % product.images.length;
+      modalImage.src = product.images[currentImageIndex];
+    });
+  }
 
   // Botão WhatsApp
-document.getElementById('whatsappBtn').addEventListener('click', () => {
-  const nameInput = document.getElementById('customerName').value.trim();
-  const name = nameInput ? nameInput : "Cliente"; // caso o usuário não digite nada
-  const p = selectedVariation || product;
-  const priceText = typeof p.price === 'object' ? `${p.price.avista}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
-  
-  const msg = encodeURIComponent(
-    `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
-  );
-  
-  window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
-});
+  document.getElementById('whatsappBtn').addEventListener('click', () => {
+    const nameInput = document.getElementById('customerName').value.trim();
+    const name = nameInput ? nameInput : "Cliente";
+    const p = selectedVariation || product;
+    const priceText = typeof p.price === 'object' ? `${p.price.avista}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
+
+    const msg = encodeURIComponent(
+      `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
+    );
+    window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
+  });
 
 
   // Fechar modal ao clicar no X
@@ -421,6 +399,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
