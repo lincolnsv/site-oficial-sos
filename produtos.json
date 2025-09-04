@@ -175,7 +175,7 @@
   },
   {
     "id": 24,
-    "name": "Poco C75 128GB Preto",
+    "name": "Poco C75 128GB ",
     "category": "Novo",
     "price": {
       "avista": "R$ 1.199,90",
@@ -192,11 +192,11 @@
       "imagens/poco_c75-1286-pretoverde-1.png",
       "imagens/poco_c75-1286-pretoverde-1.png"
     ],
-    "color": "Preto"
+    "color": "Preto/verde"
   },
   {
     "id": 25,
-    "name": "Poco C75 256GB Preto",
+    "name": "Poco C75 256GB ",
     "category": "Novo",
     "price": {
       "avista": "R$ 1.399,90",
@@ -213,6 +213,7 @@
       "imagens/poco_c75-2568-pretoverdegold-1.png",
       "imagens/poco_c75-2568-pretoverdegold-2.png"
     ],
-    "color": "Preto"
+    "color": "Preto/Verde/gold"
   }
 ]
+
