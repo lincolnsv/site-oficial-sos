@@ -36,6 +36,7 @@ body { background: linear-gradient(to bottom, #bfdbfe, #eff6ff); scroll-behavior
 /* Scroll to top */
 .scroll-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #2563eb; color: white; padding: 0.5rem 0.75rem; border-radius: 9999px; cursor: pointer; display: none; z-index: 100; transition: transform 0.2s; }
 .scroll-to-top:hover { transform: scale(1.1); }
+
 </style>
 </head>
 <body class="font-sans">
@@ -187,10 +188,27 @@ menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('show'));
 const heroSlider = document.getElementById('hero-slider');
 let slideIndex = 0;
 const totalSlides = heroSlider.children.length;
-function updateSlide() { heroSlider.style.transform = `translateX(-${slideIndex * 100}%)`; }
-document.getElementById('nextSlide').addEventListener('click', () => { slideIndex = (slideIndex + 1) % totalSlides; updateSlide(); });
-document.getElementById('prevSlide').addEventListener('click', () => { slideIndex = (slideIndex - 1 + totalSlides) % totalSlides; updateSlide(); });
-setInterval(() => { slideIndex = (slideIndex + 1) % totalSlides; updateSlide(); }, 5000);
+
+// Atualiza o slide
+function updateSlide() {
+  heroSlider.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
+// Botões next/prev
+document.getElementById('nextSlide').addEventListener('click', () => {
+  slideIndex = (slideIndex + 1) % totalSlides;
+  updateSlide();
+});
+document.getElementById('prevSlide').addEventListener('click', () => {
+  slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+  updateSlide();
+});
+
+// Troca automática a cada 5 segundos
+setInterval(() => {
+  slideIndex = (slideIndex + 1) % totalSlides;
+  updateSlide();
+}, 5000);
 
 // Modal
 const modal = document.getElementById('productModal');
@@ -198,6 +216,7 @@ const modalOverlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 
 function openProductModal(product) {
+  // Criar opções de variações, se existirem
   let variationOptions = '';
   if (product.variations && product.variations.length > 0) {
     variationOptions = `
@@ -212,6 +231,7 @@ function openProductModal(product) {
     `;
   }
 
+  // Conteúdo inicial do modal
   modalContent.innerHTML = `
     <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
     <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
@@ -231,74 +251,156 @@ function openProductModal(product) {
   const specsContainer = modalContent.querySelector('#specsContainer');
   const variationPrice = modalContent.querySelector('#variationPrice');
 
+  // Seleção de variações
   const variationButtons = modalContent.querySelectorAll('#variationButtons button');
   variationButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      variationButtons.forEach(b => b.classList.remove('bg-blue-500','text-white'));
-      btn.classList.add('bg-blue-500','text-white');
+      variationButtons.forEach(b => b.classList.remove('bg-blue-500', 'text-white'));
+      btn.classList.add('bg-blue-500', 'text-white');
       const index = btn.getAttribute('data-index');
       selectedVariation = product.variations[index];
+
+      // Atualiza preço
       variationPrice.textContent = `À vista: ${selectedVariation.price.avista}${selectedVariation.price.parcelado ? ` / Parcelado: ${selectedVariation.price.parcelado}` : ''}`;
-      specsContainer.innerHTML = selectedVariation.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${selectedVariation.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : '';
+
+      // Atualiza especificações
+      specsContainer.innerHTML = selectedVariation.specs 
+        ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${selectedVariation.specs.map(s => `<li>${s}</li>`).join('')}</ul>` 
+        : '';
     });
   });
 
+  // Botão WhatsApp mantém a sua mensagem original
   document.getElementById('whatsappBtn').addEventListener('click', () => {
-    const name = "Seu Nome";
+    const name = "Seu Nome"; // opcional: pegar do usuário
     const p = selectedVariation || product;
     const priceText = typeof p.price === 'object' ? `${p.price.avista}${p.price.parcelado ? ` / Parcelado: ${p.price.parcelado}` : ''}` : p.price;
-    const msg = encodeURIComponent(`Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`);
+    const msg = encodeURIComponent(
+      `Olá, meu nome é ${name}.\nEstou entrando em contato pelo site da S.O.S Celulares.\nTenho interesse no seguinte produto:\n📱 Produto: ${p.name}\n${p.color ? `🎨 Cor: ${p.color}\n` : ''}${p.condition ? `🛠️ Estado: ${p.condition}\n` : ''}💰 Preço: ${priceText}\nGostaria de receber mais informações e verificar disponibilidade.`
+    );
     window.open(`https://wa.me/5564999518536?text=${msg}`, '_blank');
   });
 
-  document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('active'));
-  modalOverlay.addEventListener('click', () => modal.classList.remove('active'));
+  // Fechar modal ao clicar no X
+  document.getElementById('closeModal').addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  // Fechar ao clicar fora
+  modalOverlay.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
   modal.classList.add('active');
 }
 
-// Preload
-function preloadImages(urls){ return Promise.all(urls.map(src => new Promise(resolve => { const img = new Image(); img.src = src; img.onload = resolve; img.onerror = resolve; }))); }
+// Pré-carregar imagens
+function preloadImages(urls) {
+  return Promise.all(urls.map(src => new Promise(resolve => {
+    const img = new Image();
+    img.src = src;
+    img.onload = resolve;
+    img.onerror = resolve;
+  })));
+}
 
-// Load products
+// Carregar produtos
 async function loadProducts() {
   try {
     const response = await fetch('produtos.json');
     const data = await response.json();
-    products = data.map(p => { if (!p.category) p.category = 'Acessório'; if (!p.images || p.images.length === 0) p.images = ['imagens/default.png']; return p; });
+    products = data.map(p => {
+      if (!p.category) p.category = 'Acessório';
+      if (!p.images || p.images.length === 0) p.images = ['imagens/default.png'];
+      return p;
+    });
     const allImages = products.flatMap(p => p.images);
     await preloadImages(allImages);
-
-    const containers = {
-      Novo: document.getElementById('new-phones-container'),
-      Seminovo: document.getElementById('used-phones-container'),
-      Acessório: document.getElementById('accessories-container')
-    };
-
-    products.forEach(product => {
-      const card = document.createElement('div');
-      card.className = "card-hover bg-white p-4 rounded-lg cursor-pointer card-animate";
-      card.innerHTML = `
-        <img src="${product.images[0]}" alt="${product.name}" class="w-full h-48 object-contain mb-4 rounded"/>
-        <h3 class="font-bold text-lg mb-1">${product.name}</h3>
-        ${product.price ? `<p class="text-blue-600 font-bold">${product.price.parcelado ? product.price.parcelado : product.price}</p>` : ''}
-        <p class="text-gray-600 text-sm mt-2">${product.description.substring(0, 60)}...</p>
-      `;
-      card.addEventListener('click', () => openProductModal(product));
-      containers[product.category]?.appendChild(card);
-      setTimeout(() => card.classList.add('visible'), 100);
-    });
-  } catch (e) {
-    console.error('Erro ao carregar produtos:', e);
+    renderProducts(products);
+  } catch (err) {
+    console.error('Erro ao carregar produtos.json', err);
   }
 }
 
-loadProducts();
+// Renderizar produtos
+function renderProducts(products) {
+  const newC = document.getElementById('new-phones-container');
+  const usedC = document.getElementById('used-phones-container');
+  const accC = document.getElementById('accessories-container');
+  newC.innerHTML = usedC.innerHTML = accC.innerHTML = '';
+
+  const categories = { "Novo": newC, "Seminovo": usedC, "Acessório": accC };
+
+  Object.keys(categories).forEach(cat => {
+    const container = categories[cat];
+    const produtosCat = products.filter(p => p.category === cat);
+
+    produtosCat.forEach((p, index) => {
+      const card = document.createElement('div');
+      card.className = 'group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer card-hover card-animate';
+      if (index >= 3) card.style.display = 'none';
+
+      card.innerHTML = `
+        <div class="relative h-48 bg-gray-100 flex items-center justify-center p-4 overflow-hidden">
+          <img src="${p.images[0]}" alt="${p.name}" class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
+          <button class="absolute inset-0 flex items-center justify-center bg-black/60 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition">Ver Produto</button>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold text-gray-800 mb-1">${p.name}</h3>
+          <p class="text-gray-600 text-sm mb-2">${p.description}</p>
+          ${p.color ? `<p class="text-gray-600 text-sm mb-2"><strong>Cor:</strong> ${p.color}</p>` : ''}
+          ${p.condition ? `<p class="text-gray-600 text-sm mb-2"><strong>Estado:</strong> ${p.condition}</p>` : ''}
+          ${typeof p.price === 'object' 
+            ? `<p class="text-xl font-bold text-blue-600 mb-1">À vista: ${p.price.avista || ''}</p>
+               ${p.price.parcelado ? `<p class="text-xl font-bold text-blue-600">Parcelado: ${p.price.parcelado}</p>` : ''}`
+            : `<p class="text-xl font-bold text-blue-600">${p.price}</p>`}
+        </div>
+      `;
+
+      card.querySelector('button').addEventListener('click', () => openProductModal(p));
+      container.appendChild(card);
+    });
+
+    // Ver mais
+    if (produtosCat.length > 3) {
+      const verMaisCard = document.createElement('div');
+      verMaisCard.className = 'col-span-full flex justify-center mt-4';
+      const verMaisBtn = document.createElement('button');
+      verMaisBtn.className = 'bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition';
+      verMaisBtn.textContent = 'Ver Mais';
+      verMaisCard.appendChild(verMaisBtn);
+      container.appendChild(verMaisCard);
+
+      verMaisBtn.addEventListener('click', () => {
+        const hiddenCards = Array.from(container.children).filter(c => c !== verMaisCard && c.style.display === 'none');
+        if (hiddenCards.length > 0) { hiddenCards.forEach(c => c.style.display = 'block'); verMaisBtn.textContent = 'Ver Menos'; }
+        else { Array.from(container.children).forEach((c, i) => { if (c !== verMaisCard) c.style.display = i < 3 ? 'block' : 'none'; }); verMaisBtn.textContent = 'Ver Mais'; }
+      });
+    }
+  });
+
+  // Fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.card-animate').forEach(card => observer.observe(card));
+}
 
 // Scroll to top
 const scrollBtn = document.getElementById('scrollTopBtn');
 window.addEventListener('scroll', () => { scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
-scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Carregar produtos
+document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
 
-</body>
-</html>
+
+
+
+
