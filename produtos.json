@@ -507,60 +507,73 @@
     "name": "POCO C75",
     "category": "Novo",
     "description": "O POCO C75 é potente, com câmeras de alta qualidade e bateria duradoura.",
-    "images": ["imagens/poco_c75.png",
-    "imagens/poco_c75-2568-pretoverdegold-1.png",
-    "imagens/poco_c75-2568-pretoverdegold-2.png",
+    "images": [
+      "imagens/poco_c75.png",
+      "imagens/poco_c75-2568-pretoverdegold-1.png",
+      "imagens/poco_c75-2568-pretoverdegold-2.png",
       "imagens/poco_c75-1286-pretoverde-1.png",
-      "imagens/poco_c75-1286-pretoverde-2.png"],
-    "specs": ["Tela 6.88\"", "Bateria 5160mAh", "Câmera 50MP"],
+      "imagens/poco_c75-1286-pretoverde-2.png"
+    ],
+    "specs": [
+      "Tela 6.88\"",
+      "Bateria 5160mAh",
+      "Câmera 50MP"
+    ],
     "price": {
       "avista": "R$ 890,00",
       "parcelado": "12x R$ 85,00"
     },
     "variations": [
-  {
-    "name": "POCO C75 128/6",
-    "color": "Preto/Verde",
-    "images": [
-      "imagens/poco_c75-1286-pretoverde-1.png",
-      "imagens/poco_c75-1286-pretoverde-2.png"
-    ],
-    "specs": [
-      "Tela LCD IPS 6,88\" HD+ 120Hz",
-      "Processador MediaTek Helio G81-Ultra",
-      "6GB RAM",
-      "128GB Armazenamento",
-      "Câmera traseira 50MP",
-      "Câmera frontal 13MP",
-      "Bateria 5160mAh, Carregamento 18W",
-      "HyperOS Android 14",
-      "Dual SIM"
-    ],
-    "price": { "avista": "R$ 890,00", "parcelado": "12x R$ 85,00" }
-  },
-  {
-    "name": "POCO C75 256/8",
-    "color": "Preto/Verde/Gold",
-    "images": [
-      "imagens/poco_c75-2568-pretoverdegold-1.png",
-      "imagens/poco_c75-2568-pretoverdegold-2.png"
-    ],
-    "specs": [
-      "Tela LCD IPS 6,88\" HD+ 120Hz",
-      "Processador MediaTek Helio G81-Ultra",
-      "8GB RAM",
-      "256GB Armazenamento",
-      "Câmera traseira 50MP",
-      "Câmera frontal 13MP",
-      "Bateria 5160mAh, Carregamento 18W",
-      "HyperOS Android 14",
-      "Dual SIM"
-    ],
-    "price": { "avista": "R$ 990,00", "parcelado": "12x R$ 95,00" }
+      {
+        "name": "POCO C75 128/6",
+        "color": "Preto/Verde",
+        "images": [
+          "imagens/poco_c75-1286-pretoverde-1.png",
+          "imagens/poco_c75-1286-pretoverde-2.png"
+        ],
+        "specs": [
+          "Tela LCD IPS 6,88\" HD+ 120Hz",
+          "Processador MediaTek Helio G81-Ultra",
+          "6GB RAM",
+          "128GB Armazenamento",
+          "Câmera traseira 50MP",
+          "Câmera frontal 13MP",
+          "Bateria 5160mAh, Carregamento 18W",
+          "HyperOS Android 14",
+          "Dual SIM"
+        ],
+        "price": {
+          "avista": "R$ 890,00",
+          "parcelado": "12x R$ 85,00"
+        }
+      },
+      {
+        "name": "POCO C75 256/8",
+        "color": "Preto/Verde/Gold",
+        "images": [
+          "imagens/poco_c75-2568-pretoverdegold-1.png",
+          "imagens/poco_c75-2568-pretoverdegold-2.png"
+        ],
+        "specs": [
+          "Tela LCD IPS 6,88\" HD+ 120Hz",
+          "Processador MediaTek Helio G81-Ultra",
+          "8GB RAM",
+          "256GB Armazenamento",
+          "Câmera traseira 50MP",
+          "Câmera frontal 13MP",
+          "Bateria 5160mAh, Carregamento 18W",
+          "HyperOS Android 14",
+          "Dual SIM"
+        ],
+        "price": {
+          "avista": "R$ 990,00",
+          "parcelado": "12x R$ 95,00"
+        }
+      }
+    ]
   }
 ]
-}
-]
+
 
 
 
