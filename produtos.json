@@ -635,7 +635,62 @@
       "imagens/redmi13-2568-azul-3.png"
     ],
     "color": "Preto/Gold/Azul"
-  }
+  },
+  {
+  "id": 29,
+  "name": "POCO M7 PRO 5G 256GB/8GB",
+  "category": "Novo",
+  "price": {
+    "avista": "R$ 1.450,00",
+    "parcelado": "12x R$ 135,33"
+  },
+  "description": "O POCO M7 PRO 5G 256/8 oferece alto desempenho, conectividade 5G e excelente autonomia para quem busca velocidade e eficiência.",
+  "specs": [
+    "Tela LCD IPS 6,67\" FHD+ 120Hz",
+    "Processador MediaTek Dimensity 6100+",
+    "8GB RAM",
+    "256GB Armazenamento",
+    "Câmera traseira dupla 50MP + 2MP",
+    "Câmera frontal 8MP",
+    "Bateria 5000mAh",
+    "Carregamento rápido 33W",
+    "Android 13 com MIUI",
+    "Dual SIM 5G"
+  ],
+  "images": [
+    "imagens/poco_m7pro-2568-preto-1.png",
+    "imagens/poco_m7pro-2568-dourado-2.png"
+  ],
+  "color": "Preto/Dourado"
+},
+{
+  "id": 30,
+  "name": "POCO M7 PRO 5G 256GB/12GB",
+  "category": "Novo",
+  "price": {
+    "avista": "R$ 1.550,00",
+    "parcelado": "12x R$ 144,66"
+  },
+  "description": "O POCO M7 PRO 5G 256/12 é ideal para quem exige máximo desempenho, conectividade 5G e fluidez em multitarefas.",
+  "specs": [
+    "Tela LCD IPS 6,67\" FHD+ 120Hz",
+    "Processador MediaTek Dimensity 6100+",
+    "12GB RAM",
+    "256GB Armazenamento",
+    "Câmera traseira dupla 50MP + 2MP",
+    "Câmera frontal 8MP",
+    "Bateria 5000mAh",
+    "Carregamento rápido 33W",
+    "Android 13 com MIUI",
+    "Dual SIM 5G"
+  ],
+  "images": [
+    "imagens/poco_m7pro-25612-preto-1.png",
+    "imagens/poco_m7pro-25612-dourado-2.png"
+  ],
+  "color": "Preto/Dourado"
+ }
 ]
+
 
 
