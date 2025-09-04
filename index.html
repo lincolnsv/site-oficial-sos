@@ -219,20 +219,31 @@ function openProductModal(product) {
   let selectedVariation = null;
   let currentImageIndex = 0;
 
-  // Conteúdo inicial do modal com navegação de imagens
+  // Construir variações, se existirem
+  let variationOptions = '';
+  if (product.variations && product.variations.length > 0) {
+    variationOptions = `
+      <label class="block mb-2 font-bold">Escolha a variação:</label>
+      <div class="flex gap-2 flex-wrap mb-4" id="variationButtons">
+        ${product.variations.map((v, i) => `
+          <button class="px-3 py-1 border rounded hover:bg-blue-100" data-index="${i}">
+            ${v.name}${v.color ? ` - ${v.color}` : ''}
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+
   modalContent.innerHTML = `
     <button id="closeModal" class="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-gray-800">&times;</button>
     <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
 
     <div class="relative mb-4">
       <img id="modalProductImage" src="${product.images[0]}" alt="${product.name}" class="w-full rounded"/>
-      ${product.images.length > 1 ? `
-        <button id="prevImage" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">‹</button>
-        <button id="nextImage" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 px-2 py-1 rounded hover:bg-white">›</button>
-      ` : ''}
     </div>
 
     <p class="mb-2">${product.description}</p>
+    ${variationOptions}
 
     <div id="specsContainer" class="mb-2">
       ${product.specs ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${product.specs.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
@@ -251,6 +262,26 @@ function openProductModal(product) {
   `;
 
   const modalImage = document.getElementById('modalProductImage');
+  const specsContainer = modalContent.querySelector('#specsContainer');
+  const variationPrice = modalContent.querySelector('#variationPrice');
+
+  // Seleção de variações
+  const variationButtons = modalContent.querySelectorAll('#variationButtons button');
+  variationButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      variationButtons.forEach(b => b.classList.remove('bg-blue-500', 'text-white'));
+      btn.classList.add('bg-blue-500', 'text-white');
+
+      const index = btn.getAttribute('data-index');
+      selectedVariation = product.variations[index];
+
+      // Atualiza preço
+      variationPrice.textContent = `À vista: ${selectedVariation.price.avista}${selectedVariation.price.parcelado ? ` / Parcelado: ${selectedVariation.price.parcelado}` : ''}`;
+
+      // Atualiza especificações
+      specsContainer.innerHTML = selectedVariation.specs 
+        ? `<strong>Especificações:</strong><ul class="list-disc ml-5">${selectedVariation.specs.map(s => `<li>${s}</li>`).join('')}</ul>` 
+        : '';
 
   // Troca automática de imagens a cada 3 segundos
   let imageInterval = setInterval(() => {
@@ -405,6 +436,7 @@ scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Carregar produtos
 document.addEventListener('DOMContentLoaded', loadProducts);
 </script>
+
 
 
 
