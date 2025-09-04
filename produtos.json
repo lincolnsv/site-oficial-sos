@@ -343,7 +343,6 @@
     ],
     "color": "Preto"
   },
-  [
   {
     "id": 16,
     "name": "Fone de Ouvido Estéreo LELONG LE-0240",
@@ -504,60 +503,61 @@
     "color": "Preto"
   },
   {
-    "id": 24,
-    "name": "POCO C75 128/6",
-    "category": "Novo",
-    "color": "Preto/Verde",
-    "images": [
-      "imagens/poco_c75-1286-pretoverde-1.png",
-      "imagens/poco_c75-1286-pretoverde-2.png"
-    ],
-    "description": "O POCO C75 128/6 oferece desempenho rápido, tela ampla de 6,88” 120Hz, câmeras de alta qualidade e bateria duradoura para uso diário intenso.",
-    "specs": [
-      "Tela LCD IPS 6,88\" HD+ 120Hz",
-      "Processador MediaTek Helio G81-Ultra",
-      "6GB RAM",
-      "128GB Armazenamento",
-      "Câmera traseira 50MP",
-      "Câmera frontal 13MP",
-      "Bateria 5160mAh, Carregamento 18W",
-      "HyperOS Android 14",
-      "Dual SIM"
-    ],
-    "price": {
-      "avista": "R$ 890,00",
-      "parcelado": "12x R$ 85,00"
-    }
+  "id": 24,
+  "name": "POCO C75 128GB/6GB",
+  "category": "Novo",
+  "description": "O POCO C75 é potente, com câmeras de alta qualidade e bateria duradoura.",
+  "specs": [
+    "Tela LCD IPS 6,88\" HD+ 120Hz",
+    "Processador MediaTek Helio G81-Ultra",
+    "6GB RAM",
+    "128GB Armazenamento",
+    "Câmera traseira 50MP",
+    "Câmera frontal 13MP",
+    "Bateria 5160mAh, Carregamento 18W",
+    "HyperOS Android 14",
+    "Dual SIM"
+  ],
+  "price": {
+    "avista": "R$ 890,00",
+    "parcelado": "12x R$ 85,00"
   },
-  {
-    "id": 25,
-    "name": "POCO C75 256/8",
-    "category": "Novo",
-    "color": "Preto/Verde/Gold",
-    "images": [
-      "imagens/poco_c75-2568-pretoverdegold-1.png",
-      "imagens/poco_c75-2568-pretoverdegold-2.png"
-    ],
-    "description": "O POCO C75 256/8 combina alto desempenho, grande armazenamento, tela de 6,88” 120Hz e câmeras potentes, garantindo ótima experiência para uso diário e entretenimento.",
-    "specs": [
-      "Tela LCD IPS 6,88\" HD+ 120Hz",
-      "Processador MediaTek Helio G81-Ultra",
-      "8GB RAM",
-      "256GB Armazenamento",
-      "Câmera traseira 50MP",
-      "Câmera frontal 13MP",
-      "Bateria 5160mAh, Carregamento 18W",
-      "HyperOS Android 14",
-      "Dual SIM"
-    ],
-    "price": {
-      "avista": "R$ 990,00",
-      "parcelado": "12x R$ 95,00"
-    }
+  "images": [
+    "imagens/poco_c75-1286-pretoverde-1.png",
+    "imagens/poco_c75-1286-pretoverde-2.png"
+  ],
+  "color": "Preto/Verde"
+},
+{
+  "id": 25,
+  "name": "POCO C75 256GB/8GB",
+  "category": "Novo",
+  "description": "O POCO C75 é potente, com câmeras de alta qualidade e bateria duradoura.",
+  "specs": [
+    "Tela LCD IPS 6,88\" HD+ 120Hz",
+    "Processador MediaTek Helio G81-Ultra",
+    "8GB RAM",
+    "256GB Armazenamento",
+    "Câmera traseira 50MP",
+    "Câmera frontal 13MP",
+    "Bateria 5160mAh, Carregamento 18W",
+    "HyperOS Android 14",
+    "Dual SIM"
+  ],
+  "price": {
+    "avista": "R$ 990,00",
+    "parcelado": "12x R$ 95,00"
   },
+  "images": [
+    "imagens/poco_c75-2568-pretoverdegold-1.png",
+    "imagens/poco_c75-2568-pretoverdegold-2.png"
+  ],
+  "color": "Preto/Verde/Dourado"
+},
+[
   {
     "id": 26,
-    "name": "Realme Note 70 128/4",
+    "name": "Realme Note 70 128GB/4GB",
     "category": "Novo",
     "price": {
       "avista": "R$ 950,00",
@@ -584,7 +584,7 @@
   },
   {
     "id": 27,
-    "name": "Realme Note 70 256/8",
+    "name": "Realme Note 70 256GB/8GB",
     "category": "Novo",
     "price": {
       "avista": "R$ 1.140,00",
@@ -638,18 +638,4 @@
     "color": "Preto/Gold/Azul"
   }
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
