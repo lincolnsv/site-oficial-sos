@@ -510,6 +510,7 @@
       "imagens/poco_c75-1286-pretoverde-1.png",
       "imagens/poco_c75-1286-pretoverde-2.png"
     ],
+    "description": "O POCO C75 128/6 oferece desempenho rápido, tela ampla de 6,88” 120Hz, câmeras de alta qualidade e bateria duradoura para uso diário intenso.",
     "specs": [
       "Tela LCD IPS 6,88\" HD+ 120Hz",
       "Processador MediaTek Helio G81-Ultra",
@@ -534,6 +535,7 @@
       "imagens/poco_c75-2568-pretoverdegold-1.png",
       "imagens/poco_c75-2568-pretoverdegold-2.png"
     ],
+    "description": "O POCO C75 256/8 combina alto desempenho, grande armazenamento, tela de 6,88” 120Hz e câmeras potentes, garantindo ótima experiência para uso diário e entretenimento.",
     "specs": [
       "Tela LCD IPS 6,88\" HD+ 120Hz",
       "Processador MediaTek Helio G81-Ultra",
@@ -551,6 +553,7 @@
     }
   }
 ]
+
 
 
 
