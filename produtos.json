@@ -100,52 +100,6 @@
     "color": "Preto"
   },
   {
-    "id": 5,
-    "name": "Samsung A04e",
-    "category": "Seminovo",
-    "price": {
-      "avista": "R$ 400,00"
-    },
-    "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": [
-      "Tela 6,5\" HD+ PLS LCD",
-      "Processador MediaTek Helio P35",
-      "RAM 3GB",
-      "Armazenamento 64GB",
-      "Câmera traseira 13+2MP",
-      "Câmera frontal 5MP",
-      "Bateria 5000mAh",
-      "Android 12",
-      "Dual SIM"
-    ],
-    "images": [
-      "imagens/Samsung-A04e-1.png"
-    ],
-    "color": "Azul"
-  },
-  {
-    "id": 6,
-    "name": "Samsung A12",
-    "category": "Seminovo",
-    "price": {
-      "avista": "R$ 450,00"
-    },
-    "description": "Excelente estado, pequenos sinais de uso.",
-    "specs": [
-      "Tela 6,5\"",
-      "4GB RAM",
-      "Armazenamento 64GB",
-      "Quad Câmera 48MP",
-      "Bateria 5.000 mAh",
-      "Android 12",
-      "Dual SIM"
-    ],
-    "images": [
-      "imagens/Samsung-A12-1.png"
-    ],
-    "color": "Preto"
-  },
-  {
     "id": 7,
     "name": "Realme Note 60 X",
     "category": "Novo",
@@ -689,6 +643,7 @@
   "color": "Preto/Dourado"
  }
 ]
+
 
 
 
