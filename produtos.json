@@ -641,8 +641,63 @@
     "imagens/poco_m7pro-2568-preto-1.png"
   ],
   "color": "Preto/Dourado"
- }
+ },
+{
+  "id": 31,
+  "name": "Redmi 14C 256GB/8GB",
+  "category": "Novo",
+  "price": {
+    "avista": "R$ 990,00"
+  },
+  "description": "O Redmi 14C 256/8 oferece ótimo desempenho, tela ampla e câmeras de qualidade para uso diário e entretenimento.",
+  "specs": [
+    "Tela LCD IPS 6,71\" HD+",
+    "Processador MediaTek Helio série G",
+    "8GB RAM",
+    "256GB Armazenamento",
+    "Câmera traseira dupla 50MP + 2MP",
+    "Câmera frontal 8MP",
+    "Bateria 5000mAh",
+    "Carregamento rápido 18W",
+    "Android 14 com MIUI",
+    "Dual SIM"
+  ],
+  "images": [
+    "imagens/redmi14c-2568-preto-1.png",
+    "imagens/redmi14c-2568-roxo-2.png",
+    "imagens/redmi14c-2568-verde-3.png",
+    "imagens/redmi14c-2568-azul-4.png"
+  ],
+  "color": "Preto/Roxo/Verde/Azul"
+},
+{
+  "id": 32,
+  "name": "Redmi 14C 128GB/4GB",
+  "category": "Novo",
+  "price": {
+    "avista": "R$ 890,00"
+  },
+  "description": "O Redmi 14C 128/4 combina desempenho básico e boa autonomia de bateria com design moderno.",
+  "specs": [
+    "Tela LCD IPS 6,71\" HD+",
+    "Processador MediaTek Helio série G",
+    "4GB RAM",
+    "128GB Armazenamento",
+    "Câmera traseira dupla 50MP + 2MP",
+    "Câmera frontal 8MP",
+    "Bateria 5000mAh",
+    "Carregamento rápido 18W",
+    "Android 14 com MIUI",
+    "Dual SIM"
+  ],
+  "images": [
+    "imagens/redmi14c-1284-preto-1.png",
+    "imagens/redmi14c-1284-verde-2.png"
+  ],
+  "color": "Preto/Verde"
+}
 ]
+
 
 
 
